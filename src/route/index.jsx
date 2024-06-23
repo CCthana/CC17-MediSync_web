@@ -1,4 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import UserAllVn from '../features/user/page/UserAllVn';
+import UserAppointment from '../features/user/page/UserAppointment';
 // import { lazy } from 'react';
 
 
@@ -10,7 +12,10 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 const router = createBrowserRouter([
    { 
       path: "/", 
-      element: (<h1>Helloooooooooooo</h1>)  },
+      element: (<h1>Helloooooooooooo</h1>)  
+   },
+      {path: '/user',element: <UserAllVn />},
+      {path: '/user/appoint',element: <UserAppointment />},
 
 ]);
 
