@@ -1,11 +1,13 @@
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 //mockData Example
-{/* <Slide slides={mockData} width="full" height="96" fit="object-contain" /> */}
+{
+  /* <Slide slides={mockData} width="full" height="96" fit="object-contain" /> */
+}
 // const mockData = [
 //   {
 //     imgSrc: "https://picsum.photos/1920/540?random=1",
@@ -50,6 +52,8 @@ import { Link } from "react-router-dom";
 // ];
 
 export default function Slide({ slides, width, height, fit }) {
+  const sliderRef = useRef(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -61,12 +65,20 @@ export default function Slide({ slides, width, height, fit }) {
     autoplaySpeed: 3000,
   };
 
+  const nextSlide = () => {
+    sliderRef.current.slickNext();
+  };
+
+  const previousSlide = () => {
+    sliderRef.current.slickPrev();
+  };
+
   return (
     <div className={`w-${width} h-${height}`}>
       <div className="w-full h-full overflow-hidden">
-        <Slider {...settings}>
+        <Slider ref={sliderRef} {...settings}>
           {slides.map((slide, index) => (
-            <div key={index} className="relative h-full">
+            <div key={index} className="relative h-full focus:outline-none">
               <img
                 src={slide.imgSrc}
                 className={`w-full h-full ${fit} object-center focus:outline-none`}
@@ -78,6 +90,14 @@ export default function Slide({ slides, width, height, fit }) {
                   <Link to={slide.link.linkSrc}>{slide.link.button}</Link>
                 </button>
               </div>
+              <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                <button onClick={previousSlide} className="btn btn-circle">
+                  ❮
+                </button>
+                <button onClick={nextSlide} className="btn btn-circle">
+                  ❯
+                </button>
+              </div>
             </div>
           ))}
         </Slider>
@@ -85,6 +105,7 @@ export default function Slide({ slides, width, height, fit }) {
     </div>
   );
 }
+
 
 // Slide.propTypes = {
 //   slides: PropTypes.arrayOf(
