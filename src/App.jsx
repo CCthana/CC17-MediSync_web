@@ -1,8 +1,5 @@
 import Router from "./route"
 
-
-
-
 function App() {
 return (
   <Router />  
