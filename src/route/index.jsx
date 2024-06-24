@@ -1,34 +1,35 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import MainContainer from "../layout/MainContainer";
+import HomePage from "../pages/home-page/HomePage";
+import DepartmentPage from "../pages/DepartmentPage";
+import PackagePage from "../pages/PackagePage";
+import ContactPage from "../pages/ContactPage";
+import DoctorPage from "../pages/DoctorPage";
+import AdminPage from "../features/admin/page/AdminPage";
+import LoginPage from "../pages/LoginPage";
 import UserAllVn from "../features/user/page/UserAllVn";
 import UserAppointment from "../features/user/page/UserAppointment";
-import Modal from "../components/Modal";
-import OtpRecived from "../components/OtpRecived";
-// import { lazy } from 'react';
+import UserSetting from "../features/user/page/UserSetting";
 
-// const LoginPage = lazy(() => import('../pages/LoginPage'));
-// const HomePage = lazy(() => import('../pages/HomePage'));
-// const MainContainer = lazy(() => import('../layout/MainContainer'));
-
-// const router = createBrowserRouter([
-//    {
-//       path: "/",
-//       element: (<h1>Helloooooooooooo</h1>)
-//    },
-//       {path: '/user',element: <UserAllVn />},
-//       {path: '/user/appoint',element: <UserAppointment />},
-
-// ]);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      // <Modal>
-        <OtpRecived />
-      // </Modal>
-    ),
+
+    element: <MainContainer />,
+    children: [
+      { path: "/", element: <HomePage /> },
+      { path: "/department", element: <DepartmentPage /> },
+      { path: "/package", element: <PackagePage /> },
+      { path: "/contact", element: <ContactPage /> },
+      { path: "/doctor", element: <DoctorPage /> },
+      { path: "/login", element: <LoginPage /> },
+    ],
   },
+
+  { path: "admin", element: <AdminPage /> },
   { path: "/user", element: <UserAllVn /> },
-  { path: "/user/appoint", element: <UserAppointment /> },
+  { path: "/user/appointment", element: <UserAppointment /> },
+  { path: "/user/setting", element: <UserSetting /> },
 ]);
 
 export default function Router() {

@@ -19,4 +19,15 @@ export default {
     },
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "primary": "#F0F4EE",
+        },
+      },
+      
+    ],
+  },
+ 
 }
