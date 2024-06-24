@@ -1,3 +1,4 @@
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from '../layout/MainContainer';
 import HomePage from '../pages/home-page/HomePage';
@@ -7,17 +8,15 @@ import ContactPage from '../pages/ContactPage';
 import DoctorPage from '../pages/DoctorPage';
 import AdminPage from '../features/admin/page/AdminPage';
 import LoginPage from '../pages/LoginPage';
-// import { lazy } from 'react';
-
-
-// const LoginPage = lazy(() => import('../pages/LoginPage'));
-// const HomePage = lazy(() => import('../pages/HomePage'));
-// const MainContainer = lazy(() => import('../layout/MainContainer'));
-
+import UserAllVn from '../features/user/page/UserAllVn';
+import UserAppointment from '../features/user/page/UserAppointment';
+import UserSetting from '../features/user/page/UserSetting';
 
 const router = createBrowserRouter([
+
    { 
       path: "/", 
+
       element: (<MainContainer />),
       children: [
          { path: '/', element: (<HomePage />)},
@@ -28,15 +27,17 @@ const router = createBrowserRouter([
          { path: '/login', element: (<LoginPage />)}
       ]
    },
-   {
-      path:'admin',
-      element: (
-         <AdminPage />
-      )
-   }
+                                   
+      {path:'admin',element: (<AdminPage />) },
+      {path: '/user',element: <UserAllVn />},
+      {path: '/user/appointment',element: <UserAppointment />},
+      {path: '/user/setting',element: <UserSetting />},
+     
+
 
 ]);
 
 export default function Router() {
-   return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 }
+
