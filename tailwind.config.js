@@ -5,10 +5,29 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      'th': ['kanit'],
+      
+    },
+    extend: {
+      colors: {
+      'card-bg' : '#E3E7E0',
+      'ms-gold' : '#AE8F4E',
+      'ms-green' : '#31A172',
+      'ms-gray' : '#767676'
+    }
+    },
   },
-  plugins: [
-
-  ],
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "primary": "#F0F4EE",
+        },
+      },
+      
+    ],
+  },
  
 }
