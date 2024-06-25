@@ -10,7 +10,6 @@ import LoginPage from "../pages/LoginPage";
 import UserAllVn from "../features/user/page/UserAllVn";
 import UserAppointment from "../features/user/page/UserAppointment";
 import UserSetting from "../features/user/page/UserSetting";
-import ClinicPageFront from "../features/clinic/ClinicPage";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +30,7 @@ const router = createBrowserRouter([
   { path: "/user", element: <UserAllVn /> },
   { path: "/user/appointment", element: <UserAppointment /> },
   { path: "/user/setting", element: <UserSetting /> },
-  { path: "/clinic", element: <ClinicPageFront /> },
+
 ]);
 
 export default function Router() {
