@@ -1,4 +1,3 @@
-// AuthContext.jsx
 import { createContext } from "react";
 import {
   getAccessToken,
@@ -32,7 +31,7 @@ export default function AuthContextProvider({ children }) {
   }, []);
 
   const login = async (credentials) => {
-    const res = await authApi.login(credentials);
+     await authApi.login(credentials);
     // Here we assume the OTP is sent when login is called
   };
 
