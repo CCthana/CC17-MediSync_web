@@ -15,7 +15,7 @@ export default function Navbar() {
     ]
 
   return (
-    <nav className="h-20 flex items-center justify-between p-4 mt-1">
+    <nav className="h-20 flex items-center justify-between p-4 mt-2">
         <div className='h-9'>
             <Link to='/'>
                 <img className='h-full' src={logoMediSync} alt="logoMediSync" />

@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import FollowUs from "../../components/FollowUs";
 import logoMediSync from '../../assets/logos/MediSync-2.svg'
 import FooterItem from "./FooterItem";
+import ModalDaisy from "../../components/ModalDaisy";
+import AdminFormLoginPage from "../../features/admin/page/AdminFormLoginPage";
+import Modal from "../../components/Modal";
+import { useState } from "react";
 
 export default function Footer() {
 
@@ -13,6 +17,8 @@ export default function Footer() {
     { id: 5, text: "ร่วมงานกับเรา", to: '/contact'},
     { id: 6, text: "ข้อมูลโรงพยาบาล", to: '/contact'}
   ]
+
+  const [ open, setOpen ] = useState(false)
 
   return (
     <footer className="flex flex-col gap-6 mb-4">
@@ -55,12 +61,15 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-300 text-center px-4 flex justify-between items-center">
+          <div className="border-t border-gray-300 text-center px-4 pt-1 flex justify-between items-center">
               <small className="text-[#767676] text-xs invisible">login</small>
               <small>&#169; MediSync Create {new Date().getUTCFullYear()}</small>
-              <Link to='/admin'><small className="text-[#B3B3B3] text-xs">login</small></Link>
+              <button className="text-[#B3B3B3] text-xs" onClick={()=> setOpen(true)}>login</button>
           </div>
         </div>
+        <Modal title="Admin Login" width={50} open={open} onClose={() => setOpen(false)}>
+          <AdminFormLoginPage />
+        </Modal>
     </footer>
   )
 }

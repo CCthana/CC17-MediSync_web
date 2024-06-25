@@ -2,24 +2,28 @@ import { useState } from "react";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'
-import Input from "../components/Input.jsx";
-import validateLogin from "../validate/validate-login.js";
-import Button from "../components/Button.jsx";
+import validateLogin from "../validate/validateAdmin-login";
+
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import useAdmin from "../../../hooks/useAdmin";
 
 const initialInput = {
-    email: '',
+    userName: '',
     password: ''
 }
 
 const initialInputError = {
-    email: '',
+    userName: '',
     password: ''
 }
 
-export default function LoginPage() {
+export default function AdminFormLoginPage() {
 
     const [ input, setInput ] = useState( initialInput )
     const [ inputError, setInputError ] = useState( initialInputError )
+
+    const { login } = useAdmin()
 
     const navigate = useNavigate()
 
@@ -38,8 +42,8 @@ export default function LoginPage() {
             }
 
             setInputError(initialInputError)
-            // await login(input)
-            navigate('/user')
+            await login(input)
+            navigate('/admin')
             toast.success('login success')
 
             setInput(initialInput)
@@ -51,11 +55,11 @@ export default function LoginPage() {
                 setInputError((prev) => ({
                     ...prev,
                     password: err.response.data.message,
-                    email: ' '
+                    userName: ' '
                 }))
 
                 const message = err.response.status === 400
-                ? 'email or password invalid'
+                ? 'username or password invalid'
                 : 'internal erver error'
                 return toast.error(message)
             }
@@ -64,15 +68,15 @@ export default function LoginPage() {
 
   return (
     <form onSubmit={handleSubmitFrom} className="flex justify-center">
-        <div className="flex flex-col gap-3 px-20 py-16 rounded-[36px] border border-ms-gold w-1/2 mt-48 mb-64">
+        <div className="flex flex-col gap-4 px-20 pt-6 pb-8 rounded-[36px] w-full">
             <div className="flex flex-col gap-1">
-                <label>Email</label>
+                <label>username</label>
                 <Input
                     placeholder="email ใช้สำหรับ login"
-                    value={input.email}
-                    name={'email'}
+                    value={input.userName}
+                    name={'userName'}
                     onChange={handleChange}
-                    error={inputError.email}
+                    error={inputError.userName}
                 />
             </div>
 
