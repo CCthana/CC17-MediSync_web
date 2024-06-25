@@ -8,9 +8,10 @@
 :root {
   font-family: "inter","kanit";
   background-color: #F0F4EE;
+
  
 }
 
-
-
-
+a, h1, h2, h3, h4, h5, h6, div, i, small, span {
+  color: #767676;
+}
