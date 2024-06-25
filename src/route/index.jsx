@@ -10,8 +10,6 @@ import LoginPage from "../pages/LoginPage";
 import UserAllVn from "../features/user/page/UserAllVn";
 import UserAppointment from "../features/user/page/UserAppointment";
 import UserSetting from "../features/user/page/UserSetting";
-import PackagePagee from "../features/package/PackagePage";
-import PackageDetail from "../features/package/PackageDetail";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +30,7 @@ const router = createBrowserRouter([
   { path: "/user", element: <UserAllVn /> },
   { path: "/user/appointment", element: <UserAppointment /> },
   { path: "/user/setting", element: <UserSetting /> },
-  { path: "/packagee", element: <PackagePagee /> },
-  { path: "/package/detail", element: <PackageDetail /> },
+
 ]);
 
 export default function Router() {
