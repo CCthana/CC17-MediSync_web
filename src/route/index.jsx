@@ -10,11 +10,19 @@ import LoginPage from "../pages/LoginPage";
 import UserAllVn from "../features/user/page/UserAllVn";
 import UserAppointment from "../features/user/page/UserAppointment";
 import UserSetting from "../features/user/page/UserSetting";
+import VnCreateAdmin from '../features/admin/page/VnCreateAdmin';
+import VnConfirmAdmin from '../features/admin/page/VnConfirmAdmin';
+import AdminNursePage from '../features/admin/page/AdminNursePage';
+import AdminDoctorPage from '../features/admin/page/AdminDoctorPage';
+import AdminAccountPage from '../features/admin/page/AdminAccountPage';
+import AdminAppointment from '../features/admin/page/AdminAppointment';
+import AdminLanding from '../features/admin/page/AdminLanding';
+
 
 const router = createBrowserRouter([
-  {
-    path: "/",
 
+   { 
+     path: "/", 
     element: <MainContainer />,
     children: [
       { path: "/", element: <HomePage /> },
@@ -26,10 +34,18 @@ const router = createBrowserRouter([
     ],
   },
 
-  { path: "admin", element: <AdminPage /> },
   { path: "/user", element: <UserAllVn /> },
   { path: "/user/appointment", element: <UserAppointment /> },
   { path: "/user/setting", element: <UserSetting /> },
+    
+    
+     {path: '/admin',element: <AdminLanding />},
+      {path: '/admin/createvn',element: <VnCreateAdmin />},
+      {path: '/admin/vnconfirm',element: <VnConfirmAdmin />},
+      {path: '/admin/nurse',element: <AdminNursePage />},
+      {path: '/admin/doctor',element: <AdminDoctorPage />},
+      {path: '/admin/account',element: <AdminAccountPage />},
+      {path: '/admin/appointment',element: <AdminAppointment />},
 
 ]);
 
