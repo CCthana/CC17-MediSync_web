@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PackageForm({ packages }) {
   return (
     <>
@@ -12,9 +14,11 @@ export default function PackageForm({ packages }) {
             className='h-72 w-72 rounded-full object-cover'
           />
           <h1 className='text-[#767676] text-xl font-semibold'>{pkg.title}</h1>
-          <button className='border border-[#AE8F4E] rounded-3xl p-2 text-[#767676] text-md font-normal'>
-            ดูแพ็กเกจ
-          </button>
+          <Link to='/package/detail'>
+            <button className='border border-[#AE8F4E] rounded-3xl p-2 text-[#767676] text-md font-normal'>
+              ดูแพ็กเกจ
+            </button>
+          </Link>
         </div>
       ))}
     </>
