@@ -1,3 +1,4 @@
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from '../layout/MainContainer';
 import HomePage from '../pages/home-page/HomePage';
@@ -11,12 +12,6 @@ import ContactPage from '../pages/contact/ContactPage';
 import CareerPage from '../pages/contact/CareerPage';
 import InformationPage from '../pages/contact/InformationPages';
 // import { lazy } from 'react';
-
-
-// const LoginPage = lazy(() => import('../pages/LoginPage'));
-// const HomePage = lazy(() => import('../pages/HomePage'));
-// const MainContainer = lazy(() => import('../layout/MainContainer'));
-
 
 const router = createBrowserRouter([
    { 
@@ -40,10 +35,13 @@ const router = createBrowserRouter([
             <AdminPage />
          </ProtectedRouteAdmin>
       )
-   }
+   },
+  { path: "/user", element: <UserAllVn /> },
+  { path: "/user/appointment", element: <UserAppointment /> },
+  { path: "/user/setting", element: <UserSetting /> },
 
 ]);
 
 export default function Router() {
-   return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 }
