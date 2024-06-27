@@ -19,7 +19,7 @@ export default function Modal({ width=40, title, children, open, onClose }) {
     {open ? 
         createPortal(
             <>
-                <div className="fixed inset-0 bg-black opacity-80 z-40"></div>
+                <div className="fixed inset-0 bg-black opacity-70 z-40"></div>
                     <div className="fixed inset-0 z-50">
                         <div className="flex justify-center items-center min-h-screen" onMouseDown={onClose}>
                             <div className="bg-[#F0F4EE] overflow-auto max-h-[90vh] rounded-[32px] shadow-lg" style={{width: `${width}rem`}}  onMouseDown={e => e.stopPropagation()}>
