@@ -2,15 +2,17 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from '../layout/MainContainer';
 import HomePage from '../pages/home-page/HomePage';
-import DepartmentPage from '../pages/DepartmentPage';
-import PackagePage from '../pages/PackagePage';
 import DoctorPage from '../pages/doctor/DoctorPage';
 import AdminPage from '../features/admin/page/AdminPage';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRouteAdmin from '../features/authentication/ProtectedRouteAdmin';
-import ContactPage from '../pages/contact/ContactPage';
-import CareerPage from '../pages/contact/CareerPage';
-import InformationPage from '../pages/contact/InformationPages';
+import UserAllVn from "../features/user/page/UserAllVn";
+import UserAppointment from "../features/user/page/UserAppointment";
+import UserSetting from "../features/user/page/UserSetting";
+import PackagePagee from '../features/package/PackagePage';
+import ClinicPage from '../features/clinic/ClinicPage';
+import ContactContainer from '../pages/contact/ContactContainer';
+
 // import { lazy } from 'react';
 
 const router = createBrowserRouter([
@@ -19,11 +21,9 @@ const router = createBrowserRouter([
       element: (<MainContainer />),
       children: [
          { path: '/', element: (<HomePage />)},
-         { path: '/department', element: (<DepartmentPage />)},
-         { path: '/package', element: (<PackagePage />)},
-         { path: '/contact', element: (<ContactPage />)},
-         { path: '/career', element: (<CareerPage />)},
-         { path: '/information', element: (<InformationPage />)},
+         { path: '/department', element: (<ClinicPage />)},
+         { path: '/package', element: (<PackagePagee />)},
+         { path: '/contact', element: (<ContactContainer />)},
          { path: '/doctor', element: (<DoctorPage />)},
          { path: '/login', element: (<LoginPage />)}
       ]
@@ -39,7 +39,6 @@ const router = createBrowserRouter([
   { path: "/user", element: <UserAllVn /> },
   { path: "/user/appointment", element: <UserAppointment /> },
   { path: "/user/setting", element: <UserSetting /> },
-
 ]);
 
 export default function Router() {

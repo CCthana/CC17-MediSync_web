@@ -7,10 +7,10 @@
 
 :root {
   font-family: "inter","kanit";
-  background-color: #F0F4EE;
+  background-color: #f3f5f2;
   color: #767676;
 }
 
-a, h1, h2, h3, h4, h5, h6, div, i, small, span, input {
+a, h1, h2, h3, h4, h5, h6, div, i, small, span, input, label {
   color: #767676;
 }

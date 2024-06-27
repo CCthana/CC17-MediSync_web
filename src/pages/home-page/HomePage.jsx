@@ -1,4 +1,3 @@
-import ModalDaisy from "../../components/ModalDaisy";
 import CardClinic from "./component/CardClinic";
 import CardFourBtn from "./component/CardFourBtn";
 import CardPackage from "./component/CardPackage";
@@ -11,7 +10,6 @@ export default function HomePage() {
       <CardFourBtn />
       <CardPackage />
       <CardClinic />
-      <ModalDaisy />
     </header>
   )
 }

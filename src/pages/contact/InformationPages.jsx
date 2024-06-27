@@ -1,20 +1,17 @@
-import ContactHeader from "./ContactHeader";
-
 export default function InformationPage() {
   return (
-    <div className=" min-h-screen flex flex-col items-center py-10">
+    <div className=" min-h-screen flex flex-col items-center py-8">
       <div className="bg-[#E3E7E0] shadow-md rounded-lg p-6 w-full contents">
-        <ContactHeader />
 
-        <h1 className="text-[#767676] text-2xl font-bold text-center mb-6">
+        <h1 className="text-ms-gray text-4xl font-light text-center mb-6">
           ข้อมูลโรงพยาบาล
         </h1>
 
         <div className="max-w-5xl mb-6">
-          <h2 className="text-[#767676] text-xl font-semibold mb-4">
+          <h2 className="text-ms-gray text-xl font-medium mb-4">
             ศูนย์รวมความเชี่ยวชาญด้านหลากหลาย
           </h2>
-          <p className="text-[#767676]">
+          <p className="text-ms-gray indent-10">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut
             doloribus iusto dolore incidunt deleniti inventore veritatis
             quibusdam illo fugit aliquam dicta molestiae cumque nostrum, numquam
@@ -45,34 +42,38 @@ export default function InformationPage() {
         </div>
 
         <div className="container w-full ">
-          <div className="flex flex-wrap justify-center gap-2.5">
-            <div>
+          <div className="flex flex-wrap justify-center gap-4">
+
+            <div className="overflow-hidden rounded-3xl">
               <img
                 src="https://www.paolohospital.com/Resource/Image/Article/ed323ccf-7f1e-4d54-b5b5-335d881717e4_06.jpg"
-                className="w-96 h-52 rounded-3xl hover:scale-105 transition-transform duration-1000"
+                className="w-96 h-52 hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="bg-gray-200 w-96 h-52 rounded-3xl">
+
+            <div className="overflow-hidden rounded-3xl">
               <img
                 src="https://hospital.wu.ac.th/wp-content/uploads/2020/05/Prancheta-1-c%C3%B3pia.jpg"
-                className="w-96 h-52 rounded-3xl hover:scale-105 transition-transform duration-1000"
+                className="w-96 h-52 hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="bg-gray-200 w-96 h-52 rounded-3xl ">
+
+            <div className="overflow-hidden rounded-3xl">
               <img
                 src="https://www.jvkorat.go.th/th/wp-content/uploads/2017/11/30.jpg"
-                className="w-96 h-52 rounded-3xl hover:scale-105 transition-transform duration-1000"
+                className="w-96 h-52 hover:scale-105 transition-transform duration-500"
               />
             </div>
+            
           </div>
         </div>
 
         <div className="max-w-5xl mt-6">
-          <h2 className="text-[#767676] text-xl font-semibold mb-4">
+          <h2 className="text-ms-gray text-xl font-medium mb-4">
             นวัตกรรมและเทคโนโลยี
           </h2>
           <ul className="text-[#767676]">
-            <li>
+            <li className="indent-10">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
               expedita consequatur tempore alias aspernatur vel animi,
               voluptatibus explicabo inventore quo ipsum. Consequatur dolores

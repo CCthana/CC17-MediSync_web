@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+
 import FollowUs from "../../components/FollowUs";
 import logoMediSync from '../../assets/logos/MediSync-2.svg'
 import FooterItem from "./FooterItem";
-import ModalDaisy from "../../components/ModalDaisy";
+
 import AdminFormLoginPage from "../../features/admin/page/AdminFormLoginPage";
 import Modal from "../../components/Modal";
 import { useState } from "react";
@@ -26,7 +26,7 @@ export default function Footer() {
 
         <div className="bg-[#E3E7E0] p-4 rounded-3xl">
 
-          <div className="flex justify-between items-center mx-12 my-8">
+          <div className="flex justify-around items-center mx-12 my-8">
             <div className="h-28">
               <img className="h-full" src={logoMediSync} alt="logoMediSync" />
             </div>
@@ -67,6 +67,7 @@ export default function Footer() {
               <button className="text-[#B3B3B3] text-xs" onClick={()=> setOpen(true)}>login</button>
           </div>
         </div>
+        
         <Modal title="Admin Login" width={50} open={open} onClose={() => setOpen(false)}>
           <AdminFormLoginPage />
         </Modal>

@@ -24,6 +24,9 @@ export default function Slide({ slides }) {
     const previousSlide = () => {
         sliderRef.current.slickPrev();
     };
+
+
+
   
     return (
         <div className="relative overflow-hidden">
@@ -32,7 +35,7 @@ export default function Slide({ slides }) {
                     <div key={index} className="focus:outline-none">
                         <img
                             src={slide.imgSrc}
-                            className="w-full h-full focus:outline-none object-cover"
+                            className="w-full h-full focus:outline-none object-center"
                             alt={`Slide ${index + 1}`}
                         />
                     </div>

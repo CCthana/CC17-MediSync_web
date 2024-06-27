@@ -17,6 +17,3 @@ export default function CardFourBtn() {
     </div>
   )
 }
-{/* <i class="fa-solid fa-stethoscope"></i>
-<i class="fa-solid fa-building"></i>
-<i class="fa-solid fa-notes-medical"></i> */}
