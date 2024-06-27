@@ -24,7 +24,7 @@ export default {
     themes: [
       {
         mytheme: {
-          "primary": "#F0F4EE",
+          "primary": "#f3f5f2",
         },
       },
       

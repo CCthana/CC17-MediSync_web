@@ -14,17 +14,20 @@ export default function Navbar() {
         { id: 4, text: "ติดต่อเรา", to: '/contact'}
     ]
 
+
+
   return (
-    <nav className="h-20 flex items-center justify-between p-4 mt-1">
+    <nav className="h-20 flex items-center justify-between p-4 mt-2">
         <div className='h-9'>
             <Link to='/'>
                 <img className='h-full' src={logoMediSync} alt="logoMediSync" />
             </Link>
         </div>
         <div className='flex gap-5 items-center'>
-            { menuList.map((el) => (
-                <NavbarItem key={el.id} menu={el} active={ pathname === el.to} />
-            )) }
+            { menuList.map((el) =>{
+             return (
+                <NavbarItem key={el.id} menu={el} active={ pathname === el.to } />
+            )}) }
 
             <div className='gap-3 flex'>
                 <ButtonSmall btn="success">

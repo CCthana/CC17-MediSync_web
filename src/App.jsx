@@ -1,8 +1,28 @@
-import Router from "./route"
+import { Slide, ToastContainer } from "react-toastify";
+import AdminContextProvider from "./contexts/AdminContext";
+import Router from "./route";
+import { Suspense } from "react";
+import Spinner from "./components/Spinner";
+import DoctorContextProvider from "./contexts/DoctorContext";
+import ClinicContextProvider from "./contexts/ClinicContext";
 
 function App() {
-return (
-  <Router />  
-)}
+  return (
+    <Suspense fallback={<Spinner />}>
+      <AdminContextProvider>
+        <ClinicContextProvider>
+          <DoctorContextProvider>
+            <Router />
+            <ToastContainer
+              position="bottom-right"
+              autoClose={2000}
+              transition={Slide}
+            />
+          </DoctorContextProvider>
+        </ClinicContextProvider>
+      </AdminContextProvider>
+    </Suspense>
+  );
+}
 
-export default App
+export default App;

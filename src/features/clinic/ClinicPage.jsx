@@ -1,6 +1,6 @@
 import ClinicLayout from "./ClinicLayout";
 
-export default function ClinicPageFront() {
+export default function ClinicPage() {
   return (
     <>
       <ClinicLayout />

@@ -63,35 +63,38 @@ export default function LoginPage() {
     }
 
   return (
-    <form onSubmit={handleSubmitFrom} className="flex justify-center ">
-        <div className="flex mx-10 flex-col gap-3 p-16 rounded-[36px] border border-[#AF9763] w-1/2 mt-48 mb-64">
-            <div>
-                <label>Email</label>
-                <Input
-                    placeholder="email ใช้สำหรับ login"
-                    value={input.email}
-                    name={'email'}
-                    onChange={handleChange}
-                    error={inputError.email}
-                />
-            </div>
+    <div className="min-h-[75vh] flex items-center justify-center">
+        <form onSubmit={handleSubmitFrom} className="w-1/2">
+            <div className="flex flex-col gap-3 px-20 py-16 shadow-[0px_0px_6px_rgba(0,0,0,0.15)]
+            rounded-[36px] border border-ms-gold">
+                <div className="flex flex-col gap-1">
+                    <label>Email</label>
+                    <Input
+                        placeholder="email ใช้สำหรับ login"
+                        value={input.email}
+                        name={'email'}
+                        onChange={handleChange}
+                        error={inputError.email}
+                    />
+                </div>
 
-            <div>
-                <label>Password</label>
-                <Input
-                    placeholder="จำนวน 6 ตัวอักษรขึ้นไป"
-                    value={input.password}
-                    name={'password'}
-                    onChange={handleChange}
-                    error={inputError.password}
-                    typeInput="password"
-                />
-            </div>
+                <div className="flex flex-col gap-1">
+                    <label>Password</label>
+                    <Input
+                        placeholder="จำนวน 6 ตัวอักษรขึ้นไป"
+                        value={input.password}
+                        name={'password'}
+                        onChange={handleChange}
+                        error={inputError.password}
+                        typeInput="password"
+                    />
+                </div>
 
-            <div className="mt-3">
-                <Button btn='success'>เข้าสู่ระบบ</Button>
+                <div className="mt-3 w-[13rem] mx-auto">
+                    <Button btn='active'>เข้าสู่ระบบ</Button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
   )
 }
