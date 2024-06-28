@@ -1,6 +1,5 @@
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import { useRef } from "react";
 
 export default function Slide({ slides }) {
@@ -20,23 +19,20 @@ export default function Slide({ slides }) {
     const nextSlide = () => {
         sliderRef.current.slickNext();
     };
-  
+
     const previousSlide = () => {
         sliderRef.current.slickPrev();
     };
 
-
-
-  
     return (
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden max-h-[600px]">
             <Slider ref={sliderRef} {...settings}>
                 {slides.map((slide, index) => (
                     <div key={index} className="focus:outline-none">
                         <img
                             src={slide.imgSrc}
-                            className="w-full h-full focus:outline-none object-center"
-                            alt={`Slide ${index + 1}`}
+                            className="w-full focus:outline-none object-center"
+                            alt={`Image ${index}`}
                         />
                     </div>
                 ))}

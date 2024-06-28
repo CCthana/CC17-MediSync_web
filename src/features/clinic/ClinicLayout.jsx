@@ -47,7 +47,7 @@ export default function ClinicLayout() {
   };
 
   const filterClinic = getAllClinic?.filter((clinic) =>
-    clinic.name.includes(search)
+    clinic.name.toLowerCase().includes(search.toLowerCase())
   );
 
   console.log('getAllClinic', getAllClinic)
