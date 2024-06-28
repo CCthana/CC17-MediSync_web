@@ -5,7 +5,7 @@ export default function ContactPage() {
         <div className="min-h-[70vh] py-12">
           <div className="flex flex-col md:flex-row justify-center">
 
-            <div className="w-full md:w-1/3 h-[400px] bg-gray-200 rounded-3xl mr-10 flex items-center justify-center">
+            <div className="w-full md:w-1/3 h-[400px] bg-gray-200 rounded-3xl mr-8 flex items-center justify-center">
               {/* <span className="text-gray-500">google map</span> */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.3404435017774!2d100.53239597586516!3d13.758331697140768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29eca0a4dc2e7%3A0x944f80c1e57b451e!2z4Lit4Liy4LiE4Liy4Lij4Lin4Lij4Lij4LiT4Liq4Lij4LiT4LmM!5e0!3m2!1sth!2sth!4v1719200714556!5m2!1sth!2sth"

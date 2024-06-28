@@ -44,7 +44,7 @@ export default function PackageLayout() {
   ];
 
   const filterPackage = packages.filter((packages) =>
-    packages.title.includes(search)
+    packages.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (

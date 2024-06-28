@@ -19,7 +19,7 @@ export default function ProfileForm({ doctor, onClick, isDoctorLoading}) {
               <h2 className="text-ms-gray text-lg">
                 ชื่อ {doctor.firstName} {doctor.lastName}
               </h2>
-              <p className="text-ms-gray font-light">แผนก: {doctor.education}</p>
+              <p className="text-ms-gray font-light">แผนก: {doctor.clinic.name}</p>
             </div>
           </div>}
       

@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import Spinner from "./components/Spinner";
 import DoctorContextProvider from "./contexts/DoctorContext";
 import ClinicContextProvider from "./contexts/ClinicContext";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
