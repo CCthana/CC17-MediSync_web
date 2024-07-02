@@ -3,8 +3,6 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from '../layout/MainContainer';
 import HomePage from '../pages/home-page/HomePage';
 import DoctorPage from '../pages/doctor/DoctorPage';
-
-import LoginPage from '../pages/LoginPage';
 import ProtectedRouteAdmin from '../features/authentication/ProtectedRouteAdmin';
 import UserAllVn from "../features/user/page/UserAllVn";
 import UserAppointment from "../features/user/page/UserAppointment";
@@ -19,6 +17,7 @@ import PackagePagee from '../features/package/PackagePage';
 import ClinicPage from '../features/clinic/ClinicPage';
 import ContactContainer from '../pages/contact/ContactContainer';
 import AdminCreateHn from '../features/admin/page/AdminCreateHn';
+import LoginPage from '../pages/login-page/LoginPage';
 
 // import { lazy } from 'react';
 
