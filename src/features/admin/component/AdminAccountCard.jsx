@@ -1,27 +1,55 @@
 import { useState } from "react"
 import { DetailIcon } from "../../../icons";
+import adminApi from "../../../apis/admin";
+import { toast } from "react-toastify";
 
 
 
-function AdminAccountCard() {
 
+function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate, symptoms, treatmentResult, diagnosis, medicine, vnType, user, fetchPaymentVn }) {
+
+   const initialInput = {
+      id: id,
+      totalPrice: ''
+   }
+
+   const [input, setInput] = useState(initialInput)
    const [open, setOpen] = useState(false);
 
    
    const handleClick = () => {
-     
       setOpen(!open)
    }
+
+   const handleChangeInput = e => {
+      setInput({...input, [e.target.name]: e.target.value})
+   }
+
+   const handleClickConfirm = async () => {
+      try {
+         await adminApi.updateTotalPriceVnByAccount(input)
+
+         toast.success('Payment updated');
+         fetchPaymentVn();
+        
+      } catch (err) {
+         console.log(err);
+      }
+    }
+   
+    console.log(input)
+
+   
   return (
 <div className="flex flex-col bg-card-bg rounded-3xl shadow-md ">
       <div className="w-full font-th text-ms-gray h-16 flex items-center justify-between px-6 rounded-3xl border-[1px] text-lg">
          
-            <h1> 1. </h1>
-            <h1> HN 123456 </h1>
-            <h1> VN 123456 </h1>
-            <h1> คุณ: ทวีวิทย์ กิตธารเมธี </h1>
-            <h1> เพศ: ชาย </h1>
-            <h1> อายุ: 20 ปี </h1>
+            <h1> no. <span className="text-ms-green font-semibold"> {id} </span> </h1>
+            <h1> <span className="text-ms-green font-semibold"> {hn} </span> </h1>
+            <h1> <span className="text-ms-green font-semibold"> {vn} </span> </h1>
+            <h1>  คุณ:  <span className="text-ms-green font-semibold"> {user?.firstName} {user?.lastName} </span> </h1>
+            <h1>  เพศ: <span className="text-ms-green font-semibold"> {user?.gender} </span> </h1>
+            <h1> อายุ: <span className="text-ms-green m-2 font-semibold"> { (new Date().getUTCFullYear())  - user?.birthDate?.split('-')[0] || '-' }  </span> ปี   </h1>
             <button onClick={handleClick}> <DetailIcon className="h-8"/> </button>
 
          
@@ -33,16 +61,16 @@ function AdminAccountCard() {
             <div className="flex gap-6 mt-6 justify-start text-ms-gray font-th">
 
 
-                  <h1>น้ำหนัก: <span className="mx-2 font-medium text-lg"> 60 </span> kg.</h1>
-                  <h1>ส่วนสูง: <span className="mx-2 font-medium text-lg"> 180 </span> cm.</h1>
-                  <h1>ความดัน: <span className="mx-2 font-medium text-lg"> 100/100 </span></h1>
-                  <h1>ชีพจร: <span className="mx-2 font-medium text-lg"> 100 </span> BPM.</h1>
+                  <h1>น้ำหนัก: <span className="mx-2 font-medium text-lg text-ms-green"> {weight} </span> kg.</h1>
+                  <h1>ส่วนสูง: <span className="mx-2 font-medium text-lg text-ms-green"> {height} </span> cm.</h1>
+                  <h1>ความดัน: <span className="mx-2 font-medium text-lg text-ms-green"> {bloodPressure} </span></h1>
+                  <h1>ชีพจร: <span className="mx-2 font-medium text-lg text-ms-green"> {heartRate} </span> BPM.</h1>
             
 
             </div>
 
             <div className=" text-ms-gray mt-2 ">
-                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg"> เป็นไข้ปวดหัวตัวร้อน กินไม่ได้ นอนไม่หลับ กระส่ายกระสับ ตับพิการ อาหารไม่ย่อย </span> </h1>
+                  <h1>อาการเบื้องต้น: <span className="mx-2 font-semibold text-lg text-ms-green"> {symptoms} </span> </h1>
             </div>
 
             <div className="flex items-start gap-20 text-ms-gray ml-6 ">
@@ -51,21 +79,21 @@ function AdminAccountCard() {
                   <div className="mt-8 ">
                      <h1>การตรวจ</h1>
                      <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray"> 
-                           <h1> asdasdasd </h1>
+                           <h1> {treatmentResult} </h1>
                      </div>
                   </div>
 
                   <div className="mt-8 ">
                      <h1>สรุปอาการ</h1>
                      <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray"> 
-                           <h1> ไข้ </h1>
+                           <h1> {diagnosis} </h1>
                      </div>
                   </div>
 
                   <div className="mt-8 ">
                      <h1>จ่ายยา</h1>
                      <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray"> 
-                           <h1> Eno คลายกรด ลดแน่นเฝ้อ </h1>
+                           <h1> {medicine} </h1>
                      </div>
                   </div>
 
@@ -78,7 +106,7 @@ function AdminAccountCard() {
                   <div>
                      <h1>นัดครั้งต่อไป</h1>
                      <div className="w-[300px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-3 text-center border-ms-gold " >
-                        <h1> 2024 / 07 / 12 </h1>
+                        <h1> {user?.appointments[0].appointmentTime.split('T')[0]} </h1>
                      </div>   
                         
                   </div>
@@ -86,13 +114,13 @@ function AdminAccountCard() {
                   <div>
                      <h1>OPD / ADMIT</h1>
                      <div name="type" id="type" className="w-[300px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-3 text-center border-ms-gold " >
-                        <h1> OPD </h1>
+                        <h1> {vnType} </h1>
                      </div>
                   </div>
 
                   <div>
                      <h1>สรุปค่ารักษา</h1>
-                     <input name="type" id="type" className="w-[300px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold text-center"/> 
+                     <input name="totalPrice" id="totalPrice" value={input.totalPrice} onChange={handleChangeInput} className="w-[300px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold text-center"/> 
                   </div>
 
 
@@ -102,8 +130,8 @@ function AdminAccountCard() {
 
             
             <div className="flex items-center justify-end  gap-4">
-               <button className="font-th w-[150px] h-[40px] bg-ms-green rounded-full text-white text-xl hover:bg-[#257956]"> ยืนยัน </button>
-               <button className="font-th w-[150px] h-[40px] rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white "> แก้ไข </button>
+               <button onClick={handleClickConfirm} className="font-th w-[150px] h-[40px] bg-ms-green rounded-full text-white text-xl hover:bg-[#257956]"> ยืนยัน </button>
+               <button onClick={() => {setInput(initialInput)}} className="font-th w-[150px] h-[40px] rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white "> แก้ไข </button>
             </div>
            
 

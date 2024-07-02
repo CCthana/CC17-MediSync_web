@@ -1,8 +1,40 @@
+import { useEffect, useState } from "react";
 import AdminNurseCard from "../component/AdminNurseCard"
 import AdminSideMenu from "../component/AdminSideMenu"
+import adminApi from "../../../apis/admin";
+import useClinic from "../../../hooks/useClinic";
 
 
 function AdminNursePage() {
+   const [clinicId, setClinicId] = useState();
+   const [nurseData, setNurseData] = useState();
+   const [doctorData, setDoctorData] = useState();
+   const  { getAllClinic }  = useClinic();
+
+   const fetchNurseData = async () => {
+      try {
+
+         const result = await adminApi.getAllVnByClinic(clinicId); 
+         const doctor = await adminApi.getAllDoctorByClinic(clinicId);
+         setNurseData(result.data); 
+         setDoctorData(doctor.data);
+        
+      } catch (err) {
+         console.error(err);
+      }
+   };
+
+   useEffect(() => {
+         fetchNurseData();
+   }, [clinicId]);
+
+  
+   const handleClinicChange = (e) => {
+      setClinicId(e.target.value); 
+   };
+
+   
+
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
 
@@ -16,21 +48,20 @@ function AdminNursePage() {
          <div className="flex items-center justify-center">
             <div>
             <h1>แผนก / คลินิก</h1>
-            <select name="clinicId" id="clinicId" className="w-[200px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold  " >
-               <option value="1">หัว</option>
-               <option value="2">ไหล่</option>
-               <option value="3">เอว</option>   
+            <select name="clinicId" id="clinicId" onChange={handleClinicChange} className="w-[200px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold text-center font-semibold text-ms-green " >
+               <option defaultValue > --- เลือกแผนก --- </option>
+               {getAllClinic?.map((result) => (
+                     <option key={result?.id} value={result?.id} className=" text-ms-green font-semibold" > {result?.name}</option>
+                  ))}
             </select>
             </div>
          </div>
             <h1 className="font-th text-4xl  font-semibold text-ms-green flex-1  "> ตรวจอาการเบื้องต้น </h1>      
       </div>
       
-      <AdminNurseCard />
-      <AdminNurseCard />
-      <AdminNurseCard />
-      <AdminNurseCard />
-      <AdminNurseCard />
+         {nurseData?.map ((result) => <AdminNurseCard fetchNurseData={fetchNurseData} key={result?.id} clinicId={result?.clinicId} id={result?.id} vn={result?.vn} hn={result?.hn} firstName={result?.user.firstName}  lastName={result?.user.lastName} gender={result?.user.gender}  birthDate={result?.user.birthDate} doctorData={doctorData} symptoms={result?.symptoms} setClinicId={setClinicId} />)}  
+      
+        
 
 
 

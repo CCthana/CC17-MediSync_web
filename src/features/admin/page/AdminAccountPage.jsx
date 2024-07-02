@@ -1,7 +1,31 @@
+import { useEffect, useState } from "react";
 import AdminAccountCard from "../component/AdminAccountCard"
 import AdminSideMenu from "../component/AdminSideMenu"
+import useAdmin from "../../../hooks/useAdmin";
+import adminApi from "../../../apis/admin";
 
 function AdminAccountPage() {
+  const [paymentVn, setPaymentVn] = useState();
+
+  const { authAdmin } = useAdmin();
+
+
+  const fetchPaymentVn = async () =>{
+    try {
+       const result = await adminApi.getAllVnByStatusPayment()
+       setPaymentVn(result.data);
+       
+    } catch (err) {
+       console.log(err)
+    }
+ };
+
+ useEffect(() => {
+  fetchPaymentVn()
+},[authAdmin])
+
+
+
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
 
@@ -17,8 +41,23 @@ function AdminAccountPage() {
       </div>
       
     
-     
-      <AdminAccountCard />
+      {paymentVn?.map((result) => (<AdminAccountCard 
+      key={result?.id}
+      id={result?.id}
+      hn={result?.hn} 
+      vn={result?.vn} 
+      weight={result?.weight}
+      height={result?.height}
+      bloodPressure={result?.bloodPressure}
+      heartRate={result?.heartRate}
+      symptoms={result?.symptoms} 
+      treatmentResult={result?.treatmentResult}
+      diagnosis={result?.diagnosis}
+      medicine={result?.medicine}
+      vnType={result?.vnType}
+      user={result?.user}
+      fetchPaymentVn={fetchPaymentVn} 
+      />) )}
  
 
    </div> 

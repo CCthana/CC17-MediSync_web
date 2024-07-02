@@ -50,8 +50,7 @@ const mockData = [
 
 function UserAllVn() {
   const {pathname} = useLocation();
-  console.log(pathname)
-  
+
   return (
     <>
     <div className="flex justify-center p-40 gap-10 min-h-[80vh] ">
