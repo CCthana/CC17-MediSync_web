@@ -7,6 +7,7 @@ import DoctorContextProvider from "./contexts/DoctorContext";
 import ClinicContextProvider from "./contexts/ClinicContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AuthContextProvider from "./contexts/authContext";
 
 function App() {
   return (
@@ -14,12 +15,14 @@ function App() {
       <AdminContextProvider>
         <ClinicContextProvider>
           <DoctorContextProvider>
-            <Router />
-            <ToastContainer
-              position="bottom-right"
-              autoClose={2000}
-              transition={Slide}
-            />
+            <AuthContextProvider>
+              <Router />
+              <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                transition={Slide}
+              />
+            </AuthContextProvider>
           </DoctorContextProvider>
         </ClinicContextProvider>
       </AdminContextProvider>
