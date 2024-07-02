@@ -36,7 +36,8 @@ function AdminAccountPage() {
 
       <div className="flex items-center justify-center mb-2 text-center px-8 text-ms-gray">
          
-            <h1 className="font-th text-4xl  font-semibold text-ms-green flex-1 "> การเงิน </h1>   
+            <h1 className="font-th text-4xl  font-semibold text-ms-green flex-1 "> การเงิน </h1>  
+            <button onClick={() => fetchPaymentVn()} className="bg-ms-green text-white px-4 py-1 rounded-3xl  hover:bg-[#257956]"> เรียกข้อมูลใหม่ </button> 
         
       </div>
       

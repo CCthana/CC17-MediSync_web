@@ -106,7 +106,7 @@ function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate
                   <div>
                      <h1>นัดครั้งต่อไป</h1>
                      <div className="w-[300px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-3 text-center border-ms-gold " >
-                        <h1> {user?.appointments[0].appointmentTime.split('T')[0]} </h1>
+                        <h1> {user?.appointments[0]?.appointmentTime.split('T')[0]} </h1>
                      </div>   
                         
                   </div>

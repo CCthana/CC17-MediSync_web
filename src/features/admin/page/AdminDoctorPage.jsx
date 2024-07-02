@@ -30,7 +30,7 @@ function AdminDoctorPage() {
       fetchDoctorData()
    },[authAdmin])
 
-
+console.log(doctorData)
  
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
@@ -42,27 +42,27 @@ function AdminDoctorPage() {
 
       <div className="flex items-center justify-center mb-2 text-center px-8 text-ms-gray">
 
-         
-            <h1 className="font-th text-4xl  font-semibold text-ms-green flex-1 "> ตรวจอาการ</h1>   
-
             <div className="flex items-center justify-center gap-8">
-
                <div>
                   <h1>แผนก / คลินิก</h1>
-                  <div  className="w-[200px] h-[50px] rounded-3xl border-[1.5px]  border-ms-gold flex items-center justify-center text-center " > 
+                  <div  className="w-[150px] h-[50px] rounded-3xl border-[1.5px]  border-ms-gold flex items-center justify-center text-center " > 
                      <h1 className="font-semibold text-ms-green"> {doctorData?.clinic.name} </h1> 
                   </div>
                </div>
        
                <div>
                   <h1>แพทย์</h1>
-                  <div  className="w-[200px] h-[50px] rounded-3xl border-[1.5px]  border-ms-gold flex items-center justify-center text-center " > 
+                  <div  className="w-[150px] h-[50px] rounded-3xl border-[1.5px]  border-ms-gold flex items-center justify-center text-center " > 
                      <h1 className="font-semibold text-ms-green"> {doctorData?.firstName} {doctorData?.lastName}  </h1> 
                   </div>
                </div>
 
-            </div>
 
+            </div>
+         
+            <h1 className="font-th text-4xl  font-semibold text-ms-green flex-1 "> ตรวจอาการ</h1>   
+
+            <button onClick={() => fetchDoctorData()} className="bg-ms-green text-white px-4 py-1 rounded-3xl  hover:bg-[#257956]"> เรียกข้อมูลใหม่ </button> 
 
         
       </div>

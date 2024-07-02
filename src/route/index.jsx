@@ -52,9 +52,14 @@ const router = createBrowserRouter([
          {path: 'appointment',element: <AdminAppointment />},
       ]
    },
-  { path: "/user", element: <UserAllVn /> },
-  { path: "/user/appointment", element: <UserAppointment /> },
-  { path: "/user/setting", element: <UserSetting /> },
+   { path: "/user", 
+      element:(<MainContainer />),
+      children: [
+         { path: "", element: <UserAllVn /> },
+         { path: "appointment", element: <UserAppointment /> },
+         { path: "setting", element: <UserSetting /> },
+      ] 
+   }
   
   
 ]);
