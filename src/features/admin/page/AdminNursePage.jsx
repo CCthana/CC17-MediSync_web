@@ -59,34 +59,29 @@ function AdminNursePage() {
             </div>
           </div>
           <h1 className='font-th text-4xl  font-semibold text-ms-green flex-1  '>
-            ตรวจอาการเบื้องต้น
+            {" "}
+            ตรวจอาการเบื้องต้น{" "}
           </h1>
         </div>
 
-        <AdminNurseCard />
-        <AdminNurseCard />
-        <AdminNurseCard />
-        <AdminNurseCard />
-        <AdminNurseCard />
+        {nurseData?.map((result) => (
+          <AdminNurseCard
+            fetchNurseData={fetchNurseData}
+            key={result?.id}
+            clinicId={result?.clinicId}
+            id={result?.id}
+            vn={result?.vn}
+            hn={result?.hn}
+            firstName={result?.user.firstName}
+            lastName={result?.user.lastName}
+            gender={result?.user.gender}
+            birthDate={result?.user.birthDate}
+            doctorData={doctorData}
+            symptoms={result?.symptoms}
+            setClinicId={setClinicId}
+          />
+        ))}
       </div>
-
-      {nurseData?.map((result) => (
-        <AdminNurseCard
-          fetchNurseData={fetchNurseData}
-          key={result?.id}
-          clinicId={result?.clinicId}
-          id={result?.id}
-          vn={result?.vn}
-          hn={result?.hn}
-          firstName={result?.user.firstName}
-          lastName={result?.user.lastName}
-          gender={result?.user.gender}
-          birthDate={result?.user.birthDate}
-          doctorData={doctorData}
-          symptoms={result?.symptoms}
-          setClinicId={setClinicId}
-        />
-      ))}
     </div>
   );
 }

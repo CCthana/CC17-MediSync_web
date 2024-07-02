@@ -18,6 +18,7 @@ import ContactContainer from "../pages/contact/ContactContainer";
 import AdminCreateHn from "../features/admin/page/AdminCreateHn";
 import LoginPage from "../pages/login-page/LoginPage";
 import AdminPackage from "../features/admin/page/Package/AdminPackage";
+import AdminCareerPage from "../testadmin/AdminCareerPage";
 
 // import { lazy } from 'react';
 
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
       { path: "account", element: <AdminAccountPage /> },
       { path: "appointment", element: <AdminAppointment /> },
       { path: "package", element: <AdminPackage /> },
+      { path: "career", element: <AdminCareerPage /> },
     ],
   },
   {
