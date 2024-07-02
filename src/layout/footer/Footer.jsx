@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+
 import FollowUs from "../../components/FollowUs";
 import logoMediSync from '../../assets/logos/MediSync-2.svg'
 import FooterItem from "./FooterItem";
+
+import AdminFormLoginPage from "../../features/admin/page/AdminFormLoginPage";
+import Modal from "../../components/Modal";
+import { useState } from "react";
 
 export default function Footer() {
 
@@ -14,13 +18,15 @@ export default function Footer() {
     { id: 6, text: "ข้อมูลโรงพยาบาล", to: '/contact'}
   ]
 
+  const [ open, setOpen ] = useState(false)
+
   return (
     <footer className="flex flex-col gap-6 mb-4">
         <FollowUs />
 
         <div className="bg-[#E3E7E0] p-4 rounded-3xl">
 
-          <div className="flex justify-between items-center mx-12 my-8">
+          <div className="flex justify-around items-center mx-12 my-8">
             <div className="h-28">
               <img className="h-full" src={logoMediSync} alt="logoMediSync" />
             </div>
@@ -55,12 +61,16 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-300 text-center px-4 flex justify-between items-center">
+          <div className="border-t border-gray-300 text-center px-4 pt-1 flex justify-between items-center">
               <small className="text-[#767676] text-xs invisible">login</small>
               <small>&#169; MediSync Create {new Date().getUTCFullYear()}</small>
-              <Link to='/admin'><small className="text-[#B3B3B3] text-xs">login</small></Link>
+              <button className="text-[#B3B3B3] text-xs" onClick={()=> setOpen(true)}>login</button>
           </div>
         </div>
+        
+        <Modal title="Admin Login" width={50} open={open} onClose={() => setOpen(false)}>
+          <AdminFormLoginPage />
+        </Modal>
     </footer>
   )
 }

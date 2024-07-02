@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
 import Input from "../../components/Input.jsx";
-import validateLogin from "../../validate/validate-login.js";
+import validateLogin from "./validate/validate-login.js";
 import Button from "../../components/Button.jsx";
 import CleanModal from "../../components/CleanModal.jsx";
 import OtpReceived from "./component/OtpRecived.jsx";
@@ -42,13 +42,14 @@ export default function LoginPage() {
 
       setInputError(initialInputError);
       console.log(input);
-      setOpenEdit(true);
       // ส่งคำขอล็อกอิน
       await login({ email: input.email, password: input.password });
-      
-      setEmailForOtp(input.email);
+      setOpenEdit(true);
 
+      setEmailForOtp(input.email);
+      // navigate('/user')
       toast.success("OTP sent to your email");
+      setInput(initialInput);
     } catch (err) {
       console.log(err);
       if (err instanceof AxiosError) {
@@ -69,36 +70,41 @@ export default function LoginPage() {
 
   return (
     <>
-      <form onSubmit={handleSubmitForm} className="flex justify-center ">
-        <div className="flex mx-10 flex-col gap-3 p-16 rounded-[36px] border border-[#AF9763] w-1/2 mt-48 mb-64">
-          <div>
-            <label>Email</label>
-            <Input
-              placeholder="email ใช้สำหรับ login"
-              value={input.email}
-              name={"email"}
-              onChange={handleChange}
-              error={inputError.email}
-            />
-          </div>
+       <div className="min-h-[75vh] flex items-center justify-center">
+        <form onSubmit={handleSubmitForm} className="w-1/2">
+          <div
+            className="flex flex-col gap-3 px-20 py-16 shadow-[0px_0px_6px_rgba(0,0,0,0.15)]
+            rounded-[36px] border border-ms-gold"
+          >
+            <div className="flex flex-col gap-1">
+              <label>Email</label>
+              <Input
+                placeholder="email ใช้สำหรับ login"
+                value={input.email}
+                name={"email"}
+                onChange={handleChange}
+                error={inputError.email}
+              />
+            </div>
 
-          <div>
-            <label>Password</label>
-            <Input
-              placeholder="จำนวน 6 ตัวอักษรขึ้นไป"
-              value={input.password}
-              name={"password"}
-              onChange={handleChange}
-              error={inputError.password}
-              typeInput="password"
-            />
-          </div>
+            <div className="flex flex-col gap-1">
+              <label>Password</label>
+              <Input
+                placeholder="จำนวน 6 ตัวอักษรขึ้นไป"
+                value={input.password}
+                name={"password"}
+                onChange={handleChange}
+                error={inputError.password}
+                typeInput="password"
+              />
+            </div>
 
-          <div className="mt-3">
-            <Button btn="success">เข้าสู่ระบบ</Button>
+            <div className="mt-3 w-[13rem] mx-auto">
+              <Button btn="active">เข้าสู่ระบบ</Button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
 
       <CleanModal
         width={50}

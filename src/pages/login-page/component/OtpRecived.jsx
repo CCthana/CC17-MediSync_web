@@ -31,7 +31,7 @@ export default function OtpReceived({ email }) {
 
       // setOpenEdit(false);
       toast.success("Login successful");
-      navigate("/");
+      navigate("/user");
     } catch (error) {
       console.log(error);
       setOtpError("Invalid OTP. Please try again.");
