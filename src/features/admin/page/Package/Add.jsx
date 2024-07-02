@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import validateFormPackage from "../../validate/validate-package";
+import validateFormPackage from "./validate/validate-package";
 import Input from "../../../../components/Input";
 
 const initialInput = {
