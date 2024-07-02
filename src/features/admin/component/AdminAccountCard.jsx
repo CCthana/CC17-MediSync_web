@@ -37,7 +37,7 @@ function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate
       }
     }
    
-    console.log(input)
+  
 
    
   return (
