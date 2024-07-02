@@ -18,6 +18,7 @@ import AdminLanding from "../features/admin/page/AdminLanding";
 import PackagePagee from "../features/package/PackagePage";
 import ClinicPage from "../features/clinic/ClinicPage";
 import ContactContainer from "../pages/contact/ContactContainer";
+import AdminPackage from "../features/admin/page/Package/AdminPackage";
 
 // import { lazy } from 'react';
 
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
   { path: "/admin/doctor", element: <AdminDoctorPage /> },
   { path: "/admin/account", element: <AdminAccountPage /> },
   { path: "/admin/appointment", element: <AdminAppointment /> },
+  { path: "/admin/package", element: <AdminPackage /> },
 ]);
 
 export default function Router() {
