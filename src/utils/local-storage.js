@@ -1,8 +1,11 @@
-const ACCESS_TOKEN = 'ACCESS_TOKEN'
+const ACCESS_TOKEN = "ACCESS_TOKEN";
 const ACCESS_TOKEN_ADMIN = 'ACCESS_TOKEN_ADMIN'
 const CONTACT_PAGE = 'CONTACT_PAGE'
 
-export const setAccessToken = (token) => localStorage.setItem(ACCESS_TOKEN, token);
+export const setAccessToken = (token) => {
+  console.log(token);
+  localStorage.setItem(ACCESS_TOKEN, token);
+};
 
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN);
 
