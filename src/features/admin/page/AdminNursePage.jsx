@@ -1,7 +1,34 @@
+import { useEffect, useState } from "react";
 import AdminNurseCard from "../component/AdminNurseCard";
 import AdminSideMenu from "../component/AdminSideMenu";
+import adminApi from "../../../apis/admin";
+import useClinic from "../../../hooks/useClinic";
 
 function AdminNursePage() {
+  const [clinicId, setClinicId] = useState();
+  const [nurseData, setNurseData] = useState();
+  const [doctorData, setDoctorData] = useState();
+  const { getAllClinic } = useClinic();
+
+  const fetchNurseData = async () => {
+    try {
+      const result = await adminApi.getAllVnByClinic(clinicId);
+      const doctor = await adminApi.getAllDoctorByClinic(clinicId);
+      setNurseData(result.data);
+      setDoctorData(doctor.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchNurseData();
+  }, [clinicId]);
+
+  const handleClinicChange = (e) => {
+    setClinicId(e.target.value);
+  };
+
   return (
     <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
       <AdminSideMenu />
@@ -14,11 +41,20 @@ function AdminNursePage() {
               <select
                 name="clinicId"
                 id="clinicId"
-                className="w-[200px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold  "
+                onChange={handleClinicChange}
+                className="w-[200px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold text-center font-semibold text-ms-green "
               >
-                <option value="1">หัว</option>
-                <option value="2">ไหล่</option>
-                <option value="3">เอว</option>
+                <option defaultValue> --- เลือกแผนก --- </option>
+                {getAllClinic?.map((result) => (
+                  <option
+                    key={result?.id}
+                    value={result?.id}
+                    className=" text-ms-green font-semibold"
+                  >
+                    {" "}
+                    {result?.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -28,11 +64,23 @@ function AdminNursePage() {
           </h1>
         </div>
 
-        <AdminNurseCard />
-        <AdminNurseCard />
-        <AdminNurseCard />
-        <AdminNurseCard />
-        <AdminNurseCard />
+        {nurseData?.map((result) => (
+          <AdminNurseCard
+            fetchNurseData={fetchNurseData}
+            key={result?.id}
+            clinicId={result?.clinicId}
+            id={result?.id}
+            vn={result?.vn}
+            hn={result?.hn}
+            firstName={result?.user.firstName}
+            lastName={result?.user.lastName}
+            gender={result?.user.gender}
+            birthDate={result?.user.birthDate}
+            doctorData={doctorData}
+            symptoms={result?.symptoms}
+            setClinicId={setClinicId}
+          />
+        ))}
       </div>
     </div>
   );
