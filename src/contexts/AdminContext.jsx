@@ -45,7 +45,7 @@ export default function AdminContextProvider({ children }) {
         setAuthAdmin(null)
     }
 
-    console.log('authAdmin', authAdmin)
+    // console.log('authAdmin', authAdmin)
 
 
     return (

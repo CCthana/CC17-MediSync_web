@@ -69,7 +69,7 @@ export default function LoginPage() {
   };
 
   return (
-    <>
+    <div>
        <div className="min-h-[75vh] flex items-center justify-center">
         <form onSubmit={handleSubmitForm} className="w-1/2">
           <div
@@ -114,6 +114,6 @@ export default function LoginPage() {
       >
         <OtpReceived email={emailForOtp} setOpen={setOpenEdit} />
       </CleanModal>
-    </>
+    </div>
   );
 }

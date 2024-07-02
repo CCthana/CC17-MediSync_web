@@ -3,7 +3,7 @@ import SideMenuUser from '../component/SideMenuUser'
 
 function UserSetting() {
   return (
-   <div className="flex justify-center p-40 gap-10 min-h-[80vh] ">
+   <div className="flex justify-center px-20 pt-14 gap-10 min-h-[80vh] ">
 
    <SideMenuUser />
   
