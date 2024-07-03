@@ -104,7 +104,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
             </div>
 
             <div className=" text-ms-gray mt-2 ">
-                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg"> {symptoms} </span> </h1>
+                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg text-ms-green"> {symptoms} </span> </h1>
             </div>
 
             <div className="flex items-start gap-20 text-ms-gray ml-6 ">
