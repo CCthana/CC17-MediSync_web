@@ -13,7 +13,7 @@ function SideMenuUser() {
             <div > <Link to='/user/appointment'>  <button className={` ${pathname=="/user/appointment" ? 'text-ms-green hover:no-underline hover:cursor-default ' : 'hover:underline text-ms-gray' }`} > ตรวจสอบเวลานัดแพทย์ </button> </Link> </div>
             <div > <Link to='/user/setting'>  <button className={` ${pathname=="/user/setting" ? 'text-ms-green hover:no-underline hover:cursor-default ' : 'hover:underline text-ms-gray' }`} > บัญชี </button> </Link> </div>
         </div>
-        <div className=" items-end"> <Link to='/'>  <button className="hover:underline"> ออกจากระบบ </button> </Link> </div>
+        <div className=" items-end font-semibold text-xl"> <Link to='/'>  <button className="hover:underline"> ออกจากระบบ </button> </Link> </div>
       </div>
    </>
   )

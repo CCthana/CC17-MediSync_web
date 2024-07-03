@@ -3,7 +3,7 @@ import { DetailIcon } from "../../../icons";
 import adminApi from "../../../apis/admin";
 import { toast } from "react-toastify";
 
-function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, weight, height, bloodPressure, heartRate, symtomps, doctorData, fetchDoctorData}) {
+function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, weight, height, bloodPressure, heartRate, symptoms, doctorData, fetchDoctorData}) {
 
    const initialInput = {
       id: id,
@@ -104,7 +104,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
             </div>
 
             <div className=" text-ms-gray mt-2 ">
-                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg"> {symtomps} </span> </h1>
+                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg text-ms-green"> {symptoms} </span> </h1>
             </div>
 
             <div className="flex items-start gap-20 text-ms-gray ml-6 ">

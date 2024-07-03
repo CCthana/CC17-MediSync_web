@@ -2,8 +2,11 @@ import { Link, useLocation } from 'react-router-dom'
 import logoMediSync from '../../assets/logos/MediSync-1.svg'
 import NavbarItem from './NavbarItem'
 import ButtonSmall from '../../components/BottonSmall'
+import useAuth from '../../hooks/useAuth'
 
 export default function Navbar() {
+
+    const{ authUser } = useAuth();
 
     const { pathname } = useLocation()
 
@@ -37,14 +40,21 @@ export default function Navbar() {
                     </div>
                 </ButtonSmall>
 
-                <Link to='/login'>
+                {authUser ? 
+                <ButtonSmall btn="success">
+                    <div className='flex items-center gap-1'>
+                       <h1>  <span className='font-th text-ms-green font-semibold'> {authUser?.firstName}</span>  </h1>
+                    </div> 
+                </ButtonSmall>
+                : <Link to='/login'>
                 <ButtonSmall btn="success">
                     <div className='flex items-center gap-1'>
                         <i className="fa-solid fa-user-plus"></i>
                         <h1>login</h1>
                     </div>
                 </ButtonSmall>
-                </Link>
+                </Link> 
+            }
             </div>
         </div>
         
