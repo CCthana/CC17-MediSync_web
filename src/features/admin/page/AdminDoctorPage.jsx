@@ -80,7 +80,7 @@ console.log(doctorData)
       height={result?.height}
       bloodPressure={result?.bloodPressure}
       heartRate={result?.heartRate}
-      symtomps={result?.symtomps}  
+      symptoms={result?.symptoms}  
       doctorData={doctorData}
       fetchDoctorData={fetchDoctorData} 
       /> ) }
