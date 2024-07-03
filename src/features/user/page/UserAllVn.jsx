@@ -1,16 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import UserVnCard from "../component/UserVnCard"
 import { useLocation } from "react-router-dom";
-import SideMenu from "../component/SideMenuUser";
 import SideMenuUser from "../component/SideMenuUser";
-import Slide from "../../../components/Slide";
+import useAuth from "../../../hooks/useAuth";
+import userApi from "../../../apis/user";
 
 function UserAllVn() {
   const {pathname} = useLocation();
+  const {authUser} = useAuth();
+  const [allVn, setAllVn] = useState();
 
+  const fetchUserAllVn = async () =>{
+    try {
+      const result = await userApi.getAllVnByHn(authUser.hn)
+      setAllVn(result.data);
+       
+    } catch (err) {
+       console.log(err)
+    }
+ };
+
+  useEffect(() => {
+      fetchUserAllVn();
+    }, [authUser]);
+
+ console.log(authUser)
+  
   return (
     <>
-    <div className="flex justify-center px-20 pt-14 gap-10 min-h-[80vh] ">
+    <h1 className="pt-14 px-24 font-semibold text-2xl">สวัสดี คุณ <span className="text-ms-green font-th"> {authUser?.firstName} {authUser?.lastName}  </span> </h1>
+    <div className="flex justify-center px-20 pt-5  gap-10 min-h-[80vh] ">
 
 
      <SideMenuUser />
@@ -23,9 +42,18 @@ function UserAllVn() {
             <h1 className="w-4/5">สรุปผลการรักษา</h1>
             <h1 className="w-4/5">ค่ารักษาพยาบาล</h1>
          </div>
-         <UserVnCard />
-         <UserVnCard />
-         <UserVnCard />
+
+       {allVn?.map((result) => <UserVnCard 
+       key={result?.id} 
+       id={result?.id} 
+       hn={result?.hn} 
+       vn={result?.vn} 
+       createdAt={result?.createdAt} 
+       recipt={result?.recipt} 
+       summary={result?.summary}  
+       />)}
+      
+        
        
       </div>
 
