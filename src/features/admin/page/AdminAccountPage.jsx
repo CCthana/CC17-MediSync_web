@@ -57,6 +57,8 @@ function AdminAccountPage() {
       medicine={result?.medicine}
       vnType={result?.vnType}
       user={result?.user}
+      doctor={result?.doctor}
+      clinic={result?.clinic}
       fetchPaymentVn={fetchPaymentVn} 
       />) )}
  
