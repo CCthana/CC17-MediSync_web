@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 
 
-function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate, symptoms, treatmentResult, diagnosis, medicine, vnType, user, fetchPaymentVn }) {
+function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate, symptoms, treatmentResult, diagnosis, medicine, vnType, user, fetchPaymentVn, doctor, clinic }) {
 
    const initialInput = {
       id: id,
