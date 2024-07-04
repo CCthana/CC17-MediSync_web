@@ -46,7 +46,7 @@ export default function AuthContextProvider({ children }) {
   };
 
   const logout = () => {
-    removeAccessToken();
+    localStorage.clear();
     setAuthUser(null);
   };
 
