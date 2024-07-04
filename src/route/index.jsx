@@ -1,9 +1,8 @@
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from '../layout/MainContainer';
 import HomePage from '../pages/home-page/HomePage';
 import DoctorPage from '../pages/doctor/DoctorPage';
-import AdminPage from '../features/admin/page/AdminPage';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRouteAdmin from '../features/authentication/ProtectedRouteAdmin';
 import UserAllVn from "../features/user/page/UserAllVn";
@@ -19,6 +18,11 @@ import AdminLanding from '../features/admin/page/AdminLanding';
 import PackagePagee from '../features/package/PackagePage';
 import ClinicPage from '../features/clinic/ClinicPage';
 import ContactContainer from '../pages/contact/ContactContainer';
+
+
+import MangeClinicPage from '../features/admin/page/admin-admin/clinic/MangeClinicPage';
+import ManageDoctorPage from '../features/admin/page/admin-admin/doctor/ManageDoctorPage';
+import DashboardPage from '../features/admin/page/admin-admin/dashboard/DashboardPage';
 
 // import { lazy } from 'react';
 
@@ -36,23 +40,28 @@ const router = createBrowserRouter([
       ]
    },
    {
-      path:'admin',
+      path:'/admin',
       element: (
          <ProtectedRouteAdmin>
-            <AdminPage />
+            <Outlet />
          </ProtectedRouteAdmin>
-      )
+      ),
+      children : [
+         {path: '',element: <AdminLanding />},
+         {path: 'createvn',element: <VnCreateAdmin />},
+         {path: 'vnconfirm',element: <VnConfirmAdmin />},
+         {path: 'nurse',element: <AdminNursePage />},
+         {path: 'doctor',element: <AdminDoctorPage />},
+         {path: 'account',element: <AdminAccountPage />},
+         {path: 'appointment',element: <AdminAppointment />},
+         {path: 'dashboard',element: <DashboardPage />},
+         {path: 'managedoctor',element: <ManageDoctorPage />},
+         {path: 'manageclinic',element: <MangeClinicPage />},
+      ]
    },
   { path: "/user", element: <UserAllVn /> },
   { path: "/user/appointment", element: <UserAppointment /> },
   { path: "/user/setting", element: <UserSetting /> },
-  {path: '/admin',element: <AdminLanding />},
-  {path: '/admin/createvn',element: <VnCreateAdmin />},
-  {path: '/admin/vnconfirm',element: <VnConfirmAdmin />},
-  {path: '/admin/nurse',element: <AdminNursePage />},
-  {path: '/admin/doctor',element: <AdminDoctorPage />},
-  {path: '/admin/account',element: <AdminAccountPage />},
-  {path: '/admin/appointment',element: <AdminAppointment />},
 ]);
 
 export default function Router() {

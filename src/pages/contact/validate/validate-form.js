@@ -22,7 +22,7 @@ const careerchema = Joi.object({
     position: Joi.string().required().messages({
         'string.empty': 'position is required.'
     }),
-    detail: Joi.string()
+    detail: Joi.string().allow('')
 })
 
 const validateFormCareer = (input) => {

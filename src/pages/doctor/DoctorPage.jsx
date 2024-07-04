@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileForm from "./component/ProfileForm";
 import useDoctor from "../../hooks/useDoctor";
 import InputSearch from "../../components/InputSearch";
@@ -42,9 +42,10 @@ import HeardText from "../../components/HeardText";
 // ];
 
 export default function ProfilePage() {
-  const { getAllDoctorActive, isDoctorLoading } = useDoctor();
+  const { getAllDoctorActive, isDoctorLoading, fetchAllDoctor } = useDoctor();
+  console.log(getAllDoctorActive)
 
-  const [getAllDoctor, setGetAllDoctor] = useState(getAllDoctorActive);
+  const [getAllDoctor, setGetAllDoctor] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [selectDoctor, setSelectDoctor] = useState(null);
@@ -93,6 +94,14 @@ export default function ProfilePage() {
   console.log("getAllDoctor", getAllDoctor);
   console.log("selectDoctor", selectDoctor);
 
+  useEffect(()=>{
+    if(getAllDoctorActive) setGetAllDoctor(getAllDoctorActive)
+  },[getAllDoctorActive])
+
+  useEffect(() => {
+    fetchAllDoctor()
+  }, [])
+
   return (
     <div className="min-h-[75vh] border-t border-gray-300">
       <div className="container mx-auto py-10">
@@ -118,8 +127,8 @@ export default function ProfilePage() {
         </div>
 
         <div className="grid gap-8 grid-cols-2 w-9/12 mx-auto p-6">
-          {getAllDoctor
-            ? getAllDoctor?.map((doctor) => (
+
+         { getAllDoctor?.map((doctor) => (
                 <ProfileForm
                   key={doctor.id}
                   doctor={doctor}
@@ -127,14 +136,8 @@ export default function ProfilePage() {
                   isDoctorLoading={isDoctorLoading}
                 />
               ))
-            : getAllDoctorActive?.map((doctor) => (
-                <ProfileForm
-                  key={doctor.id}
-                  doctor={doctor}
-                  onClick={handleOpenModal}
-                  isDoctorLoading={isDoctorLoading}
-                />
-              ))}
+              }
+           
         </div>
 
         <ModalInfo open={isModalOpen} onClose={handleCloseModal} width={40}>

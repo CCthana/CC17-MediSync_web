@@ -14,3 +14,7 @@
 a, h1, h2, h3, h4, h5, h6, div, i, small, span, input, label {
   color: #767676;
 }
+
+::selection {
+  background-color: #b4e4cf;
+}

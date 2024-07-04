@@ -7,21 +7,24 @@ import DoctorContextProvider from "./contexts/DoctorContext";
 import ClinicContextProvider from "./contexts/ClinicContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import HnContextProvider from "./contexts/HnContext";
 
 function App() {
   return (
     <Suspense fallback={<Spinner />}>
       <AdminContextProvider>
-        <ClinicContextProvider>
-          <DoctorContextProvider>
-            <Router />
-            <ToastContainer
-              position="bottom-right"
-              autoClose={2000}
-              transition={Slide}
-            />
-          </DoctorContextProvider>
-        </ClinicContextProvider>
+        <HnContextProvider>
+          <ClinicContextProvider>
+            <DoctorContextProvider>
+              <Router />
+              <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                transition={Slide}
+              />
+            </DoctorContextProvider>
+          </ClinicContextProvider>
+        </HnContextProvider>
       </AdminContextProvider>
     </Suspense>
   );

@@ -2,7 +2,6 @@
 import FollowUs from "../../components/FollowUs";
 import logoMediSync from '../../assets/logos/MediSync-2.svg'
 import FooterItem from "./FooterItem";
-
 import AdminFormLoginPage from "../../features/admin/page/AdminFormLoginPage";
 import Modal from "../../components/Modal";
 import { useState } from "react";

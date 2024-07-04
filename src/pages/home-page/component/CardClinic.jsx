@@ -70,7 +70,7 @@ export default function CardClinic() {
 
   return (
     <div className="flex justify-center flex-col items-center gap-7 my-16">
-        <h1 className="text-4xl font-light">แผนก/คลินิก</h1>
+        <h1 className="text-4xl font-light font-th">แผนก/คลินิก</h1>
 
         <div className="grid grid-cols-2 gap-8">
             { getAllClinic?.slice().map((el) => (
