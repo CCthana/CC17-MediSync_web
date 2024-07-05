@@ -14,6 +14,7 @@ function AdminAccountPage() {
     try {
        const result = await adminApi.getAllVnByStatusPayment()
        setPaymentVn(result.data);
+       console.log(result);
        
     } catch (err) {
        console.log(err)
@@ -24,7 +25,7 @@ function AdminAccountPage() {
   fetchPaymentVn()
 },[authAdmin])
 
-
+console.log(paymentVn);
 
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
@@ -57,6 +58,8 @@ function AdminAccountPage() {
       medicine={result?.medicine}
       vnType={result?.vnType}
       user={result?.user}
+      doctor={result?.doctor}
+      clinic={result?.clinic}
       fetchPaymentVn={fetchPaymentVn} 
       />) )}
  

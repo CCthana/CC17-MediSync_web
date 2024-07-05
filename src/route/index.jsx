@@ -18,6 +18,7 @@ import ClinicPage from '../features/clinic/ClinicPage';
 import ContactContainer from '../pages/contact/ContactContainer';
 import AdminCreateHn from '../features/admin/page/AdminCreateHn';
 import LoginPage from '../pages/login-page/LoginPage';
+import PdfMaker from '../features/admin/page/PdfPage';
 
 // import { lazy } from 'react';
 
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
          { path: '/package', element: (<PackagePagee />)},
          { path: '/contact', element: (<ContactContainer />)},
          { path: '/doctor', element: (<DoctorPage />)},
-         { path: '/login', element: (<LoginPage />)}
+         { path: '/login', element: (<LoginPage />)},
+         { path: '/pdf', element: (<PdfMaker />)}
       ]
    },
    {

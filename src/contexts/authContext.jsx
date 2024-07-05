@@ -5,7 +5,7 @@ import {
   setAccessToken,
 } from "../utils/local-storage";
 import { useEffect } from "react";
-import authApi from "../api/auth";
+import authApi from "../apis/auth";
 import { useState } from "react";
 
 export const AuthContext = createContext();
@@ -31,12 +31,12 @@ export default function AuthContextProvider({ children }) {
   }, []);
 
   const login = async (credentials) => {
-     await authApi.login(credentials);
+    await authApi.login(credentials);
     // Here we assume the OTP is sent when login is called
   };
 
   const verifyOtp = async (email, otp) => {
-    console.log(email,otp);
+    console.log(email, otp);
     const res = await authApi.loginOTP({ email, otp });
     console.log(res);
     setAccessToken(res.data.accessToken);
