@@ -28,11 +28,21 @@ adminApi.getTreatmentVnByDocTor = (doctorId) => axios.get(`/adminDoctor/getTreat
 adminApi.getAllVnByHn = (hn) => axios.get(`/vn/getAllVnByHn/${hn}`)
 adminApi.doctorUpdateVnByid = (body) => axios.patch(`/adminDoctor/updateVnById`, body)
 adminApi.createAppontmentByDoctor = (body) => axios.post(`/adminDoctor/createAppointmentByDoctor`, body)
+adminApi.getAllMedicine = () => axios.get('/medicine/allMedicine')
+
+
 
 
 //admin account
 adminApi.getAllVnByStatusPayment = () => axios.get(`/account/getAllVnByStatusPayment`)
 adminApi.updateTotalPriceVnByAccount = (body) => axios.patch(`/account/updateVnByVn`, body)
+
+
+// admin medicine
+adminApi.getAllMedicineAdmin = () => axios.get('/medicine/allMedicineAdmin')
+adminApi.updateMedicineAdmin = (body) => axios.patch('/medicine/updateMedById', body)
+adminApi.createMedicine = (body) => axios.post("/medicine/createMedicine", body)
+
 
 
 

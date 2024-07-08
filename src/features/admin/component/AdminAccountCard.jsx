@@ -36,8 +36,7 @@ function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate
          console.log(err);
       }
     }
-   console.log(doctor)
-   console.log(clinic)
+ 
 
   return (
 <div className="flex flex-col bg-card-bg rounded-3xl shadow-md ">

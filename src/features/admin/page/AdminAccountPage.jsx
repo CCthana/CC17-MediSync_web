@@ -25,6 +25,7 @@ function AdminAccountPage() {
 },[authAdmin])
 
 
+console.log(paymentVn)
 
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
@@ -59,6 +60,7 @@ function AdminAccountPage() {
       user={result?.user}
       doctor={result?.doctor}
       clinic={result?.clinic}
+      medicineOrders={result?.medicineOrders}
       fetchPaymentVn={fetchPaymentVn} 
       />) )}
  

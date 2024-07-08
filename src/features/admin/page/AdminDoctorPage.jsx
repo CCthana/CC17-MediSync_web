@@ -30,8 +30,7 @@ function AdminDoctorPage() {
       fetchDoctorData()
    },[authAdmin])
 
-console.log(doctorData)
- 
+
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
 
