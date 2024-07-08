@@ -1,8 +1,18 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import useAuth from "../../../hooks/useAuth";
+import { removeAccessToken } from "../../../utils/local-storage";
 
 
 function SideMenuUser() {
    const {pathname} = useLocation();
+   const {logout} = useAuth();
+
+   const navigate = useNavigate();
+
+   const handleClickLogout = () => {
+      logout();
+      navigate('/')
+   }
 
   return (
    <>
@@ -13,7 +23,7 @@ function SideMenuUser() {
             <div > <Link to='/user/appointment'>  <button className={` ${pathname=="/user/appointment" ? 'text-ms-green hover:no-underline hover:cursor-default ' : 'hover:underline text-ms-gray' }`} > ตรวจสอบเวลานัดแพทย์ </button> </Link> </div>
             <div > <Link to='/user/setting'>  <button className={` ${pathname=="/user/setting" ? 'text-ms-green hover:no-underline hover:cursor-default ' : 'hover:underline text-ms-gray' }`} > บัญชี </button> </Link> </div>
         </div>
-        <div className=" items-end"> <Link to='/'>  <button className="hover:underline"> ออกจากระบบ </button> </Link> </div>
+        <div className=" items-end font-semibold text-xl">  <button onClick={handleClickLogout} className="hover:underline"> ออกจากระบบ </button>  </div>
       </div>
    </>
   )

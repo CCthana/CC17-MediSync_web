@@ -3,14 +3,16 @@ import { DetailIcon } from "../../../icons";
 import adminApi from "../../../apis/admin";
 import { toast } from "react-toastify";
 
-function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, weight, height, bloodPressure, heartRate, symtomps, doctorData, fetchDoctorData}) {
+function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, weight, height, bloodPressure, heartRate, symptoms, doctorData, fetchDoctorData}) {
 
    const initialInput = {
+      vn: vn,
       id: id,
+      doctorId: doctorData.id,
       treatmentResult: '',
       diagnosis: '',
-      medicine: '',
       vnType : 'OPD',
+      medicine: ''
    }
 
    const initialAppointment = {
@@ -24,12 +26,18 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
    const [appointCheck, setAppointCheck] = useState(false)
    const [appointmentData, setAppointmentData] = useState(initialAppointment);
    const [allVn, setAllVn] = useState();
+   const [allMedicine, setAllMedicine] = useState();
+   const [medicine, setMedicine] = useState('');
+   const [quantity, setQuantity] = useState(1);
+   const [medicineList, setMedicineList] = useState([]);
 
    useEffect(() => {
       const fetchAllVn = async () => {
          try {
             const result = await adminApi.getAllVnByHn(id);
-            setAllVn(result.data)
+            const med = await adminApi.getAllMedicine();
+            setAllVn(result.data);
+            setAllMedicine(med.data);
 
          } catch (err) {
             console.log(err)
@@ -61,6 +69,11 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
             await adminApi.createAppontmentByDoctor(appointmentData);
             toast.success('appointment created');
          }
+
+         input.medicine = medicineList
+
+         console.log(input)
+         console.log(medicineList)
         
          await adminApi.doctorUpdateVnByid(input)
 
@@ -71,6 +84,29 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
          console.log(err);
       }
     }
+
+    const handleAddMedicine = () => {
+      const selectedMedicine = allMedicine.find(med => med.name === medicine);
+    
+    if (selectedMedicine) {
+      const newMedicine = {
+        medicineId: selectedMedicine.id, 
+        medicine: selectedMedicine.name,
+        quantity: quantity
+      };
+        
+        setMedicineList([...medicineList, newMedicine]);
+        setMedicine('');
+        setQuantity(1);
+        console.log(medicineList)
+      }
+    };
+
+    const handleRemoveMedicine = (id) => {
+      const updatedList = medicineList.filter(item => item.id !== id);
+      setMedicineList(updatedList);
+    };
+
 
     
 
@@ -104,7 +140,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
             </div>
 
             <div className=" text-ms-gray mt-2 ">
-                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg"> {symtomps} </span> </h1>
+                  <h1>อาการเบื้องต้น: <span className="mx-2 font-medium text-lg text-ms-green"> {symptoms} </span> </h1>
             </div>
 
             <div className="flex items-start gap-20 text-ms-gray ml-6 ">
@@ -122,7 +158,36 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
 
                   <div className="mt-8 ">
                      <h1>จ่ายยา</h1>
-                     <textarea value={input.medicine} name="medicine" onChange={handleChangeInput}  className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray  "/>
+                        <select id="medicineSelect" value={medicine} onChange={(e) => setMedicine(e.target.value)} className="w-[300px] h-[50px] z-10 outline-ms-green rounded-3xl border-[1.5px] px-4 border-ms-gold">
+                           <option value="">Select a medicine</option>
+                           {allMedicine?.map((result) => (
+                              <option key={result.id} value={result.name}>
+                              {result.name}
+                              </option>
+                              ))}
+                        </select>
+                        <input
+                        id="quantity"
+                        type="number"
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                        className="w-[100px] h-[50px] ml-2 text-center font-th rounded-l-3xl border-[1.5px] px-4  outline-ms-green   border-ms-gold "  
+                        />
+                           <button onClick={handleAddMedicine} className=" h-[50px] w-[100px] bg-ms-green rounded-r-3xl text-white text-xl hover:bg-[#257956]">Add</button>
+
+                           <div className="font-th ml-4 mt-2">
+                              
+                              <div className="flex flex-col  w-3/4 px-4 py-3 gap-1 ">
+                                 {medicineList.map((item) => ( 
+                                    <div key={item.id} className="flex justify-between bg-white px-2 rounded-md py-1">
+                                 <h1 key={item.id}> <span className="font-th font-semibold text-ms-green text-xl"> {item.medicine} </span> - Quantity: <span className="font-th font-semibold text-ms-green text-xl"> {item.quantity} </span> </h1>
+                                 <button onClick={() => handleRemoveMedicine(item.id)} className="font-semibold text-red-600"> x </button>
+                                    </div>
+                                 ))}
+                              </div>
+
+                           </div>
+                        
                   </div>
 
 

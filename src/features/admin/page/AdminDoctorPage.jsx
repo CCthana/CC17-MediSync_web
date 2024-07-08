@@ -30,8 +30,7 @@ function AdminDoctorPage() {
       fetchDoctorData()
    },[authAdmin])
 
-console.log(doctorData)
- 
+
   return (
    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
 
@@ -45,16 +44,12 @@ console.log(doctorData)
             <div className="flex items-center justify-center gap-8">
                <div>
                   <h1>แผนก / คลินิก</h1>
-                  <div  className="w-[150px] h-[50px] rounded-3xl border-[1.5px]  border-ms-gold flex items-center justify-center text-center " > 
-                     <h1 className="font-semibold text-ms-green"> {doctorData?.clinic.name} </h1> 
-                  </div>
+                  <h1 className="font-semibold text-ms-green"> {doctorData?.clinic.name} </h1> 
                </div>
        
                <div>
                   <h1>แพทย์</h1>
-                  <div  className="w-[150px] h-[50px] rounded-3xl border-[1.5px]  border-ms-gold flex items-center justify-center text-center " > 
-                     <h1 className="font-semibold text-ms-green"> {doctorData?.firstName} {doctorData?.lastName}  </h1> 
-                  </div>
+                  <h1 className="font-semibold text-ms-green"> {doctorData?.firstName} {doctorData?.lastName}  </h1> 
                </div>
 
 
@@ -80,7 +75,7 @@ console.log(doctorData)
       height={result?.height}
       bloodPressure={result?.bloodPressure}
       heartRate={result?.heartRate}
-      symtomps={result?.symtomps}  
+      symptoms={result?.symptoms}  
       doctorData={doctorData}
       fetchDoctorData={fetchDoctorData} 
       /> ) }

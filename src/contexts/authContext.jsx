@@ -1,9 +1,5 @@
 import { createContext } from "react";
-import {
-  getAccessToken,
-  removeAccessToken,
-  setAccessToken,
-} from "../utils/local-storage";
+import { getAccessToken, setAccessToken } from "../utils/local-storage";
 import { useEffect } from "react";
 import authApi from "../apis/auth";
 import { useState } from "react";
@@ -36,16 +32,16 @@ export default function AuthContextProvider({ children }) {
   };
 
   const verifyOtp = async (email, otp) => {
-    console.log(email, otp);
     const res = await authApi.loginOTP({ email, otp });
-    console.log(res);
+
     setAccessToken(res.data.accessToken);
     const resGetAuthUser = await authApi.getAuthUser();
+    // console.log("========= resGetAuthUser ============", resGetAuthUser)
     setAuthUser(resGetAuthUser.data.user);
   };
 
   const logout = () => {
-    removeAccessToken();
+    localStorage.clear();
     setAuthUser(null);
   };
 
