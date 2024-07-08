@@ -134,8 +134,11 @@ const getDocumentDefinition = (data, imageBase64) => ({
     { text: `น้ำหนัก: ${data.weight} ส่วนสูง: ${data.height} ความดัน: ${data.bloodPressure} ชีพจร: ${data.heartRate}`, margin: [0, 0, 0, 0] },
     { text: `เมื่อวันที่ ${new Date().toLocaleDateString()}`, margin: [0, 0, 0, 0] },
     { text: "สถานที่ตรวจ โรงพยาบาล Medisync hospital", margin: [0, 0, 0, 0] },
-    { text: "สรุปผลความคิดเห็นของแพทย์", margin: [0, 10, 0, 0] },
-    { text: `${data.symptoms}`, margin: [0, 5, 0, 5] },
+    { text: "สรุปผลความคิดเห็นของแพทย์", margin: [0, 10, 0, 0],style: "subheader" },
+    { text: `${data.symptoms}`, margin: [0, 0, 0, 5] },
+    { text: "ยาที่ได้รับ", margin: [0, 10, 0, 0] ,style: "subheader"},
+    
+
     { text: ` □ เห็นสมควรให้ลาหยุดพักเพื่อรักษาตัว วันที่ `, margin: [0, 10, 0, 10] },
     { text: "รับรองว่ามารับการรักษาที่ ร.พ. จริง", absolutePosition: { x: 60, y: 680 }, alignment: "left" },
     { text: "ลงชื่อ", absolutePosition: { x: 100, y: 760 }, alignment: "left" },
