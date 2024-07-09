@@ -324,20 +324,38 @@ pdfMake.fonts = {
 };
 
 const getDocumentDefinition = (data, imageBase64) => {
-  const tableData = data.tableData;
+  const tableData = data.medicineOrders;
+  const newData = [...tableData , ]
   const calculateTotalCost = (data) => data.reduce((acc, item) => acc + item.cost, 0);
   const formatCurrency = (value) => new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(value);
 
   const totalCost = calculateTotalCost(tableData);
   const formattedTotalCost = formatCurrency(totalCost);
 
-  const tableBody = tableData.map((row, index) => [
-    { text: `${index + 1}.`, alignment: "center", margin: [5, 5, 5, 5], fontSize: 14 },
-    { text: `${row.description}`, margin: [5, 5, 5, 5], fontSize: 14 },
-    { text: row.quantity.toString(), alignment: "center", margin: [10, 5, 10, 0] },
-    { text: row.cost.toFixed(2), margin: [10, 5, 10, 0] },
+const tableBody = newData.map((row, index) => [
+    {
+      text: (index + 1).toString(),
+      margin: [5, 0, 5, 0],
+      fontSize: 14,
+    },
+    {
+      text: `${row.medicine.name}`,
+      margin: [5, 0, 5, 0],
+      fontSize: 14,
+    },
+    {
+      text: row.quantity.toString(),
+      margin: [10, 0, 10, 0],
+    },
+    {
+      text: parseFloat(row.medicine.price).toFixed(2),
+      margin: [10, 0, 10, 0],
+    },
+    {
+      text: (parseFloat(row.medicine.price) * row.quantity).toFixed(2),
+      margin: [10, 0, 10, 0],
+    },
   ]);
-
   return {
     pageSize: "A4",
     pageMargins: [40, 60, 40, 60],
