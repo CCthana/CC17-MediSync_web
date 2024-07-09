@@ -253,12 +253,28 @@ import { toast } from "react-toastify";
 import { sendPdfReceipt } from "../../../utils/pdfRecipt";
 import { sendPdfMedicalCertificate } from "../../../utils/pdfMedicalCertificate";
 
-function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate, symptoms, treatmentResult, diagnosis, medicineOrders, vnType, user, fetchPaymentVn, doctor, clinic }) {
-
-   const initialInput = {
-      id: id,
-      totalPrice: ''
-   }
+function AdminAccountCard({
+  id,
+  hn,
+  vn,
+  weight,
+  height,
+  bloodPressure,
+  heartRate,
+  symptoms,
+  treatmentResult,
+  diagnosis,
+  medicineOrders,
+  vnType,
+  user,
+  fetchPaymentVn,
+  doctor,
+  clinic,
+}) {
+  const initialInput = {
+    id: id,
+    totalPrice: "",
+  };
 
   const [input, setInput] = useState(initialInput);
   const [open, setOpen] = useState(false);
@@ -284,27 +300,17 @@ function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate
         symptoms,
         treatmentResult,
         diagnosis,
-        medicine,
+        medicineOrders,
         vnType,
         user,
+        fetchPaymentVn,
         doctor,
         clinic,
       };
 
       const [pdfBlobMedicalCertificate, pdfBlobReceipt] = await Promise.all([
         sendPdfMedicalCertificate(data),
-        sendPdfReceipt({
-          firstName: user.firstName,
-          lastName: user.lastName,
-          hn,
-          vn,
-          date: new Date().toLocaleDateString(),
-          tableData: [
-            { description: "เจาะเลือด", quantity: 1, cost: 20000 },
-            { description: "เจาะเลือด", quantity: 1, cost: 20000 },
-            // Add other table data as needed
-          ],
-        }),
+        sendPdfReceipt(data),
       ]);
 
       const formData = new FormData();
@@ -430,16 +436,19 @@ function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate
               </div>
             </div>
 
-                  <div className="mt-8 ">
-                     <h1>จ่ายยา</h1>
-                     <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray font-th"> 
-                           {medicineOrders.map((result) => <h1 key={result?.id}> Medicine: {result?.medicine.name} quantity: {result?.quantity} price:{result?.medicine.price}  </h1> )} 
-                     </div>
-                  </div>
-
-
-
-               </div>
+            <div className="mt-8 ">
+              <h1>จ่ายยา</h1>
+              <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray font-th">
+                {medicineOrders.map((result) => (
+                  <h1 key={result?.id}>
+                    {" "}
+                    Medicine: {result?.medicine.name} quantity:{" "}
+                    {result?.quantity} price:{result?.medicine.price}{" "}
+                  </h1>
+                ))}
+              </div>
+            </div>
+          </div>
 
           <div className="flex flex-col ml-10 gap-10 mt-14">
             <div>
