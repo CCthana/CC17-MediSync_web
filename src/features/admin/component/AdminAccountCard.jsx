@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 
 
-function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate, symptoms, treatmentResult, diagnosis, medicine, vnType, user, fetchPaymentVn, doctor, clinic }) {
+function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate, symptoms, treatmentResult, diagnosis, medicineOrders, vnType, user, fetchPaymentVn, doctor, clinic }) {
 
    const initialInput = {
       id: id,
@@ -90,8 +90,8 @@ function AdminAccountCard({ id, hn, vn, weight, height, bloodPressure, heartRate
 
                   <div className="mt-8 ">
                      <h1>จ่ายยา</h1>
-                     <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray"> 
-                           <h1> {medicine} </h1>
+                     <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray font-th"> 
+                           {medicineOrders.map((result) => <h1 key={result?.id}> Medicine: {result?.medicine.name} quantity: {result?.quantity} price:{result?.medicine.price}  </h1> )} 
                      </div>
                   </div>
 
