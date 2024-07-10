@@ -17,9 +17,6 @@ import ClinicPage from "../features/clinic/ClinicPage";
 import ContactContainer from "../pages/contact/ContactContainer";
 import AdminCreateHn from "../features/admin/page/AdminCreateHn";
 import LoginPage from "../pages/login-page/LoginPage";
-import AdminPackage from "../features/admin/page/Package/AdminPackage";
-import AdminCareerPage from "../testadmin/AdminCareerPage";
-import AdminMedicinePage from "../features/admin/page/AdminMedicinePage";
 
 // import { lazy } from 'react';
 
@@ -51,10 +48,6 @@ const router = createBrowserRouter([
       { path: "doctor", element: <AdminDoctorPage /> },
       { path: "account", element: <AdminAccountPage /> },
       { path: "appointment", element: <AdminAppointment /> },
-      { path: "package", element: <AdminPackage /> },
-      { path: "career", element: <AdminCareerPage /> },
-      { path: "medicine", element: <AdminMedicinePage /> },
-
     ],
   },
   {

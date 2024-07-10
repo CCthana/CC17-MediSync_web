@@ -44,6 +44,7 @@ function AdminNurseCard({id, vn, hn, firstName, lastName, gender, birthDate, doc
          } catch (err) {
             console.log(err)
          }};
+         
 
      
    
