@@ -146,10 +146,6 @@ const getDocumentDefinition = (data, imageBase64) => {
 };
 
 export const sendPdfReceipt = async (data) => {
-  console.log(data);
-  // const imageUrl = "https://res.cloudinary.com/didy6sdzf/image/upload/v1719565443/gcsen2pzeta7ybfurjus.jpg";
-  // const imageBase64 = await convertImageToBase64(imageUrl);
-
   const imageUrl = "../../public/MediSync-new.jpg"; // แทนที่ด้วย URL หรือ path ของภาพของคุณ
       const imageBase64 = await convertImageToBase64(imageUrl);
 
