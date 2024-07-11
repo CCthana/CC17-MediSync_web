@@ -9,12 +9,13 @@ import "slick-carousel/slick/slick-theme.css";
 import HnContextProvider from "./contexts/HnContext";
 import PackageContextProvider from "./contexts/PackageContext";
 import AuthContextProvider from "./contexts/AuthContext";
+import AdminContextProvider from "./contexts/AdminContext";
 
 
 function App() {
   return (
     <Suspense fallback={<Spinner />}>
-     
+     <AdminContextProvider>
         <HnContextProvider>
           <ClinicContextProvider>
             <DoctorContextProvider>
@@ -31,6 +32,7 @@ function App() {
           </DoctorContextProvider>
           </ClinicContextProvider>
         </HnContextProvider>
+        </AdminContextProvider>
     </Suspense>
   );
 }

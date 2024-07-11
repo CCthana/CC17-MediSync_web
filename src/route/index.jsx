@@ -52,7 +52,7 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <AdminContextProvider>
+      // <AdminContextProvider>
          <HrContextProvider>
          <VnContextProvider>
         <ProtectedRouteAdmin>
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         </ProtectedRouteAdmin>
         </VnContextProvider>
         </HrContextProvider>
-      </AdminContextProvider>
+      // </AdminContextProvider>
       
     ),
     children: [

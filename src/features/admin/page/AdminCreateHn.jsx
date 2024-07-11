@@ -53,7 +53,7 @@ function AdminCreateHn() {
         return setInputError(errors);
       }
 
-      const result = await adminApi.createHn(input);
+      await adminApi.createHn(input);
 
       toast.success("HN created");
       setInput(initialInput);

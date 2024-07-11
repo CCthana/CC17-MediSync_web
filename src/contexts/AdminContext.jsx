@@ -35,7 +35,7 @@ export default function AdminContextProvider({ children }) {
     
         const resGetAuthUser = await adminApi.getAuthAdmin()
         setAuthAdmin(resGetAuthUser.data.admin)
-
+// console.log("first-----------")
 
       }
 
