@@ -6,6 +6,8 @@ import SearchBold from "../../components/SearchBold";
 export default function PackageForm({ packages, search }) {
   const [open, setOpen] = useState(false);
 
+  console.log('packages', packages)
+
   return (
     <>
       <div
@@ -41,15 +43,16 @@ export default function PackageForm({ packages, search }) {
         <div className="flex gap-2 p-6">
           <div className="bg-slate-400 w-[60rem] rounded-3xl overflow-hidden">
             <img
-              src={packages.image}
-              alt={packages.name}
+              src={packages?.image}
+              alt={packages?.name}
               className="w-full h-full aspect-square object-cover"
             />
           </div>
 
           <div className="flax gap-4 p-4">
-              <p className="indent-6 mb-4">{packages.detail}</p>
-              <span className="font-th font-light">ใช้ได้ถึง 30/12/2567</span>
+              <p className="indent-6 mb-4">{packages?.detail}</p>
+              <p className=" mb-4">{`ราคา paclage ${packages?.price.toLocaleString()} บาท`}</p>
+              <span className="font-th font-light">{`สามารถใช้ได้ถึง ${new Date(packages?.expireDate).toLocaleDateString("en-GB")}`}</span>
           </div>
         </div>
       </Modal>

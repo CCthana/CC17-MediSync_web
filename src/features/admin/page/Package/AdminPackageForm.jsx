@@ -38,7 +38,7 @@ export default function AdminPackageForm({ packages, search, fetchPackage }) {
   return (
     <>
       <div className="p-4 flex gap-4 bg-[#e8eae6] rounded-3xl hover:shadow-[0px_0px_12px_rgba(0,0,0,0.2)]">
-        <div className="bg-slate-400 min-w-[13rem] h-[13rem] rounded-2xl overflow-hidden">
+        <div className="bg-slate-400 min-w-[13rem] w-[13rem] h-[13rem] rounded-2xl overflow-hidden">
           <img
             src={
               currentPackage.image ||
