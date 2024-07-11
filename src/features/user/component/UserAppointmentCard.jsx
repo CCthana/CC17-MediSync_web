@@ -9,7 +9,7 @@ function UserAppointmentCard({ id, createdAt, appointmentTime, doctor }) {
       <h1 className="w-4/5 font-th">{appointmentTime.split("T")[0]}</h1>
       <h1 className="w-4/5 font-th">{createdAt.split("T")[0]}</h1>
       <h1 className="w-4/5 font-th">{doctor?.firstName}</h1>
-      <h1 className="w-4/5">{doctor?.clinic.name}</h1>
+      <h1 className="w-4/5">{doctor?.clinic?.name}</h1>
       
    </div>
   )

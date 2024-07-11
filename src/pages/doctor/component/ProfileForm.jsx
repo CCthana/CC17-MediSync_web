@@ -20,7 +20,7 @@ export default function ProfileForm({ doctor, onClick, isDoctorLoading, search})
               <h2 className="text-ms-gray font-light text-lg">
                 <SearchBold search={search} data={doctor.firstName} /> <SearchBold search={search} data={doctor.lastName} />
               </h2>
-              <p className="text-ms-gray font-light">แผนก: <SearchBold search={search} data={doctor.clinic.name} /></p>
+              <p className="text-ms-gray font-light">แผนก: <SearchBold search={search} data={doctor.clinic?.name} /></p>
             </div>
           </div>}
       

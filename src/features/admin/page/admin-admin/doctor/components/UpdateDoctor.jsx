@@ -306,7 +306,7 @@ console.log('error', error)
                   name="clinicId"
                   className="py-2 px-4 bg-[#f3f5f1] border border-ms-gold appearance-none outline-none rounded-full w-full text-base"
                   onChange={handleChange}
-                  defaultValue={data?.clinic.name}
+                  defaultValue={data?.clinic?.name}
                 >
                   <option name="clinicId text-sm" value="">
                     please select
