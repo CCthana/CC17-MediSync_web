@@ -1,60 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import UserVnCard from "../component/UserVnCard"
 import { useLocation } from "react-router-dom";
-import SideMenu from "../component/SideMenuUser";
 import SideMenuUser from "../component/SideMenuUser";
-import Slide from "../../../components/Slide";
-
-const mockData = [
-  {
-    imgSrc: "https://picsum.photos/1920/540?random=1",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. 1",
-    link: {
-      linkSrc: "/hospital/1",
-      button: "line: โรงพยาบาล 1",
-    },
-  },
-  {
-    imgSrc: "https://picsum.photos/1920/540?random=2",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. 2",
-    link: {
-      linkSrc: "/hospital/2",
-      button: "line: โรงพยาบาล 2",
-    },
-  },
-  {
-    imgSrc: "https://picsum.photos/1920/540?random=3",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. 3",
-    link: {
-      linkSrc: "/hospital/3",
-      button: "line: โรงพยาบาล 3",
-    },
-  },
-  {
-    imgSrc: "https://picsum.photos/1920/540?random=4",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. 4",
-    link: {
-      linkSrc: "/hospital/4",
-      button: "line: โรงพยาบาล 4",
-    },
-  },
-  {
-    imgSrc: "https://picsum.photos/1920/540?random=5",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. 5",
-    link: {
-      linkSrc: "/hospital/5",
-      button: "line: โรงพยาบาล 5",
-    },
-  },
-];
+import useAuth from "../../../hooks/useAuth";
+import userApi from "../../../apis/user";
 
 function UserAllVn() {
   const {pathname} = useLocation();
-  console.log(pathname)
+  const {authUser} = useAuth();
+  const [allVn, setAllVn] = useState();
+
+  const fetchUserAllVn = async () =>{
+    try {
+      const result = await userApi.getAllVnByHn(authUser.hn)
+      setAllVn(result.data);
+       
+    } catch (err) {
+       console.log(err)
+    }
+ };
+
+  useEffect(() => {
+      fetchUserAllVn();
+    }, [authUser]);
+
+ console.log(authUser)
   
   return (
     <>
-    <div className="flex justify-center p-40 gap-10 min-h-[80vh] ">
+    <h1 className="pt-14 px-24 font-semibold text-2xl">สวัสดี คุณ <span className="text-ms-green font-th"> {authUser?.firstName} {authUser?.lastName}  </span> </h1>
+    <div className="flex justify-center px-20 pt-5  gap-10 min-h-[80vh] ">
 
 
      <SideMenuUser />
@@ -67,14 +42,23 @@ function UserAllVn() {
             <h1 className="w-4/5">สรุปผลการรักษา</h1>
             <h1 className="w-4/5">ค่ารักษาพยาบาล</h1>
          </div>
-         <UserVnCard />
-         <UserVnCard />
-         <UserVnCard />
+
+       {allVn?.map((result) => <UserVnCard 
+       key={result?.id} 
+       id={result?.id} 
+       hn={result?.hn} 
+       vn={result?.vn} 
+       createdAt={result?.createdAt} 
+       recipt={result?.recipt} 
+       summary={result?.summary}  
+       />)}
+      
+        
        
       </div>
 
     </div>
-    <Slide slides={mockData} width="full" height="96" fit="object-contain" />
+    
     </>
   )
 }

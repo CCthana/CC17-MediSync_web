@@ -5,8 +5,11 @@ import FooterItem from "./FooterItem";
 import AdminFormLoginPage from "../../features/admin/page/AdminFormLoginPage";
 import Modal from "../../components/Modal";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 export default function Footer() {
+
+  const { authUser } = useAuth()
 
   const menuList1 = [
     { id: 1, text: "ค้นหาแผนก/คลินิก", to: '/department'},
@@ -60,10 +63,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-300 text-center px-4 pt-1 flex justify-between items-center">
-              <small className="text-[#767676] text-xs invisible">login</small>
+          <div className={`border-t border-gray-300 text-center px-4 pt-1 flex ${ !authUser ? "justify-between" : 'justify-center'} items-center`}>
+          { !authUser && <small className="text-[#767676] text-xs invisible">login</small> }
               <small>&#169; MediSync Create {new Date().getUTCFullYear()}</small>
-              <button className="text-[#B3B3B3] text-xs" onClick={()=> setOpen(true)}>login</button>
+              { !authUser && <button className="text-[#B3B3B3] text-xs" onClick={()=> setOpen(true)}>login</button>}
           </div>
         </div>
         

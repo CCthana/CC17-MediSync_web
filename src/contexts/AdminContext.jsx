@@ -32,7 +32,6 @@ export default function AdminContextProvider({ children }) {
         // console.log('credentials', credentials)
         const res = await adminApi.login(credentials)
         setAccessTokenAdmin(res.data.accessTokenAdmin)
-        console.log("first")
     
         const resGetAuthUser = await adminApi.getAuthAdmin()
         setAuthAdmin(resGetAuthUser.data.admin)
@@ -45,7 +44,7 @@ export default function AdminContextProvider({ children }) {
         setAuthAdmin(null)
     }
 
-    console.log('authAdmin', authAdmin)
+    // console.log('authAdmin', authAdmin)
 
 
     return (

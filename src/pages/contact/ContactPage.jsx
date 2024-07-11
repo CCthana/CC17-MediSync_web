@@ -38,7 +38,7 @@ export default function ContactPage() {
 
             <div className="flex items-center gap-2">
               <i className="fa-solid fa-envelope text-base"></i>
-              <p className="text-ms-gray">info@repheal.com</p>
+              <p className="text-ms-gray">info@medisync.com</p>
             </div>
           </div>
           <div className="">

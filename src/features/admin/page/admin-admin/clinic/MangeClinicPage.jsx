@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useClinic from "../../../../../hooks/useClinic";
-import AdminSideMenu from "../../../component/AdminSideMenu";
 import HeaderTextAdmin from "../../../component/HeaderTextAdmin";
 import ClinicItem from "./components/ClinicItem";
 import ModalInfo from "../../../../../components/ModalInfo";
@@ -9,10 +8,12 @@ import AddClinic from "./components/AddClinic";
 import DeleteClinic from "./components/DeleteClinic";
 import { toast } from "react-toastify";
 import adminApi from "../../../../../apis/admin";
+import InputSearch from "../../../../../components/InputSearch";
 
 export default function MangeClinicPage() {
   const { adminGetAllClinic, adminFetchAllClinic } = useClinic();
   const [selectClinicItem, setSelectClinicItem] = useState(null);
+  const [search, setSearch] = useState("");
   const [open, setOpen] = useState({
     modalSelectClinic: false,
     modalAddClinic: false,
@@ -39,16 +40,35 @@ export default function MangeClinicPage() {
     adminFetchAllClinic()
 },[])
 
-  console.log("selectClinicItem MangeClinicPage", selectClinicItem);
-  console.log("adminGetAllClinic MangeClinicPage", adminGetAllClinic);
-  return (
-    <div className="flex justify-center px-40 py-16 gap-4 min-h-[80vh] ">
-      <AdminSideMenu />
+const filterClinic = adminGetAllClinic?.filter((clinic) =>
+  clinic.name.toLowerCase().includes(search.toLowerCase())
+);
 
-      <div className="flex flex-col border-[1px] border-ms-gold min-h-[800px] h-full rounded-[40px] pt-10 pb-20 px-16 gap-4 w-full">
+  // console.log("selectClinicItem MangeClinicPage", selectClinicItem);
+  // console.log("adminGetAllClinic MangeClinicPage", adminGetAllClinic);
+  return (
+
+      <div className="flex flex-col">
         <div className="flex items-center flex-col justify-center mb-2 text-center px-8 text-ms-gray">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between text-center text-ms-gray w-full">
             <HeaderTextAdmin>จัดการแผนก/คลินิก</HeaderTextAdmin>
+
+            <div className="relative flex items-center w-1/2 rounded-3xl">
+            <InputSearch
+              type="text"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+              placeholder="ค้นหาแพทย์"
+            />
+            <i
+              role="button"
+              className="fa-solid fa-magnifying-glass transition duration-300
+            absolute right-2 p-3 text-gray-300 text-2xl hover:text-gray-400"
+            ></i>
+          </div>
+
             <button className="flex items-center justify-center gap-1 hover:underline"
               onClick={() => setOpen({ ...open, modalAddClinic: true })}
             >
@@ -56,12 +76,13 @@ export default function MangeClinicPage() {
             </button>
           </div>
 
-          <div className="grid-cols-2 grid gap-6 mt-8">
-            {adminGetAllClinic?.map((el) => (
+          <div className="grid-cols-2 grid gap-6 mt-10">
+            {filterClinic?.map((el) => (
               <ClinicItem
                 key={el.id}
                 data={el}
                 handleClickSelect={handleClickSelect}
+                search={search}
               />
             ))}
           </div>
@@ -77,7 +98,7 @@ export default function MangeClinicPage() {
           <ModalInfo
             open={open.modalSelectClinic}
             onClose={() => setOpen({ ...open, modalSelectClinic: false })}
-            width={65}
+            width={60}
           >
             <UpdateClinic
               setSelectClinicItem={setSelectClinicItem}
@@ -97,6 +118,5 @@ export default function MangeClinicPage() {
           </ModalInfo>
         </div>
       </div>
-    </div>
   );
 }

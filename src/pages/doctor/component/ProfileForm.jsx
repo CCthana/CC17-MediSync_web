@@ -1,6 +1,7 @@
+import SearchBold from "../../../components/SearchBold";
 import SpinnerCard from "../../../components/SpinnerCard";
 
-export default function ProfileForm({ doctor, onClick, isDoctorLoading}) {
+export default function ProfileForm({ doctor, onClick, isDoctorLoading, search}) {
   // console.log(doctor);
   return (
     <div
@@ -11,15 +12,15 @@ export default function ProfileForm({ doctor, onClick, isDoctorLoading}) {
       { isDoctorLoading
         ? <SpinnerCard />
         : <div className="flex items-center gap-3">
-            <div className="bg-gray-300 rounded-full h-24 w-24 overflow-hidden">
-              <img src={doctor.image} className="w-full object-center" />
+            <div className="rounded-full h-24 w-24 overflow-hidden">
+              <img src={doctor.image} className="w-full h-full object-cover" />
             </div>
 
             <div>
-              <h2 className="text-ms-gray text-lg">
-                ชื่อ {doctor.firstName} {doctor.lastName}
+              <h2 className="text-ms-gray font-light text-lg">
+                <SearchBold search={search} data={doctor.firstName} /> <SearchBold search={search} data={doctor.lastName} />
               </h2>
-              <p className="text-ms-gray font-light">แผนก: {doctor.clinic.name}</p>
+              <p className="text-ms-gray font-light">แผนก: <SearchBold search={search} data={doctor.clinic.name} /></p>
             </div>
           </div>}
       

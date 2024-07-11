@@ -43,7 +43,6 @@ import HeardText from "../../components/HeardText";
 
 export default function ProfilePage() {
   const { getAllDoctorActive, isDoctorLoading, fetchAllDoctor } = useDoctor();
-  console.log(getAllDoctorActive)
 
   const [getAllDoctor, setGetAllDoctor] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,19 +62,19 @@ export default function ProfilePage() {
     const filterList = [];
 
     const filterFirstName = getAllDoctorActive
-      ?.filter((doctors) => doctors.firstName.includes(search))
+      ?.filter((doctors) => doctors.firstName.toLowerCase().includes(search.toLowerCase()))
       .map((el) => el.id);
     filterList.push(filterFirstName);
 
     const filterLastName = getAllDoctorActive
-      ?.filter((doctors) => doctors.lastName.includes(search))
+      ?.filter((doctors) => doctors.lastName.toLowerCase().includes(search.toLowerCase()))
       .map((el) => el.id);
     filterList.push(filterLastName);
 
-    // const filterDepartment = getAllDoctorActive
-    //   ?.filter((doctors) => doctors.education.includes(search))
-    //   .map((el) => el.id);
-    // filterList.push(filterDepartment);
+    const filterDepartment = getAllDoctorActive
+      ?.filter((doctors) => doctors.clinic.name.includes(search))
+      .map((el) => el.id);
+    filterList.push(filterDepartment);
 
     const flatArray = filterList.flat(Infinity);
     const setFlatArray = new Set(flatArray);
@@ -90,10 +89,6 @@ export default function ProfilePage() {
   //   doctors.firstName.includes(search)
   // );
 
-  console.log("getAllDoctorActive", getAllDoctorActive);
-  console.log("getAllDoctor", getAllDoctor);
-  console.log("selectDoctor", selectDoctor);
-
   useEffect(()=>{
     if(getAllDoctorActive) setGetAllDoctor(getAllDoctorActive)
   },[getAllDoctorActive])
@@ -101,6 +96,8 @@ export default function ProfilePage() {
   useEffect(() => {
     fetchAllDoctor()
   }, [])
+
+  // console.log('getAllDoctorActive', getAllDoctorActive)
 
   return (
     <div className="min-h-[75vh] border-t border-gray-300">
@@ -134,14 +131,15 @@ export default function ProfilePage() {
                   doctor={doctor}
                   onClick={handleOpenModal}
                   isDoctorLoading={isDoctorLoading}
+                  search={search}
                 />
               ))
               }
            
         </div>
 
-        <ModalInfo open={isModalOpen} onClose={handleCloseModal} width={40}>
-          {selectDoctor && <DoctorItem selectDoctor={selectDoctor} />}
+        <ModalInfo open={isModalOpen} onClose={handleCloseModal} width={50}>
+          {<DoctorItem selectDoctor={selectDoctor} />}
         </ModalInfo>
       </div>
     </div>

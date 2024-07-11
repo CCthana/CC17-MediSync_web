@@ -3,7 +3,7 @@ import InputAdmin from "../../../../component/InputAdmin";
 import adminApi from "../../../../../../apis/admin";
 import { toast } from "react-toastify";
 import { getAccessTokenAdmin } from "../../../../../../utils/local-storage";
-import DeleteClinic from "./DeleteClinic";
+import validateCreateClinic from "../validate/validate-createClinic";
 
 const initialInputError = {
   name: "",
@@ -22,8 +22,6 @@ export default function UpdateClinic({
 
   const [fileCover, setFileCover] = useState(null);
   const [file, setFile] = useState(null);
-  const [isDelete, setIsDelete] = useState(false)
-
   const [isEdit, setIsEdit] = useState({
     name: false,
     detail: false,
@@ -46,6 +44,14 @@ export default function UpdateClinic({
   const handleClickSave = async () => {
     try {
       if (getAccessTokenAdmin()) {
+        const error = validateCreateClinic(input);
+        // console.log('error', error)
+
+        if (error) {
+          setInputError(error);
+          return
+        }
+
         const formData = new FormData();
         {
           file ? formData.append("icon", file) : null;
@@ -71,7 +77,7 @@ export default function UpdateClinic({
   };
 
   return (
-    <div className="flex gap-6 h-[40rem] p-4">
+    <div className="flex gap-6 p-8">
       <div className="flex flex-col items-center gap-2">
         <div
           role="button"
@@ -119,13 +125,13 @@ export default function UpdateClinic({
               เปลี่ยนรูปภาพ
             </button>
           ) : (
-            <div className="space-x-4">
+            <div className="space-x-2">
               <button
                 onClick={() => {
                   setFileCover(null);
                   fileElCover.current.value = "";
                 }}
-                className="text-gray-400 hover:underline"
+                className="text-red-400 hover:underline"
               >
                 ยกเลิก
               </button>
@@ -142,7 +148,7 @@ export default function UpdateClinic({
         <small>ขนาดภาพที่แนะนำ 1200 x 800 px ไฟล์ .jpeg .png</small>
 
         <div className="flex flex-col items-center mt-6 gap-2">
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-4 items-center">
             <h1 className="text-lg font-normal">icon แผนก / คลินิก</h1>
             {!file ? (
               <button
@@ -155,13 +161,13 @@ export default function UpdateClinic({
                 เปลี่ยนรูป icon
               </button>
             ) : (
-              <div className="space-x-2">
+              <div className="space-x-2 text-sm">
                 <button
                   onClick={() => {
                     setFile(null);
                     fileEl.current.value = "";
                   }}
-                  className="text-gray-400 hover:underline"
+                  className="text-red-400 hover:underline"
                 >
                   ยกเลิก
                 </button>
@@ -220,23 +226,22 @@ export default function UpdateClinic({
       </div>
 
       <div className="w-full space-y-6">
-        
 
         <div className="flex flex-col gap-1">
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-4 items-center">
             <h1 className="text-lg font-normal">ชื่อแผนก / คลินิก</h1>
             {!isEdit.name ? (
               <button
                 onClick={() => setIsEdit({ ...isEdit, name: true })}
-                className="text-gray-400 hover:underline"
+                className="text-gray-400 hover:underline text-sm"
               >
                 แก้ไข
               </button>
             ) : (
-              <div className="space-x-2">
+              <div className="space-x-2 text-sm">
                 <button
                   onClick={() => setIsEdit({ ...isEdit, name: false })}
-                  className="text-gray-400 hover:underline"
+                  className="text-red-400 hover:underline"
                 >
                   ยกเลิก
                 </button>
@@ -265,20 +270,20 @@ export default function UpdateClinic({
         </div>
 
         <div className="flex flex-col gap-1">
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-4 items-center">
             <h1 className="text-lg font-normal">รายละเอียด</h1>
             {!isEdit.detail ? (
               <button
                 onClick={() => setIsEdit({ ...isEdit, detail: true })}
-                className="text-gray-400 hover:underline"
+                className="text-gray-400 hover:underline text-sm"
               >
                 แก้ไข
               </button>
             ) : (
-              <div className="space-x-2">
+              <div className="space-x-2 text-sm">
                 <button
                   onClick={() => setIsEdit({ ...isEdit, detail: false })}
-                  className="text-gray-400 hover:underline"
+                  className="text-red-400 hover:underline"
                 >
                   ยกเลิก
                 </button>
@@ -294,11 +299,11 @@ export default function UpdateClinic({
 
           <div>
             {!isEdit.detail ? (
-              <h1 className="text-lg font-light">{data?.detail}</h1>
+              <h1 className="text-base font-light">{data?.detail}</h1>
             ) : (
               <textarea
                 rows={8}
-                className="w-full bg-[#f3f5f1] px-4 py-2 focus:border-ms-green font-light text-lg rounded-3xl border border-ms-gold outline-none"
+                className="w-full bg-[#f3f5f1] resize-none px-4 py-2 focus:border-ms-green font-light text-lg rounded-3xl border border-ms-gold outline-none"
                 name={"detail"}
                 onChange={handleChange}
                 value={input.detail}
@@ -308,20 +313,20 @@ export default function UpdateClinic({
         </div>
 
         <div className="flex flex-col gap-1">
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-4 items-center">
             <h1 className="text-lg font-normal">สถานที่ตั้ง</h1>
             {!isEdit.location ? (
               <button
                 onClick={() => setIsEdit({ ...isEdit, location: true })}
-                className="text-gray-400 hover:underline"
+                className="text-gray-400 hover:underline text-sm"
               >
                 แก้ไข
               </button>
             ) : (
-              <div className="space-x-2">
+              <div className="space-x-2 text-sm">
                 <button
                   onClick={() => setIsEdit({ ...isEdit, location: false })}
-                  className="text-gray-400 hover:underline"
+                  className="text-red-400 hover:underline"
                 >
                   ยกเลิก
                 </button>

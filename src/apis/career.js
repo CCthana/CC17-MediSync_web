@@ -1,4 +1,4 @@
-import axios from "../config/axios-public";
+import axios from "../config/axios";
 
 const careerApi = {}
 

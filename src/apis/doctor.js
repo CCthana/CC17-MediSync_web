@@ -1,8 +1,8 @@
-import axios from "../config/axios-public";
+import axios from "../config/axios";
 
 const doctorApi = {}
 
 doctorApi.getAllDoctorActive = () => axios.get('/doctor/getAllDoctorActive')
-doctorApi.adminGetAllDoctor = () => axios.get('/doctor/getAllDoctor')
+doctorApi.doctorActiveByClinic = (id) => axios.get(`/doctor/doctorActiveByClinic/${id}`)
 
 export default doctorApi

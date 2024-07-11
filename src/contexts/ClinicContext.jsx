@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import clinicApi from "../apis/clinic";
 import adminApi from "../apis/admin";
+import { getAccessTokenAdmin } from "../utils/local-storage";
 
 export const ClinicContext = createContext()
 
@@ -23,8 +24,11 @@ export default function ClinicContextProvider({ children }) {
 
     const adminFetchAllClinic = async () => {
         try {
-            const res = await adminApi.getAllClinic()
-            setAdminGetAllClinic(res.data.clinic)
+            if (getAccessTokenAdmin()) {
+                const res = await adminApi.getAllClinic()
+                setAdminGetAllClinic(res.data.clinic)
+            }
+         
         } catch (err) {
             console.log('err fetchAllDoctor', err)
         } finally {

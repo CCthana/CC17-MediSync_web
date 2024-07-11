@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function NavbarItem({ menu, active}) {
   return (
-    <Link to={menu.to} className={`${active ? 'hover:no-underline' : 'hover:underline'} font-light`}>
+    <Link to={menu.to} className={`${active ? 'hover:no-underline font-normal' : 'hover:underline'} font-light`}>
       <Tooltip
         content={menu.tooltip}
         placement="bottom"

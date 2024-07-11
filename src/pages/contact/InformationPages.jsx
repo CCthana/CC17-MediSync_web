@@ -11,7 +11,7 @@ export default function InformationPage() {
           <h2 className="text-ms-gray text-xl font-medium mb-4">
             ศูนย์รวมความเชี่ยวชาญด้านหลากหลาย
           </h2>
-          <p className="text-ms-gray indent-10">
+          <p className="text-ms-gray indent-10 leading-7">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut
             doloribus iusto dolore incidunt deleniti inventore veritatis
             quibusdam illo fugit aliquam dicta molestiae cumque nostrum, numquam
@@ -41,27 +41,27 @@ export default function InformationPage() {
           </p>
         </div>
 
-        <div className="container w-full ">
+        <div className="container w-full my-5">
           <div className="flex flex-wrap justify-center gap-4">
 
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="https://www.paolohospital.com/Resource/Image/Article/ed323ccf-7f1e-4d54-b5b5-335d881717e4_06.jpg"
-                className="w-96 h-52 hover:scale-105 transition-transform duration-500"
+                src="https://media.istockphoto.com/id/1303278663/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%97%E0%B8%B1%E0%B8%99%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2%E0%B8%AD%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%A2%E0%B8%84%E0%B9%8D%E0%B8%B2%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5.jpg?s=2048x2048&w=is&k=20&c=0ewBJkNb78lDmHjtgz6riOzWbqJ1dwd7Mja09Vy0F74="
+                className="w-96 h-60 hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="https://hospital.wu.ac.th/wp-content/uploads/2020/05/Prancheta-1-c%C3%B3pia.jpg"
-                className="w-96 h-52 hover:scale-105 transition-transform duration-500"
+                src="https://cdn.pixabay.com/photo/2017/08/18/12/23/building-2654823_1280.jpg"
+                className="w-96 h-60 hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="https://www.jvkorat.go.th/th/wp-content/uploads/2017/11/30.jpg"
-                className="w-96 h-52 hover:scale-105 transition-transform duration-500"
+                src="https://media.istockphoto.com/id/600073876/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%9E%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%83%E0%B8%99%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B9%80%E0%B8%A7%E0%B8%93%E0%B8%A5%E0%B9%87%E0%B8%AD%E0%B8%9A%E0%B8%9A%E0%B8%B5%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A7%E0%B8%B8%E0%B9%88%E0%B8%99%E0%B8%A7%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88.jpg?s=2048x2048&w=is&k=20&c=gg1X29fbw-bIE0hsThvFai9xzrB-97_7qPNkGe6qTbQ="
+                className="w-96 h-60 hover:scale-105 transition-transform duration-500"
               />
             </div>
             
@@ -72,27 +72,27 @@ export default function InformationPage() {
           <h2 className="text-ms-gray text-xl font-medium mb-4">
             นวัตกรรมและเทคโนโลยี
           </h2>
-          <ul className="text-[#767676]">
+          <ul className="text-[#767676] leading-7">
             <li className="indent-10">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
               expedita consequatur tempore alias aspernatur vel animi,
               voluptatibus explicabo inventore quo ipsum. Consequatur dolores
               facere voluptatum nobis quisquam ea quibusdam quae!
-            </li>{" "}
+            </li>
             <br />
             <li>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
               expedita consequatur tempore alias aspernatur vel animi,
               voluptatibus explicabo inventore quo ipsum. Consequatur dolores
               facere voluptatum nobis quisquam ea quibusdam quae!
-            </li>{" "}
+            </li>
             <br />
             <li>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
               expedita consequatur tempore alias aspernatur vel animi,
               voluptatibus explicabo inventore quo ipsum. Consequatur dolores
               facere voluptatum nobis quisquam ea quibusdam quae!
-            </li>{" "}
+            </li>
             <br />
           </ul>
         </div>

@@ -44,7 +44,7 @@ export default function AddClinic({ adminFetchAllClinic, onClose }) {
       e.preventDefault();
       if (getAccessTokenAdmin()) {
         const error = validateCreateClinic(input);
-        console.log('error', error)
+        // console.log('error', error)
 
         if (error || !fileCover || !file) {
           setInputError(error);
@@ -56,8 +56,6 @@ export default function AddClinic({ adminFetchAllClinic, onClose }) {
           }
           return
         }
-
-        
 
         const formData = new FormData();
         {
@@ -85,12 +83,11 @@ export default function AddClinic({ adminFetchAllClinic, onClose }) {
   };
 
   return (
+    <>
+    {isClinicLoading &&  <Spinner /> }
     <form onSubmit={handleSubmitForm} className="p-4">
       <div className="flex gap-6 h-[40rem] ">
-        {isClinicLoading ? (
-          <Spinner />
-        ) : (
-          <>
+
             <div className="flex flex-col items-center gap-2">
               <div
                 role="button"
@@ -217,7 +214,7 @@ export default function AddClinic({ adminFetchAllClinic, onClose }) {
                 <div>
                   <textarea
                     rows={8}
-                    className={`w-full bg-[#f3f5f1] p-4 font-light text-lg rounded-3xl ${inputError.detail ? 'border-[#E84A4A] focus:ring-red-200' : 'border-ms-gold'} border  outline-none`}
+                    className={`w-full bg-[#f3f5f1] resize-none focus:border-ms-green focus:shadow-[0px_0px_6px_rgba(49,161,114,0.4)] p-4 font-light text-lg rounded-3xl ${inputError.detail ? 'border-[#E84A4A] focus:ring-red-200' : 'border-ms-gold'} border  outline-none`}
                     name={"detail"}
                     onChange={handleChange}
                     value={input.detail}
@@ -247,9 +244,9 @@ export default function AddClinic({ adminFetchAllClinic, onClose }) {
               </Button>
               </div>
             </div>
-          </>
-        )}
+
       </div>
     </form>
+    </>
   );
 }

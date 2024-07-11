@@ -3,8 +3,11 @@ import logoMediSync from "../../assets/logos/MediSync-1.svg";
 import NavbarItem from "./NavbarItem";
 import ButtonSmall from "../../components/BottonSmall";
 import { Tooltip } from "@material-tailwind/react";
+import useAuth from '../../hooks/useAuth'
 
 export default function Navbar() {
+
+    const{ authUser } = useAuth();
   const { pathname } = useLocation();
 
   const menuList = [
@@ -46,9 +49,15 @@ export default function Navbar() {
             </div>
           </ButtonSmall>
 
-          <Link to="/login">
-            <ButtonSmall btn="success">
-              <Tooltip
+                {authUser ? 
+                <ButtonSmall btn="success">
+                    <div className='flex items-center gap-1'>
+                       <h1>  <span className='font-th text-ms-green font-normal'> {authUser?.firstName}</span>  </h1>
+                    </div> 
+                </ButtonSmall>
+                : <Link to='/login'>
+                <ButtonSmall btn="success">
+                <Tooltip
                 content={"login สำหรับคนไข้"}
                 placement="bottom"
                 className="px-3 bg-ms-gray text-[#f3f5f2] shadow-sm"
@@ -57,15 +66,17 @@ export default function Navbar() {
                   unmount: { scale: 0, y: -20, transition: { delay: 0 } },
                 }}
               >
-                <div className="flex items-center gap-1">
-                  <i className="fa-solid fa-user-plus"></i>
-                  <h1>login</h1>
-                </div>
-              </Tooltip>
-            </ButtonSmall>
-          </Link>
+                    <div className='flex items-center gap-1'>
+                        <i className="fa-solid fa-user-plus"></i>
+                        <h1>login</h1>
+                    </div>
+                    </Tooltip>
+                </ButtonSmall>
+                </Link> 
+            }
+            </div>
         </div>
-      </div>
+        
     </nav>
   );
 }
