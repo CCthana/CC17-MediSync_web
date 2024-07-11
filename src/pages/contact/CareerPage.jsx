@@ -71,18 +71,18 @@ export default function CareerPage() {
 
       const formData = new FormData();
       formData.append("cv", file);
-      formData.append("firstname", applydata?.firstname);
-      formData.append("lastname", applydata?.lastname);
-      formData.append("age", applydata?.age);
-      formData.append("phone", applydata?.phone);
-      formData.append("email", applydata?.email);
-      formData.append("position", applydata?.position);
-      formData.append("detail", applydata?.detail);
+      formData.append("firstname", applyData?.firstname);
+      formData.append("lastname", applyData?.lastname);
+      formData.append("age", applyData?.age);
+      formData.append("phone", applyData?.phone);
+      formData.append("email", applyData?.email);
+      formData.append("position", applyData?.position);
+      formData.append("detail", applyData?.detail);
 
       setTimeout(() => {
         setIsLoading(false);
         toast.success("send email successfully.");
-        setApplyData(initialInput);
+        setapplyData(initialInput);
         setFile(null);
         fileInput.current.value = ''
       }, 1500);
@@ -132,7 +132,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applydata?.firstname}
+                  value={applyData?.firstname}
                   placeholder="ชื่อของผุ้สมัคร"
                   className=""
                   name="firstname"
@@ -147,7 +147,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applydata?.lastname}
+                  value={applyData?.lastname}
                   type="text"
                   placeholder="นามสกุล"
                   className=""
@@ -163,7 +163,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applydata?.age}
+                  value={applyData?.age}
                   typeInput="number"
                   placeholder="อายุของผุ้สมัคร"
                   name="age"
@@ -180,7 +180,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applydata?.phone}
+                  value={applyData?.phone}
                   type="text"
                   placeholder="เบอร์ติดต่อ"
                   className=""
@@ -196,7 +196,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applydata?.email}
+                  value={applyData?.email}
                   type="email"
                   placeholder="email"
                   className=""
@@ -216,7 +216,7 @@ export default function CareerPage() {
                 <div className="relative">
                 <select
                   onChange={handleChangeInput}
-                  value={applydata?.position}
+                  value={applyData?.position}
                   name="position"
                   className="border border-ms-gold
               text-[0.9rem] font-light bg-[#f3f5f1] rounded-3xl px-4 py-2 w-full text-[#b0afad] outline-none
@@ -272,7 +272,7 @@ export default function CareerPage() {
             <div className="space-y-0.5">
               <label className="font-light">รายละเอียดเพิ่มเติม</label>
               <textarea
-                value={applydata?.detail}
+                value={applyData?.detail}
                 name="detail"
                 placeholder="รายละเอียดเพิ่มเติม"
                 className="border resize-none bg-[#f3f5f1] border-[#AE8F4E] rounded-3xl px-4 py-2 w-full h-32 placeholder:text-[#b0afad] font-light
