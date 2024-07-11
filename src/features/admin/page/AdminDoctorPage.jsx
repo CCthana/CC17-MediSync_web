@@ -35,7 +35,7 @@ function AdminDoctorPage() {
           <div className="border-r border-ms-gold pr-6 space-y-1">
             <h1>แผนก / คลินิก</h1>
             <h1 className="font-normal text-ms-green">
-              {doctorData?.clinic.name}
+              {doctorData?.clinic?.name}
             </h1>
           </div>
 

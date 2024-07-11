@@ -4,6 +4,7 @@ import adminApi from "../../../../../../apis/admin";
 import { toast } from "react-toastify";
 import { getAccessTokenAdmin } from "../../../../../../utils/local-storage";
 import validateCreateClinic from "../validate/validate-createClinic";
+import Spinner from "../../../../../../components/Spinner";
 
 const initialInputError = {
   name: "",
@@ -35,6 +36,7 @@ export default function UpdateClinic({
   });
 
   const [inputError, setInputError] = useState(initialInputError);
+  const [ isLoading, setIsLoading ] = useState(false)
 
   const handleChange = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -46,24 +48,26 @@ export default function UpdateClinic({
       if (getAccessTokenAdmin()) {
         const error = validateCreateClinic(input);
         // console.log('error', error)
-console.log('input', input)
+        console.log('input', input)
         if (error) {
           setInputError(error);
           console.log('error', error)
           return
         }
 
+        setIsLoading(true)
+
         const formData = new FormData();
         {
-          file ? formdata?.append("icon", file) : null;
+          file ? formData.append("icon", file) : null;
         }
         {
-          fileCover ? formdata?.append("image", fileCover) : null;
+          fileCover ? formData.append("image", fileCover) : null;
         }
-        formdata?.append("name", input?.name);
-        formdata?.append("detail", input?.detail);
-        formdata?.append("location", input?.location);
-        formdata?.append("id", input?.id);
+        formData.append("name", input?.name);
+        formData.append("detail", input?.detail);
+        formData.append("location", input?.location);
+        formData.append("id", input?.id);
 
         const res = await adminApi.updateClinic(formData);
         setIsEdit(false);
@@ -72,12 +76,17 @@ console.log('input', input)
         setSelectClinicItem(res.data?.updateClinic);
         setFile(null);
       }
+      
     } catch (error) {
       console.log("error handleClickSave", error);
+    } finally {
+      setIsLoading(false)
     }
   };
 
   return (
+    <>
+    {isLoading && <Spinner />}
     <div className="flex gap-6 p-8">
       <div className="flex flex-col items-center gap-2">
         <div
@@ -361,5 +370,6 @@ console.log('input', input)
         </div>
       </div>
     </div>
+    </>
   );
 }

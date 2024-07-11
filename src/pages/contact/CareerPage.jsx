@@ -70,14 +70,14 @@ export default function CareerPage() {
       setInputError({ ...initialInputError });
 
       const formData = new FormData();
-      formdata?.append("cv", file);
-      formdata?.append("firstname", applydata?.firstname);
-      formdata?.append("lastname", applydata?.lastname);
-      formdata?.append("age", applydata?.age);
-      formdata?.append("phone", applydata?.phone);
-      formdata?.append("email", applydata?.email);
-      formdata?.append("position", applydata?.position);
-      formdata?.append("detail", applydata?.detail);
+      formData.append("cv", file);
+      formData.append("firstname", applydata?.firstname);
+      formData.append("lastname", applydata?.lastname);
+      formData.append("age", applydata?.age);
+      formData.append("phone", applydata?.phone);
+      formData.append("email", applydata?.email);
+      formData.append("position", applydata?.position);
+      formData.append("detail", applydata?.detail);
 
       setTimeout(() => {
         setIsLoading(false);

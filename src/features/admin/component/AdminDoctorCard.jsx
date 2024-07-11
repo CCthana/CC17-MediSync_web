@@ -211,27 +211,27 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
              </div>
 
               <div className="font-th ml-4 mt-2">
-                <div className="flex flex-col  w-3/4 px-4 py-3 gap-1 ">
+                <div className="flex flex-col w-full px-4 py-3 gap-1 bg-[#f3f5f2] rounded-2xl">
                   {medicineList.map((item) => (
                     <div
                       key={item.id}
-                      className="flex justify-between bg-white px-2 rounded-md py-1"
+                      className="flex justify-between bg-[#f3f5f2] px-4 rounded-md"
                     >
                       <h1 key={item.id}>
                         {" "}
-                        <span className="font-th font-semibold text-ms-green text-xl">
+                        <span className="font-th text-ms-green">
                           {" "}
                           {item.medicine}{" "}
                         </span>{" "}
                         - Quantity:{" "}
-                        <span className="font-th font-semibold text-ms-green text-xl">
+                        <span className="font-th text-ms-green ">
                           {" "}
                           {item.quantity}{" "}
                         </span>{" "}
                       </h1>
                       <button
                         onClick={() => handleRemoveMedicine(item.id)}
-                        className="font-semibold text-red-600"
+                        className="font-light text-red-600 text-xl"
                       >
                         {" "}
                         x{" "}

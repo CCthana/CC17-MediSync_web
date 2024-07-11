@@ -66,17 +66,17 @@ export default function ManageDoctorPage() {
     const filterList = [];
 
     const filterFirstName = adminGetAllDoctor
-      ?.filter((doctors) => doctors.firstName.includes(search))
+      ?.filter((doctors) => doctors?.firstName.includes(search))
       .map((el) => el.id);
     filterList.push(filterFirstName);
 
     const filterLastName = adminGetAllDoctor
-      ?.filter((doctors) => doctors.lastName.includes(search))
+      ?.filter((doctors) => doctors?.lastName.includes(search))
       .map((el) => el.id);
     filterList.push(filterLastName);
 
     const filterDepartment = adminGetAllDoctor
-      ?.filter((doctors) => doctors.clinic.name.includes(search))
+      ?.filter((doctors) => doctors?.clinic?.name.includes(search))
       .map((el) => el.id);
     filterList.push(filterDepartment);
 

@@ -60,7 +60,7 @@ const filterClinic = adminGetAllClinic?.filter((clinic) =>
               onChange={(e) => {
                 setSearch(e.target.value);
               }}
-              placeholder="ค้นหาแพทย์"
+              placeholder="ค้นหาคลินิก"
             />
             <i
               role="button"

@@ -66,14 +66,14 @@ function AdminAccountCard({
       ]);
 
       const formData = new FormData();
-      formdata?.append(
+      formData.append(
         "medicalCertificate",
         pdfBlobMedicalCertificate,
         "MedicalCertificate.pdf"
       );
-      formdata?.append("receipt", pdfBlobReceipt, "Receipt.pdf");
-      formdata?.append("id", id);
-      formdata?.append("totalPrice", input.totalPrice);
+      formData.append("receipt", pdfBlobReceipt, "Receipt.pdf");
+      formData.append("id", id);
+      formData.append("totalPrice", input.totalPrice);
 
       await adminApi.updateTotalPriceVnByAccount(formData);
 

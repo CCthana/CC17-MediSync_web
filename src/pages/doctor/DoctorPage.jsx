@@ -72,7 +72,7 @@ export default function ProfilePage() {
     filterList.push(filterLastName);
 
     const filterDepartment = getAllDoctorActive
-      ?.filter((doctors) => doctors.clinic.name.includes(search))
+      ?.filter((doctors) => doctors.clinic?.name.includes(search))
       .map((el) => el.id);
     filterList.push(filterDepartment);
 
