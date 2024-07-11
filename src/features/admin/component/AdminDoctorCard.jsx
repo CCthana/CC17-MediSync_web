@@ -39,12 +39,18 @@ function AdminDoctorCard({
   const [appointCheck, setAppointCheck] = useState(false);
   const [appointmentData, setAppointmentData] = useState(initialAppointment);
   const [allVn, setAllVn] = useState();
+  const [allMedicine, setAllMedicine] = useState();
+  const [medicine, setMedicine] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [medicineList, setMedicineList] = useState([]);
 
   useEffect(() => {
     const fetchAllVn = async () => {
       try {
         const result = await adminApi.getAllVnByHn(id);
+        const med = await adminApi.getAllMedicine();
         setAllVn(result.data);
+        setAllMedicine(med.data);
       } catch (err) {
         console.log(err);
       }
@@ -71,6 +77,11 @@ function AdminDoctorCard({
         toast.success("appointment created");
       }
 
+      input.medicine = medicineList;
+
+      console.log(input);
+      console.log(medicineList);
+
       await adminApi.doctorUpdateVnByid(input);
 
       toast.success("Treatment updated");
@@ -78,6 +89,28 @@ function AdminDoctorCard({
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleAddMedicine = () => {
+    const selectedMedicine = allMedicine.find((med) => med.name === medicine);
+
+    if (selectedMedicine) {
+      const newMedicine = {
+        medicineId: selectedMedicine.id,
+        medicine: selectedMedicine.name,
+        quantity: quantity,
+      };
+
+      setMedicineList([...medicineList, newMedicine]);
+      setMedicine("");
+      setQuantity(1);
+      console.log(medicineList);
+    }
+  };
+
+  const handleRemoveMedicine = (id) => {
+    const updatedList = medicineList.filter((item) => item.id !== id);
+    setMedicineList(updatedList);
   };
 
   return (
@@ -146,39 +179,98 @@ function AdminDoctorCard({
 
             <div className="">
               <h1>จ่ายยา</h1>
-              <textarea
-                value={input.medicine}
-                name="medicine"
-                onChange={handleChangeInput}
-                className="resize-none w-full min-h-32 max-h-32 rounded-3xl mt-2 p-4
-                border border-ms-gold outline-ms-green text-lg text-ms-gray focus:border-ms-green focus:shadow-[0px_0px_6px_rgba(49,161,114,0.4)] "
+              <div className="flex">
+                
+              <div className="flex w-[300px] items-center relative">
+              <select
+                id="medicineSelect"
+                value={medicine}
+                onChange={(e) => setMedicine(e.target.value)}
+                className=" h-[50px] w-full z-10 outline-ms-green appearance-none rounded-full border-[1.5px] px-4 border-ms-gold"
+              >
+                <option value="">Select a medicine</option>
+                {allMedicine?.map((result) => (
+                  <option key={result.id} value={result.name}>
+                    {result.name}
+                  </option>
+                ))}
+              </select>
+              <DropDownIcon className="absolute right-4 z-40 h-6 w-6 text-ms-gold rotate-90 pointer-events-none" />
+              </div>
+
+             <div>
+             <input
+                id="quantity"
+                type="number"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+                className="w-[100px] h-[50px] ml-2 text-center font-th rounded-l-3xl border-[1.5px] px-4  outline-ms-green   border-ms-gold "
               />
+              <button
+                onClick={handleAddMedicine}
+                className=" h-[50px] w-[100px] bg-ms-green rounded-r-3xl text-white text-xl hover:bg-[#257956]"
+              >
+                Add
+              </button>
+             </div>
+             </div>
+
+              <div className="font-th ml-4 mt-2">
+                <div className="flex flex-col  w-3/4 px-4 py-3 gap-1 ">
+                  {medicineList.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex justify-between bg-white px-2 rounded-md py-1"
+                    >
+                      <h1 key={item.id}>
+                        {" "}
+                        <span className="font-th font-semibold text-ms-green text-xl">
+                          {" "}
+                          {item.medicine}{" "}
+                        </span>{" "}
+                        - Quantity:{" "}
+                        <span className="font-th font-semibold text-ms-green text-xl">
+                          {" "}
+                          {item.quantity}{" "}
+                        </span>{" "}
+                      </h1>
+                      <button
+                        onClick={() => handleRemoveMedicine(item.id)}
+                        className="font-semibold text-red-600"
+                      >
+                        {" "}
+                        x{" "}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="text-ms-gray-6 ">
               <h1 className="mb-2 text-2xl text-ms-green font-normal">
                 ประวัติการรักษา
               </h1>
-              { allVn?.length === 0 ? (
-               <div className="p-4 w-full bg-[#f3f5f2] rounded-2xl text-center">
-               <h1 className="text-gray-400">ยังไม่มีประวัติการรักษา</h1>
-               </div>
+              {allVn?.length === 0 || !null ? (
+                <div className="p-4 w-full rounded-2xl bg-[#f3f5f2] text-center">
+                  <h1 className="text-gray-400">ยังไม่มีประวัติการรักษา</h1>
+                </div>
               ) : (
-               <>
-               {allVn?.map((result) => (
-                  <div
-                    key={result?.id}
-                    className="flex justify-start items-center gap-4 font-th p-4"
-                  >
-                    <h1> {result?.id} </h1>
-                    <h1> {result?.hn} </h1>
-                    <h1> {result?.vn} </h1>
-                    <h1>{result?.symptoms}</h1>
-                    <h1>{result?.createdAt.split("T")[0]} </h1>
-                  </div>
-                ))}</>
+                <>
+                  {allVn?.map((result) => (
+                    <div
+                      key={result?.id}
+                      className="flex justify-start items-center gap-4 font-th p-4"
+                    >
+                      <h1> {result?.id} </h1>
+                      <h1> {result?.hn} </h1>
+                      <h1> {result?.vn} </h1>
+                      <h1>{result?.symptoms}</h1>
+                      <h1>{result?.createdAt.split("T")[0]} </h1>
+                    </div>
+                  ))}
+                </>
               )}
-              
             </div>
           </div>
 
@@ -260,17 +352,14 @@ function AdminDoctorCard({
         </div>
 
         <div className="flex items-center justify-center gap-4 p-12 w-5/12 mx-auto mb-4">
-          <ButtonAdmin
-            onClick={handleClickConfirm}
-            btn = "active"
-          >
+          <ButtonAdmin onClick={handleClickConfirm} btn="active">
             ยืนยัน
           </ButtonAdmin>
           <ButtonAdmin
             onClick={() => {
               setInput(initialInput);
             }}
-            btn = "success"
+            btn="success"
           >
             แก้ไข
           </ButtonAdmin>

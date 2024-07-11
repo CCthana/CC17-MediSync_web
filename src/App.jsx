@@ -7,8 +7,9 @@ import ClinicContextProvider from "./contexts/ClinicContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import HnContextProvider from "./contexts/HnContext";
-import AuthContextProvider from "./contexts/authContext";
 import PackageContextProvider from "./contexts/PackageContext";
+import AuthContextProvider from "./contexts/AuthContext";
+
 
 function App() {
   return (
