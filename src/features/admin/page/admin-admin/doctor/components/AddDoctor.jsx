@@ -58,14 +58,14 @@ export default function AddDoctor({
 
         const formData = new FormData();
         {
-          file && formData.append("image", file);
+          file && formdata?.append("image", file);
         }
-        formData.append("firstName", input?.firstName);
-        formData.append("lastName", input?.lastName);
-        formData.append("education", input?.education);
-        formData.append("clinicId", input?.clinicId);
+        formdata?.append("firstName", input?.firstName);
+        formdata?.append("lastName", input?.lastName);
+        formdata?.append("education", input?.education);
+        formdata?.append("clinicId", input?.clinicId);
         {
-          input?.birthDate && formData.append("birthDate", input?.birthDate);
+          input?.birthDate && formdata?.append("birthDate", input?.birthDate);
         }
         setIsLoading(true)
         await adminApi.createDoctor(formData);

@@ -10,15 +10,15 @@ export default function DoctorItem({ selectDoctor }) {
       </div>
       <div className="space-y-5">
         <h2 className="text-2xl font-light text-ms-green">
-          {selectDoctor.firstName} {selectDoctor.lastName}
+          {selectDoctor?.firstName} {selectDoctor?.lastName}
         </h2>
         <div>
           <p className="text-ms-green font-light text-lg">แผนก/คลินิก</p>
-          <span className="font-light text-lg">{selectDoctor.clinic.name}</span>
+          <span className="font-light text-lg">{selectDoctor?.clinic?.name}</span>
         </div>
         <div>
           <p className="text-ms-green font-light text-lg">ปริญญาบัตรและสถาบันการศึกษา</p>
-          <span className="font-light text-lg">{selectDoctor.education}</span>
+          <span className="font-light text-lg">{selectDoctor?.education}</span>
         </div>
       </div>
     </div>

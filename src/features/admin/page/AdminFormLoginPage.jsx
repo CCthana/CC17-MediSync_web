@@ -55,7 +55,7 @@ export default function AdminFormLoginPage() {
 
                 setInputError((prev) => ({
                     ...prev,
-                    password: err.response.data.message,
+                    password: err.response.data?.message,
                     userName: ' '
                 }))
 

@@ -14,7 +14,7 @@ export default function ClinicContextProvider({ children }) {
     const fetchAllClinic = async () => {
         try {
             const res = await clinicApi.getAllClinic()
-            setGetAllClinic(res.data.clinic)
+            setGetAllClinic(res.data?.clinic)
         } catch (err) {
             console.log('err fetchAllDoctor', err)
         } finally {
@@ -26,7 +26,7 @@ export default function ClinicContextProvider({ children }) {
         try {
             if (getAccessTokenAdmin()) {
                 const res = await adminApi.getAllClinic()
-                setAdminGetAllClinic(res.data.clinic)
+                setAdminGetAllClinic(res.data?.clinic)
             }
          
         } catch (err) {

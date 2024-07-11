@@ -65,22 +65,22 @@ export default function EditDeletePackage({
 
       const formData = new FormData();
       {
-        selectFile && formData.append("image", selectFile);
+        selectFile && formdata?.append("image", selectFile);
       }
-      formData.append("name", input?.name);
-      formData.append("detail", input?.detail);
-      formData.append("price", input?.price);
-      formData.append("expireDate", input?.expireDate);
+      formdata?.append("name", input?.name);
+      formdata?.append("detail", input?.detail);
+      formdata?.append("price", input?.price);
+      formdata?.append("expireDate", input?.expireDate);
 
       setIsLoaging(true);
       const result = await adminApi.updatePackage(initialPackage.id, formData);
       setIsLoaging(false);
 
-      onUpdate(result.data.updatePackage);
+      onUpdate(result.data?.updatePackage);
       toast.success("update Package success");
       setSelectFile(null);
       fileEl.current.value = "";
-      console.log("result", result.data.updatePackage);
+      console.log("result", result.data?.updatePackage);
       setOpen(false);
     }
     } catch (err) {

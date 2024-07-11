@@ -9,7 +9,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
   const initialInput = {
      vn: vn,
      id: id,
-     doctorId: doctorData.id,
+     doctorId: doctordata?.id,
      treatmentResult: '',
      diagnosis: '',
      vnType : 'OPD',
@@ -18,7 +18,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
 
   const initialAppointment = {
      hn: hn,
-     doctorId: doctorData.id,
+     doctorId: doctordata?.id,
      appointmentTime: ''
   }
 

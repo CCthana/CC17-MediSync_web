@@ -20,7 +20,7 @@ pdfMake.fonts = {
 };
 
 const getDocumentDefinition = (data, imageBase64) => {
-  const medicines = data.medicineOrders || [];
+  const medicines = data?.medicineOrders || [];
 
   return {
     pageSize: "A4",
@@ -28,17 +28,17 @@ const getDocumentDefinition = (data, imageBase64) => {
     content: [
       { image: imageBase64, width: 150, alignment: "center" },
       { text: `ใบวินิจฉัยโรค`, style: "header", margin: [0, 20, 0, 50] },
-      { text: `เลขที่ ${data.id}-${data.vn}`, alignment: "right" },
+      { text: `เลขที่ ${data?.id}-${data?.vn}`, alignment: "right" },
       {
-        text: `ชื่อ ${data.doctor.firstName} ${data.doctor.lastName}`,
+        text: `ชื่อ ${data?.doctor.firstName} ${data?.doctor.lastName}`,
         style: "subheader",
       },
       {
-        text: `ได้ทำการตรวจ คุณ${data.user.firstName} ${data.user.lastName} เลขที่ HN: ${data.hn}`,
+        text: `ได้ทำการตรวจ คุณ${data?.user.firstName} ${data?.user.lastName} เลขที่ HN: ${data?.hn}`,
         margin: [0, 0, 0, 0],
       },
       {
-        text: `น้ำหนัก: ${data.weight} ส่วนสูง: ${data.height} ความดัน: ${data.bloodPressure} ชีพจร: ${data.heartRate}`,
+        text: `น้ำหนัก: ${data?.weight} ส่วนสูง: ${data?.height} ความดัน: ${data?.bloodPressure} ชีพจร: ${data?.heartRate}`,
         margin: [0, 0, 0, 0],
       },
       {
@@ -51,7 +51,7 @@ const getDocumentDefinition = (data, imageBase64) => {
         margin: [0, 10, 0, 0],
         style: "subheader",
       },
-      { text: `${data.treatmentResult}`, margin: [0, 0, 0, 5] },
+      { text: `${data?.treatmentResult}`, margin: [0, 0, 0, 5] },
       { text: "ยาที่ได้รับ", margin: [0, 10, 0, 0], style: "subheader" },
       {
         ul: medicines.map(

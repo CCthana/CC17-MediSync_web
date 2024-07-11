@@ -72,12 +72,12 @@ export default function AddPackage({ onCancel, fetchPackage }) {
 
       const formData = new FormData();
       {
-        selectFile && formData.append("image", selectFile);
+        selectFile && formdata?.append("image", selectFile);
       }
-      formData.append("name", input?.name);
-      formData.append("detail", input?.detail);
-      formData.append("price", input?.price);
-      formData.append("expireDate", input?.expireDate);
+      formdata?.append("name", input?.name);
+      formdata?.append("detail", input?.detail);
+      formdata?.append("price", input?.price);
+      formdata?.append("expireDate", input?.expireDate);
 
       setIsLoaging(true);
       await adminApi.createPackage(formData);

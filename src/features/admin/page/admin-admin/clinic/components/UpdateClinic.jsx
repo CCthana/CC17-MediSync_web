@@ -55,21 +55,21 @@ console.log('input', input)
 
         const formData = new FormData();
         {
-          file ? formData.append("icon", file) : null;
+          file ? formdata?.append("icon", file) : null;
         }
         {
-          fileCover ? formData.append("image", fileCover) : null;
+          fileCover ? formdata?.append("image", fileCover) : null;
         }
-        formData.append("name", input?.name);
-        formData.append("detail", input?.detail);
-        formData.append("location", input?.location);
-        formData.append("id", input?.id);
+        formdata?.append("name", input?.name);
+        formdata?.append("detail", input?.detail);
+        formdata?.append("location", input?.location);
+        formdata?.append("id", input?.id);
 
         const res = await adminApi.updateClinic(formData);
         setIsEdit(false);
         toast.success("update success");
         adminFetchAllClinic();
-        setSelectClinicItem(res.data.updateClinic);
+        setSelectClinicItem(res.data?.updateClinic);
         setFile(null);
       }
     } catch (error) {

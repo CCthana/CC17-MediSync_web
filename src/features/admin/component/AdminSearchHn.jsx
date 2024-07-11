@@ -38,7 +38,7 @@ function AdminSearchHn( {handleSelectedHn, onClose} ) {
          if (searchType === 'name') {
            const result = await adminApi.getHnbyName(input);
            setSearchResults(result.data);
-           if (result.data.length === 0) {
+           if (result.data?.length === 0) {
             setInputError({...inputError, notFound: 'ไม่พบข้อมูล'})
            } else {
             setInputError({...inputError, notFound: ''})
@@ -46,7 +46,7 @@ function AdminSearchHn( {handleSelectedHn, onClose} ) {
          } else if (searchType === 'phone') {
             const result = await adminApi.getHnbyPhone(input);
             setSearchResults(result.data);
-            if (result.data.length === 0) {
+            if (result.data?.length === 0) {
                setInputError({...inputError, notFound: 'ไม่พบข้อมูล'})
               } else {
                setInputError({...inputError, notFound: ''})

@@ -25,7 +25,7 @@ function AdminSideMenu() {
         </Link>
 
         <div className="mb-4">
-          <h1>{`admin: ${authAdmin?.role}`}</h1>
+          <h1>{`Admin: ${authAdmin?.role}`}</h1>
         </div>
         </div>
 

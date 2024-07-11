@@ -35,9 +35,9 @@ function AdminAppointment() {
       if (searchType === "hn") {
         const result = await adminApi.getAppointmentByHn(input);
         setSearchAppoint(result.data);
-        console.log("result.data", result.data.length);
+        console.log("result.data", result.data?.length);
 
-        if (result.data.length === 0) {
+        if (result.data?.length === 0) {
           setInputError({ ...inputError, notFound: "ไม่พบข้อมูล" });
         } else {
           setInputError({ ...inputError, notFound: "" });
@@ -46,7 +46,7 @@ function AdminAppointment() {
         const result = await adminApi.getAppointmentByName(input);
         setSearchAppoint(result.data);
 
-        if (result.data.length === 0) {
+        if (result.data?.length === 0) {
           setInputError({ ...inputError, notFound: "ไม่พบข้อมูล" });
         } else {
           setInputError({ ...inputError, notFound: "" });

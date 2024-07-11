@@ -70,14 +70,14 @@ export default function CareerPage() {
       setInputError({ ...initialInputError });
 
       const formData = new FormData();
-      formData.append("cv", file);
-      formData.append("firstname", applyData.firstname);
-      formData.append("lastname", applyData.lastname);
-      formData.append("age", applyData.age);
-      formData.append("phone", applyData.phone);
-      formData.append("email", applyData.email);
-      formData.append("position", applyData.position);
-      formData.append("detail", applyData.detail);
+      formdata?.append("cv", file);
+      formdata?.append("firstname", applydata?.firstname);
+      formdata?.append("lastname", applydata?.lastname);
+      formdata?.append("age", applydata?.age);
+      formdata?.append("phone", applydata?.phone);
+      formdata?.append("email", applydata?.email);
+      formdata?.append("position", applydata?.position);
+      formdata?.append("detail", applydata?.detail);
 
       setTimeout(() => {
         setIsLoading(false);
@@ -132,7 +132,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applyData.firstname}
+                  value={applydata?.firstname}
                   placeholder="ชื่อของผุ้สมัคร"
                   className=""
                   name="firstname"
@@ -147,7 +147,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applyData.lastname}
+                  value={applydata?.lastname}
                   type="text"
                   placeholder="นามสกุล"
                   className=""
@@ -163,7 +163,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applyData.age}
+                  value={applydata?.age}
                   typeInput="number"
                   placeholder="อายุของผุ้สมัคร"
                   name="age"
@@ -180,7 +180,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applyData.phone}
+                  value={applydata?.phone}
                   type="text"
                   placeholder="เบอร์ติดต่อ"
                   className=""
@@ -196,7 +196,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <Input
-                  value={applyData.email}
+                  value={applydata?.email}
                   type="email"
                   placeholder="email"
                   className=""
@@ -216,7 +216,7 @@ export default function CareerPage() {
                 <div className="relative">
                 <select
                   onChange={handleChangeInput}
-                  value={applyData.position}
+                  value={applydata?.position}
                   name="position"
                   className="border border-ms-gold
               text-[0.9rem] font-light bg-[#f3f5f1] rounded-3xl px-4 py-2 w-full text-[#b0afad] outline-none
@@ -272,7 +272,7 @@ export default function CareerPage() {
             <div className="space-y-0.5">
               <label className="font-light">รายละเอียดเพิ่มเติม</label>
               <textarea
-                value={applyData.detail}
+                value={applydata?.detail}
                 name="detail"
                 placeholder="รายละเอียดเพิ่มเติม"
                 className="border resize-none bg-[#f3f5f1] border-[#AE8F4E] rounded-3xl px-4 py-2 w-full h-32 placeholder:text-[#b0afad] font-light
