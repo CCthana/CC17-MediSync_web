@@ -59,7 +59,7 @@ export default function LoginPage() {
       if (err instanceof AxiosError) {
         setInputError((prev) => ({
           ...prev,
-          password: err.response.data.message,
+          password: err.response.data?.message,
           email: " ",
         }));
 

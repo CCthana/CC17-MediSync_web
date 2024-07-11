@@ -61,7 +61,7 @@ function AdminCreateHn() {
       navigate("/admin/createvn");
     } catch (err) {
       if (err instanceof AxiosError) {
-        return toast.error(err.response.data.message);
+        return toast.error(err.response.data?.message);
       }
     }
   };

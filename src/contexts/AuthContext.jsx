@@ -20,7 +20,7 @@ export default function AuthContextProvider({ children }) {
       try {
         if (getAccessToken()) {
           const res = await authApi.getAuthUser();
-          setAuthUser(res.data.user);
+          setAuthUser(res.data?.user);
         }
       } catch (error) {
         console.log(error);
@@ -41,10 +41,10 @@ export default function AuthContextProvider({ children }) {
     
     const res = await authApi.loginOTP({ email, otp });
     
-    setAccessToken(res.data.accessToken);
+    setAccessToken(res.data?.accessToken);
     const resGetAuthUser = await authApi.getAuthUser();
     // console.log("========= resGetAuthUser ============", resGetAuthUser)
-    setAuthUser(resGetAuthUser.data.user);
+    setAuthUser(resGetAuthUser.data?.user);
   };
 
   const logout = () => {

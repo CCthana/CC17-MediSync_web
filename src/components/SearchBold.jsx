@@ -1,13 +1,13 @@
 
 export default function SearchBold({search, data}) {
-  const findIndex = data.indexOf(search);
+  const findIndex = data?.indexOf(search);
 
   if (findIndex === -1) {
     return data;
   }
-  const before = data.slice(0, findIndex);
-  const match = data.slice(findIndex, findIndex + search.length);
-  const after = data.slice(findIndex + search.length);
+  const before = data?.slice(0, findIndex);
+  const match = data?.slice(findIndex, findIndex + search.length);
+  const after = data?.slice(findIndex + search.length);
 
   return (
     <span>

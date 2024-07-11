@@ -22,19 +22,19 @@ pdfMake.fonts = {
 const getDocumentDefinition = (data, imageBase64) => {
   // สร้าง newData โดยรวม medicineOrders และรายการใหม่
   const newData = [
-    ...data.medicineOrders,
-    { medicine: { name: data.treatmentResult, price: 500 }, quantity: 1 },
+    ...data?.medicineOrders,
+    { medicine: { name: data?.treatmentResult, price: 500 }, quantity: 1 },
   ];
 
   const calculateTotalCost = (data) =>
-    data.reduce((acc, item) => acc + parseFloat(item.medicine.price) * item.quantity, 0);
+    data?.reduce((acc, item) => acc + parseFloat(item.medicine.price) * item.quantity, 0);
   const formatCurrency = (value) =>
     new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(value);
 
   const totalCost = calculateTotalCost(newData);
   const formattedTotalCost = formatCurrency(totalCost);
 
-  const tableBody = newData.map((row, index) => [
+  const tableBody = newdata?.map((row, index) => [
     {
       text: (index + 1).toString(),
       margin: [5, 0, 5, 0],
@@ -64,8 +64,8 @@ const getDocumentDefinition = (data, imageBase64) => {
     pageMargins: [40, 60, 40, 60],
     content: [
       { image: imageBase64, width: 150, alignment: "center" },
-      { text: `ชื่อ: ${data.user.firstName} ${data.user.lastName}    HN: ${data.user.hn}    เลขที่ใบเสร็จ: ${data.vn}`, style: "header", margin: [0, 20, 20, 0] },
-      { text: `วันที่เข้ารับการรักษา: ${new Date(data.clinic.createdAt).toLocaleDateString()}`, style: "header" },
+      { text: `ชื่อ: ${data?.user.firstName} ${data?.user.lastName}    HN: ${data?.user.hn}    เลขที่ใบเสร็จ: ${data?.vn}`, style: "header", margin: [0, 20, 20, 0] },
+      { text: `วันที่เข้ารับการรักษา: ${new Date(data?.clinic.createdAt).toLocaleDateString()}`, style: "header" },
       {
         table: {
           headerRows: 1,
@@ -116,7 +116,7 @@ const getDocumentDefinition = (data, imageBase64) => {
         },
       },
       { text: "ลงชื่อผู้ออกใบเสร็จ", absolutePosition: { x: 30, y: 700 }, alignment: "left" },
-      { text: `พิมพ์ผลวันที่ ${new Date(data.clinic.createdAt).toLocaleDateString()}`, absolutePosition: { x: 375, y: 700 }, alignment: "right" },
+      { text: `พิมพ์ผลวันที่ ${new Date(data?.clinic.createdAt).toLocaleDateString()}`, absolutePosition: { x: 375, y: 700 }, alignment: "right" },
     ],
     defaultStyle: {
       font: "THSarabunNew",

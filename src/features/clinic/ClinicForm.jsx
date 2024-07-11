@@ -2,13 +2,13 @@ export default function ClinicForm({ data, doctorActiveByClinic }) {
   return (
     <div className="flex flex-col mb-4">
       <div className="overflow-hidden h-[25rem] rounded-3xl">
-        <img src={data.image} alt={data.name} className="w-full object-cover" />
+        <img src={data?.image} alt={data?.name} className="w-full object-cover" />
       </div>
 
       <div className="p-4 space-y-5">
-        <h1 className="text-2xl font-light text-ms-green my-2">{data.name}</h1>
-        <p className="font-light indent-6 text-lg">{data.detail}</p>
-        <p className="font-light">สถานที่ตั้ง: {data.location}</p>
+        <h1 className="text-2xl font-light text-ms-green my-2">{data?.name}</h1>
+        <p className="font-light indent-6 text-lg">{data?.detail}</p>
+        <p className="font-light">สถานที่ตั้ง: {data?.location}</p>
 
         <div className="space-y-3 pt-4">
               <h1 className="text-2xl font-light text-ms-green">

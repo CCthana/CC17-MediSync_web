@@ -9,7 +9,7 @@ export default function CardPackageItem({ data, index }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const element = document.getElementById(data.id);
+    const element = document.getElementById(data?.id);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -31,12 +31,12 @@ export default function CardPackageItem({ data, index }) {
         observer.unobserve(element);
       }
     };
-  }, [data.id]);
+  }, [data?.id]);
 
   return (
     <>
       <Tooltip
-        content={data.name}
+        content={data?.name}
         placement="bottom"
         className="px-3 bg-ms-gray text-[#f3f5f2] shadow-sm"
         animate={{
@@ -45,7 +45,7 @@ export default function CardPackageItem({ data, index }) {
         }}
       >
         <motion.div
-          id={data.id}
+          id={data?.id}
           initial="hidden"
           animate={
             isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
@@ -55,19 +55,19 @@ export default function CardPackageItem({ data, index }) {
             visible: { opacity: 1, scale: 1 },
           }}
           onClick={() => setOpen(true)}
-          className="flex flex-col gap-4 items-center px-4 pt-4 pb-8 rounded-[40px] bg-[#e8eae6]
+          className="flex flex-col gap-4 items-center h-fit px-4 pt-4 pb-8 rounded-[40px] bg-[#e8eae6]
        hover:shadow-[0px_0px_12px_rgba(49,161,114,0.4)]
       border hover:border-ms-green transition duration-300"
         >
           <div className=" aspect-square overflow-hidden rounded-[32px]">
             <img
               className="w-full object-cover h-full"
-              src={data.image}
-              alt={data.text}
+              src={data?.image}
+              alt={data?.text}
             />
           </div>
           <span className="text-lg mt-1 text-center font-light">
-            {data.name}
+            {data?.name}
           </span>
           <Button width="min-w-1/2" btn="success">
             ดู package

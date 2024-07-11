@@ -15,7 +15,7 @@ export default function AdminContextProvider({ children }) {
                 if (getAccessTokenAdmin()) {
                     const res = await adminApi.getAuthAdmin()
                     // console.log('res.data',res.data)
-                    setAuthAdmin(res.data.admin)
+                    setAuthAdmin(res.data?.admin)
 
                 }
             } catch (err) {
@@ -31,10 +31,10 @@ export default function AdminContextProvider({ children }) {
     const login = async ( credentials ) => {
         // console.log('credentials', credentials)
         const res = await adminApi.login(credentials)
-        setAccessTokenAdmin(res.data.accessTokenAdmin)
+        setAccessTokenAdmin(res.data?.accessTokenAdmin)
     
         const resGetAuthUser = await adminApi.getAuthAdmin()
-        setAuthAdmin(resGetAuthUser.data.admin)
+        setAuthAdmin(resGetAuthUser.data?.admin)
 // console.log("first-----------")
 
       }

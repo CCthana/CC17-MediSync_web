@@ -11,7 +11,7 @@ export default function HnContextProvider ({ children }) {
         try {
             if ( getAccessTokenAdmin()) {
                 const res = await adminApi.getAllHn()
-                setGetAllHn(res.data.HN)
+                setGetAllHn(res.data?.HN)
             }
             
         } catch (err) {

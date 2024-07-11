@@ -16,7 +16,7 @@ export default function CardClinicItem({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const element = document.getElementById(data.id);
+    const element = document.getElementById(data?.id);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,12 +38,12 @@ export default function CardClinicItem({
         observer.unobserve(element);
       }
     };
-  }, [data.id]);
+  }, [data?.id]);
 
   return (
     <>
       <motion.button
-      id={data.id}
+      id={data?.id}
       initial="hidden"
       animate={
         isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1 }
@@ -54,7 +54,7 @@ export default function CardClinicItem({
       }}
         onClick={() => {
           setOpen(true);
-          fetchAllDoctorByClinic(data.id);
+          fetchAllDoctorByClinic(data?.id);
         }}
         className="flex items-center gap-3 px-6 py-4 rounded-3xl transition duration-300
       border  bg-[#e8eae6] border-ms-gold hover:border-ms-green hover:shadow-[0px_0px_12px_rgba(49,161,114,0.4)] w-[450px]"
@@ -65,9 +65,9 @@ export default function CardClinicItem({
           <>
             <div
            className="w-12 h-12">
-              <img className="w-full" src={data.icon} alt={data.nameClinic} />
+              <img className="w-full" src={data?.icon} alt={data?.nameClinic} />
             </div>
-            <h1 className="font-light text-lg">{data.name}</h1>
+            <h1 className="font-light text-lg">{data?.name}</h1>
           </>
         )}
       </motion.button>
@@ -75,7 +75,7 @@ export default function CardClinicItem({
       <ModalInfo
         open={open}
         onClose={() => setOpen(false)}
-        title={data.nameClinic}
+        title={data?.nameClinic}
         width={65}
       >
         <ClinicForm data={data} doctorActiveByClinic={doctorActiveByClinic} />

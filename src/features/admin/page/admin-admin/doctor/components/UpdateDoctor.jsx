@@ -57,22 +57,22 @@ console.log('error', error)
         }
         const formData = new FormData();
         {
-          file && formData.append("image", file);
+          file && formdata?.append("image", file);
         }
-        formData.append("firstName", input?.firstName);
-        formData.append("lastName", input?.lastName);
-        formData.append("education", input?.education);
-        formData.append("id", input?.id);
-        formData.append("clinicId", input?.clinicId);
+        formdata?.append("firstName", input?.firstName);
+        formdata?.append("lastName", input?.lastName);
+        formdata?.append("education", input?.education);
+        formdata?.append("id", input?.id);
+        formdata?.append("clinicId", input?.clinicId);
         {
-          input?.birthDate && formData.append("birthDate", input?.birthDate);
+          input?.birthDate && formdata?.append("birthDate", input?.birthDate);
         }
 
         const res = await adminApi.updateDoctor(formData);
         setIsEdit(false);
         toast.success("update success");
         adminFetchAllDoctor();
-        setSelectDoctorItem(res.data.updateDoctor);
+        setSelectDoctorItem(res.data?.updateDoctor);
         setFile(null);
       }
     } catch (error) {
@@ -306,7 +306,7 @@ console.log('error', error)
                   name="clinicId"
                   className="py-2 px-4 bg-[#f3f5f1] border border-ms-gold appearance-none outline-none rounded-full w-full text-base"
                   onChange={handleChange}
-                  defaultValue={data.clinic.name}
+                  defaultValue={data?.clinic.name}
                 >
                   <option name="clinicId text-sm" value="">
                     please select

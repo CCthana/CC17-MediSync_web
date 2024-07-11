@@ -5,7 +5,7 @@ export default function CardFourItem({ data }) {
   return (
     <>
       <Tooltip
-        content={data.tooltip}
+        content={data?.tooltip}
         placement="bottom"
         className="px-3 bg-ms-gray text-[#f3f5f2] shadow-sm"
         animate={{
@@ -14,13 +14,13 @@ export default function CardFourItem({ data }) {
         }}
       >
         <Link
-          to={data.path}
+          to={data?.path}
           className="w-[22%]"
         >
           <div className="flex items-center justify-center gap-3 border border-ms-gold transition duration-300
     rounded-3xl text-xl py-5 px-5 w-[100%] hover:border-ms-green hover:shadow-[0px_0px_12px_rgba(49,161,114,0.4)]">
-            <i className={`${data.icon} text-xl`}></i>
-            <span className="font-light font-th text-xl">{data.text}</span>
+            <i className={`${data?.icon} text-xl`}></i>
+            <span className="font-light font-th text-xl">{data?.text}</span>
           </div>
         </Link>
       </Tooltip>
