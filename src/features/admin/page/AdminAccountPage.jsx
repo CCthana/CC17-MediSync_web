@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AdminAccountCard from "../component/AdminAccountCard";
-import AdminSideMenu from "../component/AdminSideMenu";
 import useAdmin from "../../../hooks/useAdmin";
 import adminApi from "../../../apis/admin";
 import HeaderTextAdmin from "../component/HeaderTextAdmin";
@@ -25,26 +24,25 @@ function AdminAccountPage() {
   }, [authAdmin]);
 
   return (
-
-
-      <div className="flex flex-1 flex-col">
-        <div className="flex items-center justify-between mb-2 text-center px-8 text-ms-gray">
+    <div className="flex flex-1 flex-col">
+      <div className="flex items-center justify-between mb-2 text-center px-8 text-ms-gray">
+        <button className="bg-ms-green text-[#f3f5f2] px-5 py-2 font-light rounded-3xl  hover:bg-[#257956] invisible">
+          {" "}
+          <i className="fa-solid fa-rotate text-[#f3f5f2]"></i>
+          &#32;เรียกข้อมูลใหม่{" "}
+        </button>
+        <HeaderTextAdmin>การเงิน</HeaderTextAdmin>
         <button
-            className="bg-ms-green text-[#f3f5f2] px-5 py-2 font-light rounded-3xl  hover:bg-[#257956] invisible"
-          >
-            {" "}
-            <i className="fa-solid fa-rotate text-[#f3f5f2]"></i>&#32;เรียกข้อมูลใหม่{" "}
-          </button>
-          <HeaderTextAdmin>การเงิน</HeaderTextAdmin>
-          <button
-            onClick={() => fetchPaymentVn()}
-            className="bg-ms-green text-[#f3f5f2] px-5 py-2 font-light rounded-3xl  hover:bg-[#257956]"
-          >
-            {" "}
-            <i className="fa-solid fa-rotate text-[#f3f5f2]"></i>&#32;เรียกข้อมูลใหม่{" "}
-          </button>
-        </div>
+          onClick={() => fetchPaymentVn()}
+          className="bg-ms-green text-[#f3f5f2] px-5 py-2 font-light rounded-3xl  hover:bg-[#257956]"
+        >
+          {" "}
+          <i className="fa-solid fa-rotate text-[#f3f5f2]"></i>
+          &#32;เรียกข้อมูลใหม่{" "}
+        </button>
+      </div>
 
+      <div className="flex flex-col gap-4 p-8">
         {paymentVn?.map((result) => (
           <AdminAccountCard
             key={result?.id}
@@ -68,7 +66,7 @@ function AdminAccountPage() {
           />
         ))}
       </div>
-
+    </div>
   );
 }
 

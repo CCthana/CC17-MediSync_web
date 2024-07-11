@@ -60,7 +60,7 @@ function AdminDoctorPage() {
         </div>
       </div>
 
-   <div className="p-4 mt-4 w-full">
+   <div className="p-4 mt-4 w-full space-y-4">
       {vnData?.map((result) => (
         <AdminDoctorCard
           key={result?.id}

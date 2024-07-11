@@ -46,9 +46,10 @@ export default function UpdateClinic({
       if (getAccessTokenAdmin()) {
         const error = validateCreateClinic(input);
         // console.log('error', error)
-
+console.log('input', input)
         if (error) {
           setInputError(error);
+          console.log('error', error)
           return
         }
 

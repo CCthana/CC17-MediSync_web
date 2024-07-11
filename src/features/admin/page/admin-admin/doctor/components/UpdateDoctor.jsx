@@ -50,7 +50,7 @@ export default function UpdateDoctor({
       if (getAccessTokenAdmin()) {
 
         const error = validateCreateDoctor(input);
-
+console.log('error', error)
         if (error) {
           setInputError(error);
           return

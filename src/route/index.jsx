@@ -1,4 +1,8 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import MainContainer from "../layout/MainContainer";
 import HomePage from "../pages/home-page/HomePage";
 import DoctorPage from "../pages/doctor/DoctorPage";
@@ -23,11 +27,11 @@ import MangeClinicPage from "../features/admin/page/admin-admin/clinic/MangeClin
 import ManageDoctorPage from "../features/admin/page/admin-admin/doctor/ManageDoctorPage";
 import DashboardPage from "../features/admin/page/admin-admin/dashboard/DashboardPage";
 import ScrollToTop from "../utils/ScrollToTop";
-import AdminContextProvider from "../contexts/AdminContext";
 import AdminCareerPage from "../features/hr/AdminCareerPage";
 import HrContextProvider from "../contexts/HrContext";
 import MainContainerAdmin from "../features/admin/MainContainerAdmin";
 import VnContextProvider from "../contexts/VnContext";
+import AdminMedicinePage from "../features/admin/page/AdminMedicinePage";
 
 const router = createBrowserRouter([
   {
@@ -52,17 +56,14 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      // <AdminContextProvider>
-         <HrContextProvider>
-         <VnContextProvider>
-        <ProtectedRouteAdmin>
-          <ScrollToTop />
+      <HrContextProvider>
+        <VnContextProvider>
+          <ProtectedRouteAdmin>
+            <ScrollToTop />
             <MainContainerAdmin />
-        </ProtectedRouteAdmin>
+          </ProtectedRouteAdmin>
         </VnContextProvider>
-        </HrContextProvider>
-      // </AdminContextProvider>
-      
+      </HrContextProvider>
     ),
     children: [
       { path: "", element: <AdminLanding /> },
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
       { path: "dashboard", element: <DashboardPage /> },
       { path: "managedoctor", element: <ManageDoctorPage /> },
       { path: "manageclinic", element: <MangeClinicPage /> },
+      { path: "medicine", element: <AdminMedicinePage /> },
     ],
   },
   {
@@ -88,6 +90,7 @@ const router = createBrowserRouter([
       { path: "setting", element: <UserSetting /> },
     ],
   },
+  { path: "*", element: <Navigate to="/" /> },
 ]);
 
 export default function Router() {

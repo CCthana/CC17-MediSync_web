@@ -8,6 +8,7 @@ import Button from "../../components/Button.jsx";
 import CleanModal from "../../components/CleanModal.jsx";
 import OtpReceived from "./component/OtpRecived.jsx";
 import useAuth from "../../hooks/useAuth.js";
+import Spinner from "../../components/Spinner.jsx";
 
 const initialInput = {
   email: "",
@@ -25,6 +26,7 @@ export default function LoginPage() {
   const [openEdit, setOpenEdit] = useState(false);
   const [inputError, setInputError] = useState(initialInputError);
   const [emailForOtp, setEmailForOtp] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -39,6 +41,7 @@ export default function LoginPage() {
       if (error) {
         return setInputError(error);
       }
+      setIsLoading(true);
 
       setInputError(initialInputError);
       console.log(input);
@@ -50,6 +53,7 @@ export default function LoginPage() {
       // navigate('/user')
       toast.success("OTP sent to your email");
       setInput(initialInput);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
       if (err instanceof AxiosError) {
@@ -69,51 +73,54 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-       <div className="min-h-[75vh] flex items-center justify-center">
-        <form onSubmit={handleSubmitForm} className="w-1/2">
-          <div
-            className="flex flex-col gap-3 px-20 py-16 shadow-[0px_0px_6px_rgba(0,0,0,0.15)]
+    <>
+      {isLoading && <Spinner />}
+      <div>
+        <div className="min-h-[75vh] flex items-center justify-center">
+          <form onSubmit={handleSubmitForm} className="w-1/2">
+            <div
+              className="flex flex-col gap-3 px-20 py-16 shadow-[0px_0px_6px_rgba(0,0,0,0.15)]
             rounded-[36px] border border-ms-gold"
-          >
-            <div className="flex flex-col gap-1">
-              <label>Email</label>
-              <Input
-                placeholder="email ใช้สำหรับ login"
-                value={input.email}
-                name={"email"}
-                onChange={handleChange}
-                error={inputError.email}
-              />
-            </div>
+            >
+              <div className="flex flex-col gap-1">
+                <label>Email</label>
+                <Input
+                  placeholder="email ใช้สำหรับ login"
+                  value={input.email}
+                  name={"email"}
+                  onChange={handleChange}
+                  error={inputError.email}
+                />
+              </div>
 
-            <div className="flex flex-col gap-1">
-              <label>Password</label>
-              <Input
-                placeholder="จำนวน 6 ตัวอักษรขึ้นไป"
-                value={input.password}
-                name={"password"}
-                onChange={handleChange}
-                error={inputError.password}
-                typeInput="password"
-              />
-            </div>
+              <div className="flex flex-col gap-1">
+                <label>Password</label>
+                <Input
+                  placeholder="จำนวน 6 ตัวอักษรขึ้นไป"
+                  value={input.password}
+                  name={"password"}
+                  onChange={handleChange}
+                  error={inputError.password}
+                  typeInput="password"
+                />
+              </div>
 
-            <div className="mt-3 w-[13rem] mx-auto">
-              <Button btn="active">เข้าสู่ระบบ</Button>
+              <div className="mt-3 w-[13rem] mx-auto">
+                <Button btn="active">เข้าสู่ระบบ</Button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
+
+        <CleanModal
+          width={50}
+          open={openEdit}
+          setOpen={setOpenEdit}
+          onClose={() => setOpenEdit(false)}
+        >
+          <OtpReceived email={emailForOtp} setOpen={setOpenEdit} />
+        </CleanModal>
       </div>
-
-      <CleanModal
-        width={50}
-        open={openEdit}
-        setOpen={setOpenEdit}
-        onClose={() => setOpenEdit(false)}
-      >
-        <OtpReceived email={emailForOtp} setOpen={setOpenEdit} />
-      </CleanModal>
-    </div>
+    </>
   );
 }

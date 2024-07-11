@@ -10,12 +10,14 @@ const createSchema = Joi.object({
     birthDate: Joi.string().required().messages({
         'string.empty': 'birthDate is required.'
     }),
-    clinicId: Joi.string().required().messages({
-        'string.empty': 'clinic is required.'
+    clinicId: Joi.number().allow(null).required().messages({
+        'number.base': 'clinic must be a number.',
+        'any.required': 'clinic is required.'
     }),
     education: Joi.string().required().messages({
         'string.empty': 'Experience is required.'
-    })
+    }),
+    id: Joi.optional()
 })
 
 const validateCreateDoctor = (input) => {
