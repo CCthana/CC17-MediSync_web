@@ -3,6 +3,8 @@ import SideMenuUser from '../component/SideMenuUser'
 import useAuth from '../../../hooks/useAuth';
 import userApi from '../../../apis/user';
 import { toast } from 'react-toastify';
+import { getAccessToken } from '../../../utils/local-storage';
+import validatePassword from '../validate/validate-password';
 
 
 
@@ -13,13 +15,20 @@ function UserSetting() {
       hn: authUser?.hn,
       password: ''
    }
+
+   const initialErrorInput ={
+      hn: '',
+      password: ''
+   }
   
 
    const [open ,setOpen] = useState(false);
    const [input, setInput] = useState(initialInput)
+   const [ inputError, setInputError ] = useState(initialErrorInput)
 
    const handleChangeInput = e => {
       setInput({...input, [e.target.name]: e.target.value})
+      setInputError({...inputError, [e.target.name]: ""})
    }
 
 
@@ -30,12 +39,23 @@ function UserSetting() {
 
    const handleClickSubmit = async () => {
       try {
-         setInput({...input, hn: authUser.hn})
-         console.log(input, '++++++++++++++++++++++++++++++++++++');  
-         await userApi.updateUserAccount(input);
-         setOpen(false);
 
-         toast.success('Account updated');
+         if (getAccessToken()) {
+            setInput({...input, hn: authUser.hn})
+
+            const error = validatePassword(input)
+
+            if (error) {
+               return setInputError(error)
+            }
+
+            console.log(input, '++++++++++++++++++++++++++++++++++++');  
+            await userApi.updateUserAccount(input);
+            setOpen(false);
+   
+            toast.success('Account updated');
+         }
+         
         
       } catch (err) {
          console.log(err)
@@ -90,13 +110,18 @@ function UserSetting() {
         <div>
          <p className='text-sm font-th mb-1 text-ms-gray'>Password</p>
 
-         {open ? <>
-                  <input type="password" name="password" id="password" onChange={handleChangeInput}  className='h-10 rounded-3xl border-[1px] border-ms-gold px-4  focus:outline-ms-green'/> 
-                  <button onClick={handleClickSubmit} className='ml-4 h-10 px-4 bg-ms-green rounded-full text-white text-xl hover:bg-[#257956] '> ตกลง </button>
-                  <button onClick={handleClickCancel} className='ml-1 h-10 px-4 rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white'> ยกเลิก </button>
-               </>
+         {open ? <div className='space-y-2 flex items-start flex-col'>
+                  <div className='flex flex-col w-1/3'>
+                  <input type="password" name="password" id="password" onChange={handleChangeInput}  className='h-10 rounded-3xl border-[1px] border-ms-gold px-4  focus:outline-ms-green'/>
+                  { inputError.password && <small className='text-red-400'>{inputError.password}</small>} 
+                  </div>
+                  <div>
+                  <button onClick={handleClickSubmit} className='px-6 py-2 bg-ms-green rounded-full text-white text-xl hover:bg-[#257956] '> ตกลง </button>
+                  <button onClick={handleClickCancel} className='ml-3 px-6 py-2 rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white'> ยกเลิก </button>
+                  </div>
+               </div>
          :
-            <button className='text-2xl font-th px-6 h-10 bg-ms-green rounded-full text-white hover:bg-[#257956] ' onClick={()=> setOpen(true)}>แก้ไข</button>
+            <button className='font-th px-6 py-2 bg-ms-green rounded-full text-white hover:bg-[#257956] ' onClick={()=> setOpen(true)}>แก้ไข</button>
          }
 
 
