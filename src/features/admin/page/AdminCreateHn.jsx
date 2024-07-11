@@ -6,6 +6,7 @@ import HeaderTextAdmin from "../component/HeaderTextAdmin";
 import Input from "../../../components/Input";
 import ButtonAdmin from "../../../components/ButtonAdmin";
 import validateCreateHn from "../validate/validate-hn";
+import { AxiosError } from "axios";
 
 const initialInput = {
   firstName: "",
@@ -36,6 +37,7 @@ function AdminCreateHn() {
   const [inputError, setInputError] = useState(initialErrorInput);
 
   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -59,7 +61,9 @@ function AdminCreateHn() {
 
       navigate("/admin/createvn");
     } catch (err) {
-      console.log(err);
+      if (err instanceof AxiosError) {
+        return toast.error(err.response.data.message);
+      }
     }
   };
 

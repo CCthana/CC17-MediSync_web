@@ -4,116 +4,111 @@ import adminApi from "../../../apis/admin";
 import { toast } from "react-toastify";
 import ButtonAdmin from "../../../components/ButtonAdmin";
 
-function AdminDoctorCard({
-  id,
-  hn,
-  vn,
-  firstName,
-  lastName,
-  gender,
-  birthDate,
-  weight,
-  height,
-  bloodPressure,
-  heartRate,
-  symptoms,
-  doctorData,
-  fetchDoctorData,
-}) {
+function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, weight, height, bloodPressure, heartRate, symptoms, doctorData, fetchDoctorData}) {
+
   const initialInput = {
-    id: id,
-    treatmentResult: "",
-    diagnosis: "",
-    medicine: "",
-    vnType: "OPD",
-  };
+     vn: vn,
+     id: id,
+     doctorId: doctorData.id,
+     treatmentResult: '',
+     diagnosis: '',
+     vnType : 'OPD',
+     medicine: ''
+  }
 
   const initialAppointment = {
-    hn: hn,
-    doctorId: doctorData.id,
-    appointmentTime: "",
-  };
+     hn: hn,
+     doctorId: doctorData.id,
+     appointmentTime: ''
+  }
 
   const [input, setInput] = useState(initialInput);
   const [open, setOpen] = useState(false);
-  const [appointCheck, setAppointCheck] = useState(false);
+  const [appointCheck, setAppointCheck] = useState(false)
   const [appointmentData, setAppointmentData] = useState(initialAppointment);
   const [allVn, setAllVn] = useState();
   const [allMedicine, setAllMedicine] = useState();
-  const [medicine, setMedicine] = useState("");
+  const [medicine, setMedicine] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [medicineList, setMedicineList] = useState([]);
 
   useEffect(() => {
-    const fetchAllVn = async () => {
-      try {
-        const result = await adminApi.getAllVnByHn(id);
-        const med = await adminApi.getAllMedicine();
-        setAllVn(result.data);
-        setAllMedicine(med.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchAllVn();
-  }, [open]);
+     const fetchAllVn = async () => {
+        try {
+           const result = await adminApi.getAllVnByHn(id);
+           const med = await adminApi.getAllMedicine();
+           setAllVn(result.data);
+           setAllMedicine(med.data);
 
+        } catch (err) {
+           console.log(err)
+        }
+     }
+     fetchAllVn()
+  },[open])
+
+ 
+  
   const handleClick = () => {
-    setOpen(!open);
-  };
+     setOpen(!open)
+  }
 
-  const handleChangeInput = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
+  const handleChangeInput = e => {
+     setInput({...input, [e.target.name]: e.target.value})
+  }
 
-  const handleChangeInputAppoint = (e) => {
-    setAppointmentData({ ...appointmentData, [e.target.name]: e.target.value });
-  };
+  const handleChangeInputAppoint = e => {
+     setAppointmentData({...appointmentData, [e.target.name]: e.target.value})
+  }
+
 
   const handleClickConfirm = async () => {
-    try {
-      if (appointCheck == true) {
-        await adminApi.createAppontmentByDoctor(appointmentData);
-        toast.success("appointment created");
-      }
+    
+     try {
 
-      input.medicine = medicineList;
+        if(appointCheck == true){
+           await adminApi.createAppontmentByDoctor(appointmentData);
+           toast.success('appointment created');
+        }
 
-      console.log(input);
-      console.log(medicineList);
+        input.medicine = medicineList
 
-      await adminApi.doctorUpdateVnByid(input);
+        console.log(input)
+        console.log(medicineList)
+       
+        await adminApi.doctorUpdateVnByid(input)
 
-      toast.success("Treatment updated");
-      fetchDoctorData();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+        toast.success('Treatment updated');
+        fetchDoctorData();
+       
+     } catch (err) {
+        console.log(err);
+     }
+   }
 
-  const handleAddMedicine = () => {
-    const selectedMedicine = allMedicine.find((med) => med.name === medicine);
+   const handleAddMedicine = () => {
+     const selectedMedicine = allMedicine.find(med => med.name === medicine);
+   
+   if (selectedMedicine) {
+     const newMedicine = {
+       medicineId: selectedMedicine.id, 
+       medicine: selectedMedicine.name,
+       quantity: quantity
+     };
+       
+       setMedicineList([...medicineList, newMedicine]);
+       setMedicine('');
+       setQuantity(1);
+       console.log(medicineList)
+     }
+   };
 
-    if (selectedMedicine) {
-      const newMedicine = {
-        medicineId: selectedMedicine.id,
-        medicine: selectedMedicine.name,
-        quantity: quantity,
-      };
+   const handleRemoveMedicine = (id) => {
+     const updatedList = medicineList.filter(item => item.id !== id);
+     setMedicineList(updatedList);
+   };
 
-      setMedicineList([...medicineList, newMedicine]);
-      setMedicine("");
-      setQuantity(1);
-      console.log(medicineList);
-    }
-  };
-
-  const handleRemoveMedicine = (id) => {
-    const updatedList = medicineList.filter((item) => item.id !== id);
-    setMedicineList(updatedList);
-  };
-
-  return (
+   return (
     <div className="flex flex-col h-fit bg-[#e8eae6] rounded-3xl shadow-md ">
       <div className="w-full font-th text-ms-gray h-16 font-normal flex items-center justify-between px-6 rounded-3xl border-[1px] text-lg">
         <h1>

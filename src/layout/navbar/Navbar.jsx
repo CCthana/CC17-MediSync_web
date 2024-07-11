@@ -49,12 +49,13 @@ export default function Navbar() {
             </div>
           </ButtonSmall>
 
-                {authUser ? 
+                {authUser ? <Link to='/user'>
                 <ButtonSmall btn="success">
                     <div className='flex items-center gap-1'>
                        <h1>  <span className='font-th text-ms-green font-normal'> {authUser?.firstName}</span>  </h1>
                     </div> 
                 </ButtonSmall>
+                </Link>
                 : <Link to='/login'>
                 <ButtonSmall btn="success">
                 <Tooltip
