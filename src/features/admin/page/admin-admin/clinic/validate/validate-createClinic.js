@@ -7,11 +7,12 @@ const createSchema = Joi.object({
     detail: Joi.string().required().messages({
         'string.empty': 'detail is required.'
     }),
-    location: Joi.string().required().messages({
+    location: Joi.string().required().allow(null).messages({
         'string.empty': 'location is required.'
     }),
     fileCover: Joi.allow(null),
-    file: Joi.allow(null)
+    file: Joi.allow(null),
+    id: Joi.optional()
 })
 
 const validateCreateClinic = (input) => {
