@@ -24,7 +24,7 @@ function AdminSideMenu() {
         </Link>
 
           {/* RECEPTION */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "RECEPTION" ? (
             <>
               <div>
                 <Link to="/admin/appointment">
@@ -69,7 +69,7 @@ function AdminSideMenu() {
           ) : null}
 
           {/* NURSE */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "NURSE" ? (
             <>
               <div>
                 <Link to="/admin/nurse">
@@ -88,7 +88,7 @@ function AdminSideMenu() {
           ) : null}
 
           {/* DOCTOR */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "DOCTOR" ? (
             <>
               <div>
                 <Link to="/admin/doctor">
@@ -107,7 +107,7 @@ function AdminSideMenu() {
           ) : null}
 
           {/* ACCOUNT */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "ACCOUNT" ? (
             <>
               <div>
                 <Link to="/admin/account">
