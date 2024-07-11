@@ -65,12 +65,12 @@ export default function EditDeletePackage({
 
       const formData = new FormData();
       {
-        selectFile && formdata?.append("image", selectFile);
+        selectFile && formData.append("image", selectFile);
       }
-      formdata?.append("name", input?.name);
-      formdata?.append("detail", input?.detail);
-      formdata?.append("price", input?.price);
-      formdata?.append("expireDate", input?.expireDate);
+      formData.append("name", input?.name);
+      formData.append("detail", input?.detail);
+      formData.append("price", input?.price);
+      formData.append("expireDate", input?.expireDate);
 
       setIsLoaging(true);
       const result = await adminApi.updatePackage(initialPackage.id, formData);

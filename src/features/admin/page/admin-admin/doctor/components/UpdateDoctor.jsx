@@ -57,15 +57,15 @@ console.log('error', error)
         }
         const formData = new FormData();
         {
-          file && formdata?.append("image", file);
+          file && formData.append("image", file);
         }
-        formdata?.append("firstName", input?.firstName);
-        formdata?.append("lastName", input?.lastName);
-        formdata?.append("education", input?.education);
-        formdata?.append("id", input?.id);
-        formdata?.append("clinicId", input?.clinicId);
+        formData.append("firstName", input?.firstName);
+        formData.append("lastName", input?.lastName);
+        formData.append("education", input?.education);
+        formData.append("id", input?.id);
+        formData.append("clinicId", input?.clinicId);
         {
-          input?.birthDate && formdata?.append("birthDate", input?.birthDate);
+          input?.birthDate && formData.append("birthDate", input?.birthDate);
         }
 
         const res = await adminApi.updateDoctor(formData);
