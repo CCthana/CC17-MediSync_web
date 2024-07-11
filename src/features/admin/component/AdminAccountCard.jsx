@@ -97,22 +97,20 @@ function AdminAccountCard({
           <span className="text-ms-green font-semibold"> {vn} </span>
         </h1>
         <h1>
-          คุณ:{" "}
+          คุณ:
           <span className="text-ms-green font-semibold">
-            {" "}
-            {user?.firstName} {user?.lastName}{" "}
+            {user?.firstName} {user?.lastName}
           </span>
         </h1>
         <h1>
-          เพศ:{" "}
+          เพศ:
           <span className="text-ms-green font-semibold"> {user?.gender} </span>
         </h1>
         <h1>
-          อายุ:{" "}
+          อายุ:
           <span className="text-ms-green m-2 font-semibold">
-            {" "}
             {new Date().getUTCFullYear() - user?.birthDate?.split("-")[0] ||
-              "-"}{" "}
+              "-"}
           </span>
           ปี
         </h1>
@@ -130,44 +128,39 @@ function AdminAccountCard({
 
         <div className="flex gap-6 mt-6 justify-start text-ms-gray font-th">
           <h1>
-            น้ำหนัก:{" "}
+            น้ำหนัก:
             <span className="mx-2 font-medium text-lg text-ms-green">
-              {" "}
-              {weight}{" "}
-            </span>{" "}
+              {weight}
+            </span>
             kg.
           </h1>
           <h1>
-            ส่วนสูง:{" "}
+            ส่วนสูง:
             <span className="mx-2 font-medium text-lg text-ms-green">
-              {" "}
-              {height}{" "}
-            </span>{" "}
+              {height}
+            </span>
             cm.
           </h1>
           <h1>
-            ความดัน:{" "}
+            ความดัน:
             <span className="mx-2 font-medium text-lg text-ms-green">
-              {" "}
-              {bloodPressure}{" "}
+              {bloodPressure}
             </span>
           </h1>
           <h1>
-            ชีพจร:{" "}
+            ชีพจร:
             <span className="mx-2 font-medium text-lg text-ms-green">
-              {" "}
-              {heartRate}{" "}
-            </span>{" "}
+              {heartRate}
+            </span>
             BPM.
           </h1>
         </div>
 
         <div className=" text-ms-gray mt-2 ">
           <h1>
-            อาการเบื้องต้น:{" "}
+            อาการเบื้องต้น:
             <span className="mx-2 font-semibold text-lg text-ms-green">
-              {" "}
-              {symptoms}{" "}
+              {symptoms}
             </span>
           </h1>
         </div>
@@ -193,9 +186,8 @@ function AdminAccountCard({
               <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray font-th">
                 {medicineOrders.map((result) => (
                   <h1 key={result?.id}>
-                    {" "}
-                    Medicine: {result?.medicine.name} quantity:{" "}
-                    {result?.quantity} price:{result?.medicine.price}{" "}
+                    Medicine: {result?.medicine.name} quantity:
+                    {result?.quantity} price:{result?.medicine.price}
                   </h1>
                 ))}
               </div>
@@ -206,10 +198,7 @@ function AdminAccountCard({
             <div>
               <h1>นัดครั้งต่อไป</h1>
               <div className="w-[300px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-3 text-center border-ms-gold ">
-                <h1>
-                  {" "}
-                  {user?.appointments[0]?.appointmentTime.split("T")[0]}{" "}
-                </h1>
+                <h1>{user?.appointments[0]?.appointmentTime.split("T")[0]}</h1>
               </div>
             </div>
 
@@ -243,8 +232,7 @@ function AdminAccountCard({
             onClick={handleClickConfirm}
             className="font-th w-[150px] h-[40px] bg-ms-green rounded-full text-white text-xl hover:bg-[#257956]"
           >
-            {" "}
-            ยืนยัน{" "}
+            ยืนยัน
           </button>
           <button
             onClick={() => {
@@ -252,8 +240,7 @@ function AdminAccountCard({
             }}
             className="font-th w-[150px] h-[40px] rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white "
           >
-            {" "}
-            แก้ไข{" "}
+            แก้ไข
           </button>
         </div>
       </div>

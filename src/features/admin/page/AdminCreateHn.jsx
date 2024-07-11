@@ -37,7 +37,6 @@ function AdminCreateHn() {
   const [inputError, setInputError] = useState(initialErrorInput);
 
   const navigate = useNavigate();
-  const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });

@@ -161,7 +161,7 @@ function AdminAppointment() {
         ) : null}
       </div>
 
-      {searchAppoint?.length > 0 ? (
+      {searchAppoint?.length > 0 || inputError.notFound ? (
         <div className="py-6 w-10/12 space-y-4">
           {searchAppoint?.map((result) => (
             <div

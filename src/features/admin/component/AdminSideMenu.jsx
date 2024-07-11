@@ -1,21 +1,15 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin";
-import { toast } from "react-toastify";
 import logo from "../../../assets/logos/MediSync-1.svg"
+import ModalInfo from "../../../components/ModalInfo";
+import LogoutPageUser from "../../user/component/LogoutPageUser";
+import { useState } from "react";
 
 function AdminSideMenu() {
   const { pathname } = useLocation();
   const { authAdmin, logout } = useAdmin();
 
   const [open, setOpen] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleClickLogout = () => {
-    logout();
-    toast.error("Logged out", { autoClose: 2000, theme: "colored" });
-    navigate("/");
-  };
 
   return (
     <>
@@ -218,7 +212,7 @@ function AdminSideMenu() {
       </div>
 
       <ModalInfo open={open} onClose={() => setOpen(false)} width={40}>
-        <LogoutPage cancel={() => setOpen(false)} logout={logout} />
+        <LogoutPageUser cancel={() => setOpen(false)} logout={logout} />
       </ModalInfo>
     </>
   );

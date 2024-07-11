@@ -5,8 +5,9 @@ import {
   setAccessToken,
 } from "../utils/local-storage";
 import { useEffect } from "react";
-import authApi from "../api/auth";
+
 import { useState } from "react";
+import authApi from "../apis/auth";
 
 export const AuthContext = createContext();
 
