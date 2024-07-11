@@ -1,49 +1,73 @@
-import axios from "../config/axios-admin";
+import adminAxios from "../config/axios-admin";
 
 const adminApi = {}
 
-adminApi.register = (body) => axios.post('/admin/register', body)
-adminApi.login = (body) => axios.post('/admin/login', body)
-adminApi.getAuthAdmin = () => axios.get('/admin/me')
+adminApi.register = (body) => adminAxios.post('/admin/register', body)
+adminApi.login = (body) => adminAxios.post('/admin/login', body)
+adminApi.getAuthAdmin = () => adminAxios.get('/admin/me')
 
-adminApi.createVn = (body) => axios.post('/reception/createVN', body)
-adminApi.createHn = (body) => axios.post('/reception/createHN', body)
+//clinic
+adminApi.getAllClinic = () => adminAxios.get('/admin/getAllClinic')
+adminApi.updateClinic = (body) => adminAxios.patch('/admin/updateClinic', body)
+adminApi.createClinic = (body) => adminAxios.post('/admin/createClinic', body)
+adminApi.deleteClinic = (id) => adminAxios.delete(`/admin/deleteClinic/${id}`)
 
-adminApi.getHnbyName = (name) => axios.get(`hn/getHnByName/${name}` )
-adminApi.getHnbyPhone = (phone) => axios.get(`hn/getHnByPhone/${phone}`)
+//doctor
+adminApi.deleteDoctor = (body) => adminAxios.patch('/admin/deleteDoctor', body)
+adminApi.updateDoctor = (body) => adminAxios.patch('/admin/updateDoctor', body)
+adminApi.createDoctor = (body) => adminAxios.post('/admin/createDoctor', body)
+
+//HN
+adminApi.getAllHn = () => adminAxios.get('/hn/getAllHN')
+
+adminApi.createVn = (body) => adminAxios.post('/reception/createVN', body)
+adminApi.createHn = (body) => adminAxios.post('/reception/createHN', body)
+
+adminApi.getHnbyName = (name) => adminAxios.get(`hn/getHnByName/${name}` )
+adminApi.getHnbyPhone = (phone) => adminAxios.get(`hn/getHnByPhone/${phone}`)
 
 //admin reception
-adminApi.getAppointmentByHn = (hn) => axios.get(`/reception/getappoint/${hn}` )
-adminApi.getAppointmentByName = (name) => axios.get(`/reception/getappointByName/${name}` )
-adminApi.setAppointment = (id , status) => axios.patch(`/reception/updateAppointment/${id}`, {status} )
+adminApi.getAppointmentByHn = (hn) => adminAxios.get(`/reception/getappoint/${hn}` )
+adminApi.getAppointmentByName = (name) => adminAxios.get(`/reception/getappointByName/${name}`)
+adminApi.setAppointment = (id , status) => adminAxios.patch(`/reception/updateAppointment/${id}`, {status} )
 
 //admin Nurse
-adminApi.getAllVnByClinic = (clinicId) => axios.get(`/nurse/getAllVnByClinic/${clinicId}`)
-adminApi.getAllDoctorByClinic = (clinicId) => axios.get(`/nurse/getAllDoctorByClinic/${clinicId}`)
-adminApi.updateVnById = (body) => axios.patch('/nurse/updateVN', body)
+adminApi.getAllVnByClinic = (clinicId) => adminAxios.get(`/nurse/getAllVnByClinic/${clinicId}`)
+adminApi.getAllDoctorByClinic = (clinicId) => adminAxios.get(`/nurse/getAllDoctorByClinic/${clinicId}`)
+adminApi.updateVnById = (body) => adminAxios.patch('/nurse/updateVN', body)
 
 //admin Doctor
-adminApi.getAdminDoctorData = (doctorId) => axios.get(`/adminDoctor/getAdminDoctorData/${doctorId}`)
-adminApi.getTreatmentVnByDocTor = (doctorId) => axios.get(`/adminDoctor/getTreatmentVnByDocTor/${doctorId}`)
-adminApi.getAllVnByHn = (hn) => axios.get(`/vn/getAllVnByHn/${hn}`)
-adminApi.doctorUpdateVnByid = (body) => axios.patch(`/adminDoctor/updateVnById`, body)
-adminApi.createAppontmentByDoctor = (body) => axios.post(`/adminDoctor/createAppointmentByDoctor`, body)
-adminApi.getAllMedicine = () => axios.get('/medicine/allMedicine')
-
-
+adminApi.adminGetAllDoctor = () => adminAxios.get('/doctor/getAllDoctor')
+adminApi.getAdminDoctorData = (doctorId) => adminAxios.get(`/adminDoctor/getAdminDoctorData/${doctorId}`)
+adminApi.getTreatmentVnByDocTor = (doctorId) => adminAxios.get(`/adminDoctor/getTreatmentVnByDocTor/${doctorId}`)
+adminApi.getAllVnByHn = (hn) => adminAxios.get(`/vn/getAllVnByHn/${hn}`)
+adminApi.doctorUpdateVnByid = (body) => adminAxios.patch(`/adminDoctor/updateVnById`, body)
+adminApi.createAppontmentByDoctor = (body) => adminAxios.post(`/adminDoctor/createAppointmentByDoctor`, body)
+adminApi.getAllMedicine = () => adminAxios.get('/medicine/allMedicine')
 
 
 //admin account
-adminApi.getAllVnByStatusPayment = () => axios.get(`/account/getAllVnByStatusPayment`)
-adminApi.updateTotalPriceVnByAccount = (body) => axios.patch(`/account/updateVnByVn`, body)
+adminApi.getAllVnByStatusPayment = () => adminAxios.get(`/account/getAllVnByStatusPayment`)
+adminApi.updateTotalPriceVnByAccount = (body) => adminAxios.patch(`/account/updateVnByVn`, body)
 
+
+// package
+adminApi.createPackage = (body) => adminAxios.post(`/package`, body)
+adminApi.updatePackage = (id, body) => adminAxios.patch(`/package/${id}`, body)
+adminApi.deletePackage = (id) => adminAxios.delete(`/package/${id}`)
+
+// hr
+adminApi.createCareer = (body) => adminAxios.post(`/hr`, body)
+adminApi.deleteCareer = (id) => adminAxios.delete(`/hr/${id}`)
+adminApi.updateCareer = (body) => adminAxios.patch(`/hr`, body)
+
+// Vn
+adminApi.getVnPerDay = (day) => adminAxios.get(`/vn/getVnPerDay/${day}` )
 
 // admin medicine
-adminApi.getAllMedicineAdmin = () => axios.get('/medicine/allMedicineAdmin')
-adminApi.updateMedicineAdmin = (body) => axios.patch('/medicine/updateMedById', body)
-adminApi.createMedicine = (body) => axios.post("/medicine/createMedicine", body)
-
-
+adminApi.getAllMedicineAdmin = () => adminAxios.get('/medicine/allMedicineAdmin')
+adminApi.updateMedicineAdmin = (body) => adminAxios.patch('/medicine/updateMedById', body)
+adminApi.createMedicine = (body) => adminAxios.post("/medicine/createMedicine", body)
 
 
 

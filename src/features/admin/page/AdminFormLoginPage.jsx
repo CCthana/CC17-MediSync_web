@@ -24,6 +24,7 @@ export default function AdminFormLoginPage() {
     const [ inputError, setInputError ] = useState( initialInputError )
 
     const { login } = useAdmin()
+    console.log('useAdmin', useAdmin)
 
     const navigate = useNavigate()
 

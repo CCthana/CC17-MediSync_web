@@ -1,11 +1,14 @@
 import axios from 'axios'
 import { getAccessTokenAdmin, removeAccessTokenAdmin } from '../utils/local-storage'
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL
+const adminAxios = axios.create({
+    baseURL: import.meta.env.VITE_API_URL
 
-axios.interceptors.request.use((config) => {
+})
+
+adminAxios.interceptors.request.use((config) => {
     const accessToken = getAccessTokenAdmin()
-
+    // console.log(accessToken)
     if (accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`
     }
@@ -14,7 +17,7 @@ axios.interceptors.request.use((config) => {
 }, (err) => Promise.reject(err)
 )
 
-axios.interceptors.response.use((value) =>Promise.resolve(value), (err) => {
+adminAxios.interceptors.response.use((value) =>Promise.resolve(value), (err) => {
     // console.log('err dddd', err)
     if (err.response.status === 401) {
         removeAccessTokenAdmin()
@@ -24,4 +27,4 @@ axios.interceptors.response.use((value) =>Promise.resolve(value), (err) => {
     return Promise.reject(err)
 })
 
-export default axios
+export default adminAxios

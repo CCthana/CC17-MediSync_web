@@ -1,4 +1,4 @@
-import axios from "../config/axios-admin";
+import axios from "../config/axios";
 
 const userApi = {}
 

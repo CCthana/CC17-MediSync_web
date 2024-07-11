@@ -3,6 +3,7 @@ import AdminAccountCard from "../component/AdminAccountCard";
 import AdminSideMenu from "../component/AdminSideMenu";
 import useAdmin from "../../../hooks/useAdmin";
 import adminApi from "../../../apis/admin";
+import HeaderTextAdmin from "../component/HeaderTextAdmin";
 
 function AdminAccountPage() {
   const [paymentVn, setPaymentVn] = useState();
@@ -24,21 +25,23 @@ function AdminAccountPage() {
   }, [authAdmin]);
 
   return (
-    <div className="flex justify-center px-40 py-16 gap-10 min-h-[80vh] ">
-      <AdminSideMenu />
 
-      <div className="flex flex-1 flex-col border-[1px] border-ms-gold min-h-[800px] h-full rounded-[40px] pt-10 pb-20 px-16 gap-4   ">
-        <div className="flex items-center justify-center mb-2 text-center px-8 text-ms-gray">
-          <h1 className="font-th text-4xl  font-semibold text-ms-green flex-1 ">
-            {" "}
-            การเงิน{" "}
-          </h1>
-          <button
-            onClick={() => fetchPaymentVn()}
-            className="bg-ms-green text-white px-4 py-1 rounded-3xl  hover:bg-[#257956]"
+
+      <div className="flex flex-1 flex-col">
+        <div className="flex items-center justify-between mb-2 text-center px-8 text-ms-gray">
+        <button
+            className="bg-ms-green text-[#f3f5f2] px-5 py-2 font-light rounded-3xl  hover:bg-[#257956] invisible"
           >
             {" "}
-            เรียกข้อมูลใหม่{" "}
+            <i className="fa-solid fa-rotate text-[#f3f5f2]"></i>&#32;เรียกข้อมูลใหม่{" "}
+          </button>
+          <HeaderTextAdmin>การเงิน</HeaderTextAdmin>
+          <button
+            onClick={() => fetchPaymentVn()}
+            className="bg-ms-green text-[#f3f5f2] px-5 py-2 font-light rounded-3xl  hover:bg-[#257956]"
+          >
+            {" "}
+            <i className="fa-solid fa-rotate text-[#f3f5f2]"></i>&#32;เรียกข้อมูลใหม่{" "}
           </button>
         </div>
 
@@ -65,7 +68,7 @@ function AdminAccountPage() {
           />
         ))}
       </div>
-    </div>
+
   );
 }
 

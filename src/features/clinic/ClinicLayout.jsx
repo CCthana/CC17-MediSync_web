@@ -6,31 +6,13 @@ import InputSearch from "../../components/InputSearch";
 import useClinic from "../../hooks/useClinic";
 import ModalInfo from "../../components/ModalInfo";
 import ClinicItem from "./ClinicItem";
+import useDoctor from "../../hooks/useDoctor";
 
-// const clinic = [
-//   {
-//     name: "ศูนย์ทันตกรรม",
-//     detail: "ข้อมูลเพิ่มเติมทันตกรรม",
-//     image: "public/dentist.svg",
-//   },
-//   { name: "ศูนย์หู",
-//     detail: "ข้อมูลเพิ่มเติมหู",
-//     image: "public/ear.svg" },
-//   {
-//     name: "ศูนย์หัวใจ",
-//     detail: "ข้อมูลเพิ่มเติมหัวใจ",
-//     image: "public/heart.svg",
-//   },
-//   {
-//     name: "ศูนย์กุมารเวช",
-//     detail: "ข้อมูลเพิ่มเติมกุมารเวช",
-//     image: "public/baby.svg",
-//   },
-// ];
 
 export default function ClinicLayout() {
   
   const { getAllClinic, isClinicLoading } = useClinic();
+  const { fetchAllDoctorByClinic, doctorActiveByClinic } = useDoctor()
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectClinics, setSelectClinics] = useState(null);
@@ -39,6 +21,7 @@ export default function ClinicLayout() {
   const handleClickOpenModal = (clinic) => {
     setSelectClinics(clinic);
     setIsOpen(true);
+    fetchAllDoctorByClinic(clinic.id)
   };
 
   const handleCloseModal = () => {
@@ -49,8 +32,6 @@ export default function ClinicLayout() {
   const filterClinic = getAllClinic?.filter((clinic) =>
     clinic.name.toLowerCase().includes(search.toLowerCase())
   );
-
-  console.log('getAllClinic', getAllClinic)
 
   return (
     <div className="min-h-[75vh] border-t border-gray-300">
@@ -77,17 +58,16 @@ export default function ClinicLayout() {
           ></i>
         </div>
 
-        <div className="grid gap-8 grid-cols-2 w-9/12 mx-auto p-6">
+        <div className="grid gap-8 grid-cols-2 w-10/12 mx-auto p-6">
           {filterClinic?.map((clinic) => (
-            <ClinicItem key={clinic.id} clinic={clinic} onClick={handleClickOpenModal} isClinicLoading={isClinicLoading} />
+            <ClinicItem search={search} key={clinic.id} clinic={clinic} onClick={handleClickOpenModal} isClinicLoading={isClinicLoading} />
           ))}
         </div>
 
-        <ModalInfo open={isOpen} onClose={handleCloseModal} width={50}>
+        <ModalInfo open={isOpen} onClose={handleCloseModal} width={65}>
           <ClinicForm 
-            name={selectClinics?.name}
-            detail={selectClinics?.detail}
-            image={selectClinics?.image} 
+            data={selectClinics}
+            doctorActiveByClinic={doctorActiveByClinic}
           />
         </ModalInfo>
       </div>

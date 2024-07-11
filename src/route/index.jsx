@@ -1,4 +1,4 @@
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "../layout/MainContainer";
 import HomePage from "../pages/home-page/HomePage";
 import DoctorPage from "../pages/doctor/DoctorPage";
@@ -17,8 +17,17 @@ import ClinicPage from "../features/clinic/ClinicPage";
 import ContactContainer from "../pages/contact/ContactContainer";
 import AdminCreateHn from "../features/admin/page/AdminCreateHn";
 import LoginPage from "../pages/login-page/LoginPage";
+import AdminPackage from "../features/admin/page/Package/AdminPackage";
 
-// import { lazy } from 'react';
+import MangeClinicPage from "../features/admin/page/admin-admin/clinic/MangeClinicPage";
+import ManageDoctorPage from "../features/admin/page/admin-admin/doctor/ManageDoctorPage";
+import DashboardPage from "../features/admin/page/admin-admin/dashboard/DashboardPage";
+import ScrollToTop from "../utils/ScrollToTop";
+import AdminContextProvider from "../contexts/AdminContext";
+import AdminCareerPage from "../features/hr/AdminCareerPage";
+import HrContextProvider from "../contexts/HrContext";
+import MainContainerAdmin from "../features/admin/MainContainerAdmin";
+import VnContextProvider from "../contexts/VnContext";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +37,14 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/department", element: <ClinicPage /> },
       { path: "/package", element: <PackagePagee /> },
-      { path: "/contact", element: <ContactContainer /> },
+      {
+        path: "/contact",
+        element: (
+          <HrContextProvider>
+            <ContactContainer />
+          </HrContextProvider>
+        ),
+      },
       { path: "/doctor", element: <DoctorPage /> },
       { path: "/login", element: <LoginPage /> },
     ],
@@ -36,9 +52,17 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <ProtectedRouteAdmin>
-        <Outlet />
-      </ProtectedRouteAdmin>
+      // <AdminContextProvider>
+         <HrContextProvider>
+         <VnContextProvider>
+        <ProtectedRouteAdmin>
+          <ScrollToTop />
+            <MainContainerAdmin />
+        </ProtectedRouteAdmin>
+        </VnContextProvider>
+        </HrContextProvider>
+      // </AdminContextProvider>
+      
     ),
     children: [
       { path: "", element: <AdminLanding /> },
@@ -48,6 +72,11 @@ const router = createBrowserRouter([
       { path: "doctor", element: <AdminDoctorPage /> },
       { path: "account", element: <AdminAccountPage /> },
       { path: "appointment", element: <AdminAppointment /> },
+      { path: "marketing", element: <AdminPackage /> },
+      { path: "career", element: <AdminCareerPage /> },
+      { path: "dashboard", element: <DashboardPage /> },
+      { path: "managedoctor", element: <ManageDoctorPage /> },
+      { path: "manageclinic", element: <MangeClinicPage /> },
     ],
   },
   {

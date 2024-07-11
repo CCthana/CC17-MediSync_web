@@ -7,8 +7,13 @@ const packageSchema = Joi.object({
   detail: Joi.string().required().messages({
     "string.empty": "Package Detail is required.",
   }),
-  promotionDate: Joi.string().allow("").optional(),
-  price: Joi.string().allow("").optional(),
+  expireDate: Joi.string().required().messages({
+    "string.empty": "expireDate is required.",
+  }),
+  price: Joi.number().required().positive().messages({
+    "number.base": "price is required number.",
+    "number.positive": "price must be greater than 0."
+  }),
   image: Joi.optional(),
 });
 

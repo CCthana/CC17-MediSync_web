@@ -1,15 +1,16 @@
 import { useState } from "react";
 import ButtonSmall from "../../components/BottonSmall";
 import Modal from "../../components/Modal";
+import SearchBold from "../../components/SearchBold";
 
-export default function PackageForm({ packages }) {
+export default function PackageForm({ packages, search }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <div
         className="border border-ms-gold rounded-[32px] transition duration-200
-          p-4 hover:shadow-[4px_4px_20px_rgba(0,0,0,0.2)] hover:border-ms-green"
+          p-2 hover:shadow-[4px_4px_20px_rgba(0,0,0,0.2)] hover:border-ms-green"
         role="button"
         onClick={() => setOpen(true)}
       >
@@ -17,14 +18,14 @@ export default function PackageForm({ packages }) {
           <div className="bg-slate-400 rounded-3xl overflow-hidden">
             <img
               src={packages.image}
-              alt={packages.title}
+              alt={packages.name}
               className="w-full aspect-square object-cover"
             />
           </div>
 
           <div className="flex items-center gap-4 p-4 flex-col">
             <h1 className="text-ms-gray text-xl font-light">
-              {packages.title}
+              <SearchBold search={search} data={packages.name} />
             </h1>
             <ButtonSmall btn="success">ดูแพ็กเกจ</ButtonSmall>
           </div>
@@ -34,15 +35,15 @@ export default function PackageForm({ packages }) {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        title={packages.title}
+        title={packages.name}
         width={60}
       >
         <div className="flex gap-2 p-6">
-          <div className="bg-slate-400 rounded-3xl overflow-hidden">
+          <div className="bg-slate-400 w-[60rem] rounded-3xl overflow-hidden">
             <img
               src={packages.image}
-              alt={packages.title}
-              className="w-[60rem] aspect-square object-cover"
+              alt={packages.name}
+              className="w-full h-full aspect-square object-cover"
             />
           </div>
 

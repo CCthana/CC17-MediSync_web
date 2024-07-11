@@ -1,8 +1,13 @@
 import { createContext } from "react";
-import { getAccessToken, setAccessToken } from "../utils/local-storage";
+import {
+  getAccessToken,
+  removeAccessToken,
+  setAccessToken,
+} from "../utils/local-storage";
 import { useEffect } from "react";
-import authApi from "../apis/auth";
+
 import { useState } from "react";
+import authApi from "../apis/auth";
 
 export const AuthContext = createContext();
 
@@ -27,13 +32,15 @@ export default function AuthContextProvider({ children }) {
   }, []);
 
   const login = async (credentials) => {
-    await authApi.login(credentials);
+
+     await authApi.login(credentials);
     // Here we assume the OTP is sent when login is called
   };
 
   const verifyOtp = async (email, otp) => {
+    
     const res = await authApi.loginOTP({ email, otp });
-
+    
     setAccessToken(res.data.accessToken);
     const resGetAuthUser = await authApi.getAuthUser();
     // console.log("========= resGetAuthUser ============", resGetAuthUser)
@@ -41,7 +48,7 @@ export default function AuthContextProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.clear();
+    removeAccessToken();
     setAuthUser(null);
   };
 
