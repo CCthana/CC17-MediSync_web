@@ -161,7 +161,7 @@ function AdminDoctorCard({
                 value={input.treatmentResult}
                 name="treatmentResult"
                 onChange={handleChangeInput}
-                className="resize-none min-h-32 w-full max-h-32 rounded-3xl mt-2 p-4
+                className="bg-[#f3f5f2] resize-none min-h-32 w-full max-h-32 rounded-3xl mt-2 p-4
                 border border-ms-gold outline-none text-lg text-ms-gray focus:border-ms-green focus:shadow-[0px_0px_6px_rgba(49,161,114,0.4)]"
               />
             </div>
@@ -172,7 +172,7 @@ function AdminDoctorCard({
                 value={input.diagnosis}
                 name="diagnosis"
                 onChange={handleChangeInput}
-                className="resize-none w-full min-h-32 max-h-32 rounded-3xl mt-2 p-4
+                className="bg-[#f3f5f2] resize-none w-full min-h-32 max-h-32 rounded-3xl mt-2 p-4
                 border border-ms-gold text-lg text-ms-gray outline-none focus:border-ms-green focus:shadow-[0px_0px_6px_rgba(49,161,114,0.4)]"
               />
             </div>
@@ -186,7 +186,7 @@ function AdminDoctorCard({
                 id="medicineSelect"
                 value={medicine}
                 onChange={(e) => setMedicine(e.target.value)}
-                className=" h-[50px] w-full z-10 outline-ms-green appearance-none rounded-full border-[1.5px] px-4 border-ms-gold"
+                className=" h-[50px] bg-[#f3f5f2] w-full z-10 outline-ms-green appearance-none rounded-full border-[1.5px] px-4 border-ms-gold"
               >
                 <option value="">Select a medicine</option>
                 {allMedicine?.map((result) => (
@@ -204,7 +204,7 @@ function AdminDoctorCard({
                 type="number"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                className="w-[100px] h-[50px] ml-2 text-center font-th rounded-l-3xl border-[1.5px] px-4  outline-ms-green   border-ms-gold "
+                className="w-[100px] bg-[#f3f5f2] h-[50px] ml-2 text-center font-th rounded-l-3xl border-[1.5px] px-4  outline-ms-green   border-ms-gold "
               />
               <button
                 onClick={handleAddMedicine}
