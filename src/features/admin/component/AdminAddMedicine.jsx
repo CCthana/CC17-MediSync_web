@@ -20,7 +20,7 @@ function AdminAddMedicine({fetchMedicineData, onClose, setOpen}) {
    }
 
 
-   const handleSubmitForm = async (e) => {
+   const handleSubmitForm = async () => {
       try {
 
          await adminApi.createMedicine(input);

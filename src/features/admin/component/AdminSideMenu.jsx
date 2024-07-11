@@ -17,11 +17,17 @@ function AdminSideMenu() {
         
         <div className="flex flex-col gap-3">
 
+        <div className="text-center text-sm">
         <Link to="/">
-        <div className="mb-4 p-2">
+        <div className="p-2">
           <img className="w-full h-full" src={logo} alt="logo MediSync" />
         </div>
         </Link>
+
+        <div className="mb-4">
+          <h1>{`admin: ${authAdmin?.role}`}</h1>
+        </div>
+        </div>
 
           {/* RECEPTION */}
           {authAdmin?.role == "ADMIN" ? (
@@ -119,6 +125,25 @@ function AdminSideMenu() {
                     }`}
                   >
                     ค่ารักษา
+                  </button>
+                </Link>
+              </div>
+            </>
+          ) : null}
+
+          {/* MEDICINE */}
+          {authAdmin?.role == "ADMIN" ? (
+            <>
+              <div>
+                <Link to="/admin/medicine">
+                  <button
+                    className={` font-th ${
+                      pathname == "/admin/medicine"
+                        ? "text-ms-green font-medium hover:no-underline hover:cursor-default "
+                        : "hover:underline text-ms-gray"
+                    }`}
+                  >
+                    จัดการยา
                   </button>
                 </Link>
               </div>
