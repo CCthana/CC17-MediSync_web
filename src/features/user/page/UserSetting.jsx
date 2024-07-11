@@ -73,7 +73,7 @@ function UserSetting() {
 
         <div>
          <p className='text-sm font-th mb-1 text-ms-gray'>วันเดือนปีเกิด</p>
-         <h1 className='text-2xl font-th text-ms-green font-semibold'>{authUser?.birthDate}</h1>
+         <h1 className='text-2xl font-th text-ms-green font-semibold'>{new Date(authUser?.birthDate).toLocaleDateString("en-GB")}</h1>
         </div>
 
         <div className='grid grid-cols-2 w-1/3'>
