@@ -72,9 +72,6 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
         }
 
         input.medicine = medicineList
-
-        console.log(input)
-        console.log(medicineList)
        
         await adminApi.doctorUpdateVnByid(input)
 
@@ -104,9 +101,14 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
    };
 
    const handleRemoveMedicine = (id) => {
-     const updatedList = medicineList.filter(item => item.id !== id);
+    console.log('id', id)
+     const updatedList = medicineList.filter(item => item.medicineId !== id);
+     console.log('updatedList', updatedList)
      setMedicineList(updatedList);
    };
+
+   console.log("input", input)
+   console.log("medicineList", medicineList)
 
    return (
     <div className="flex flex-col h-fit bg-[#e8eae6] rounded-3xl shadow-md ">
@@ -150,7 +152,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
 
         <div className="flex gap-10 text-ms-gray">
           <div className="w-7/12 space-y-4">
-            <div className="">
+            <div className="space-y-1">
               <h1>การตรวจ</h1>
               <textarea
                 value={input.treatmentResult}
@@ -161,7 +163,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
               />
             </div>
 
-            <div className="">
+            <div className="space-y-1">
               <h1>สรุปอาการ</h1>
               <textarea
                 value={input.diagnosis}
@@ -172,7 +174,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
               />
             </div>
 
-            <div className="">
+            <div className="space-y-1">
               <h1>จ่ายยา</h1>
               <div className="flex">
                 
@@ -181,7 +183,7 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
                 id="medicineSelect"
                 value={medicine}
                 onChange={(e) => setMedicine(e.target.value)}
-                className=" h-[50px] bg-[#f3f5f2] w-full z-10 outline-ms-green appearance-none rounded-full border-[1.5px] px-4 border-ms-gold"
+                className=" h-[50px] bg-[#f3f5f2] w-full z-10 outline-ms-green appearance-none rounded-full border px-4 border-ms-gold"
               >
                 <option value="">Select a medicine</option>
                 {allMedicine?.map((result) => (
@@ -193,13 +195,13 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
               <DropDownIcon className="absolute right-4 z-40 h-6 w-6 text-ms-gold rotate-90 pointer-events-none" />
               </div>
 
-             <div>
+             <div className="flex">
              <input
                 id="quantity"
                 type="number"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                className="w-[100px] bg-[#f3f5f2] h-[50px] ml-2 text-center font-th rounded-l-3xl border-[1.5px] px-4  outline-ms-green   border-ms-gold "
+                className="w-[100px] bg-[#f3f5f2] h-[50px] ml-2 text-center font-th rounded-l-3xl border px-4  outline-ms-green   border-ms-gold "
               />
               <button
                 onClick={handleAddMedicine}
@@ -210,9 +212,11 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
              </div>
              </div>
 
-              <div className="font-th ml-4 mt-2">
-                <div className="flex flex-col w-full px-4 py-3 gap-1 bg-[#f3f5f2] rounded-2xl">
-                  {medicineList.map((item) => (
+              <div className="font-th pt-2">
+                <div className="flex flex-col w-full px-4 py-3 gap-1 bg-[#f3f5f2] rounded-2xl text-center text-gray-400">
+                { medicineList.length === 0 ? "ยังไม่มียา"
+                : <>
+                {medicineList.map((item) => (
                     <div
                       key={item.id}
                       className="flex justify-between bg-[#f3f5f2] px-4 rounded-md"
@@ -230,14 +234,16 @@ function AdminDoctorCard({id, hn, vn, firstName, lastName, gender, birthDate, we
                         </span>{" "}
                       </h1>
                       <button
-                        onClick={() => handleRemoveMedicine(item.id)}
+                        onClick={() => handleRemoveMedicine(item.medicineId)}
                         className="font-light text-red-600 text-xl"
                       >
                         {" "}
                         x{" "}
                       </button>
                     </div>
-                  ))}
+                  ))}</>
+                } 
+                  
                 </div>
               </div>
             </div>

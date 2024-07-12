@@ -186,8 +186,8 @@ function AdminAccountCard({
               <div className=" min-w-[500px] max-w-[500px] min-h-32 max-h-32 rounded-3xl mt-2 p-4 border-[1.5px] border-ms-gold outline-ms-green text-lg text-ms-gray font-th">
                 {medicineOrders.map((result) => (
                   <h1 key={result?.id}>
-                    Medicine: {result?.medicine.name} quantity:
-                    {result?.quantity} price:{result?.medicine.price}
+                    Medicine: {result?.medicine?.name} quantity:
+                    {result?.quantity} price:{result?.medicine?.price}
                   </h1>
                 ))}
               </div>

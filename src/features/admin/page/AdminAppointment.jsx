@@ -174,7 +174,7 @@ function AdminAppointment() {
               <h1 className="w-full font-normal text-ms-gray">
                 คุณ: &#32;
                 <span className=" font-normal text-ms-green">
-                  {result?.user.firstName} {result?.user.lastName}
+                  {result?.user?.firstName} {result?.user?.lastName}
                 </span>
               </h1>
               <h1 className="w-2/4 text-ms-gray">
