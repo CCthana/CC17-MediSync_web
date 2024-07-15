@@ -28,7 +28,7 @@ export default function CardFourBtn() {
       id: 4,
       text: "ลงทะเบียนล่วงหน้า",
       icon: "fa-solid fa-notes-medical",
-      path: "/",
+      path: "/register",
       tooltip: "สำหรับลงทะเบียนข้อมูลล่วงหน้า",
     },
   ];

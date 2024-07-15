@@ -30,11 +30,11 @@ const getDocumentDefinition = (data, imageBase64) => {
       { text: `ใบวินิจฉัยโรค`, style: "header", margin: [0, 20, 0, 50] },
       { text: `เลขที่ ${data?.id}-${data?.vn}`, alignment: "right" },
       {
-        text: `ชื่อ ${data?.doctor.firstName} ${data?.doctor.lastName}`,
+        text: `ชื่อ ${data?.doctor?.firstName} ${data?.doctor?.lastName}`,
         style: "subheader",
       },
       {
-        text: `ได้ทำการตรวจ คุณ${data?.user.firstName} ${data?.user.lastName} เลขที่ HN: ${data?.hn}`,
+        text: `ได้ทำการตรวจ คุณ${data?.user?.firstName} ${data?.user?.lastName} เลขที่ HN: ${data?.hn}`,
         margin: [0, 0, 0, 0],
       },
       {
@@ -54,7 +54,7 @@ const getDocumentDefinition = (data, imageBase64) => {
       { text: `${data?.treatmentResult}`, margin: [0, 0, 0, 5] },
       { text: "ยาที่ได้รับ", margin: [0, 10, 0, 0], style: "subheader" },
       {
-        ul: medicines.map(
+        ul: medicines?.map(
           (medicine) =>
             `Medicine: ${medicine.medicine.name}, Quantity: ${medicine.quantity}`
         ),

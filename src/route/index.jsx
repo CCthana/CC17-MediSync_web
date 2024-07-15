@@ -32,6 +32,7 @@ import HrContextProvider from "../contexts/HrContext";
 import MainContainerAdmin from "../features/admin/MainContainerAdmin";
 import VnContextProvider from "../contexts/VnContext";
 import AdminMedicinePage from "../features/admin/page/AdminMedicinePage";
+import Register from "../pages/home-page/component/Register";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       },
       { path: "/doctor", element: <DoctorPage /> },
       { path: "/login", element: <LoginPage /> },
+      { path: "/register", element: <Register /> },
     ],
   },
   {

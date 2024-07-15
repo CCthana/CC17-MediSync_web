@@ -67,8 +67,10 @@ export default function LoginPage() {
           err.response.status === 400
             ? "email or password invalid"
             : "internal server error";
+            setIsLoading(false);
         return toast.error(message);
       }
+      
     }
   };
 
