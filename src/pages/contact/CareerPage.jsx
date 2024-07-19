@@ -33,7 +33,7 @@ export default function CareerPage() {
 
   const { allPosition } = useHr()
 
-  const [applyData, setApplyData] = useState(initialInput);
+  const [applyData, setapplyData] = useState(initialInput);
   const [inputError, setInputError] = useState(initialInputError);
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +46,7 @@ export default function CareerPage() {
   };
 
   const handleChangeInput = (e) => {
-    setApplyData({ ...applyData, [e.target.name]: e.target.value });
+    setapplyData({ ...applyData, [e.target.name]: e.target.value });
     setInputError((prev) => ({ ...prev, [e.target.name]: "" }));
   };
 
@@ -92,6 +92,7 @@ export default function CareerPage() {
       await careerApi.sendEmailHr(formData);
     } catch (err) {
       console.log("err contact", err);
+      setIsLoading(false);
     }
   };
 
@@ -214,6 +215,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <div className="relative">
+                  
                 <select
                   onChange={handleChangeInput}
                   value={applyData?.position}

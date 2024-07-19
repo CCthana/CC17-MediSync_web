@@ -43,7 +43,7 @@ function AdminNursePage() {
               name="clinicId"
               id="clinicId"
               onChange={handleClinicChange}
-              className="w-[200px] bg-[#f3f5f2] h-[50px] appearance-none outline-none rounded-3xl border pr-4 border-ms-gold text-center font-normal text-ms-green "
+              className="w-[200px] bg-[#f3f5f2] h-[50px] px-4 appearance-none outline-none rounded-3xl border pr-4 border-ms-gold text-center font-normal text-ms-green "
             >
               <option defaultValue> --- เลือกแผนก --- </option>
               {getAllClinic?.map((result) => (
@@ -64,13 +64,13 @@ function AdminNursePage() {
 
         <div className="invisible">
           <h1>แผนก / คลินิก</h1>
-          <select className="w-[200px] h-[50px] outline-ms-green rounded-3xl border-[1.5px] p-2 border-ms-gold text-center font-semibold text-ms-green ">
+          <select className="w-[200px] h-[50px] outline-ms-green rounded-3xl border p-2 border-ms-gold text-center font-semibold text-ms-green ">
             <option defaultValue> --- เลือกแผนก --- </option>
           </select>
         </div>
       </div>
 
-      <div className="p-8 w-9/12">
+      <div className="p-8 w-9/12 space-y-4">
         {nurseData?.map((result) => (
           <AdminNurseCard
             fetchNurseData={fetchNurseData}

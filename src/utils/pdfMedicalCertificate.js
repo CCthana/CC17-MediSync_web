@@ -54,7 +54,7 @@ const getDocumentDefinition = (data, imageBase64) => {
       { text: `${data?.treatmentResult}`, margin: [0, 0, 0, 5] },
       { text: "ยาที่ได้รับ", margin: [0, 10, 0, 0], style: "subheader" },
       {
-        ul: medicines.map(
+        ul: medicines?.map(
           (medicine) =>
             `Medicine: ${medicine.medicine.name}, Quantity: ${medicine.quantity}`
         ),

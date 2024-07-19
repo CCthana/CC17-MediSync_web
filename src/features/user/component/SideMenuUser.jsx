@@ -11,7 +11,7 @@ function SideMenuUser() {
 
   return (
     <>
-      <div className="flex flex-col w-60 border-[1px] border-ms-gold min-h-[650px] h-full rounded-[40px] pt-10 pb-20 pl-6 gap-4 font-semibold text-ms-gray">
+      <div className="flex flex-col w-60 font-normal border-[1px] border-ms-gold min-h-[650px] h-full rounded-[40px] pt-10 pb-20 pl-6 gap-4 text-ms-gray">
         <div className="flex flex-col gap-4 flex-1">
           <div>
             <Link to="/user">
@@ -53,7 +53,7 @@ function SideMenuUser() {
             </Link>
           </div>
         </div>
-        <div className=" items-end font-semibold text-xl">
+        <div className=" items-end font-normal">
           <button onClick={() => setOpen(true)} className="hover:underline">
             ออกจากระบบ
           </button>

@@ -111,10 +111,10 @@ function AdminSearchHn( {handleSelectedHn, onClose} ) {
                         <div key={result?.hn} onClick={() => {
                            handleSelectedHn(result) 
                            onClose()} 
-                           } className="h-20 w-full rounded-3xl text-xl  bg-card-bg flex items-center justify-between gap-20 mb-4 px-10 font-th text-ms-gray hover:cursor-pointer ">
-                            <h1 className="w-2/4"> <span className="font-medium text-ms-green"> {result?.hn} </span>  </h1>
+                           } className="h-20 w-full rounded-3xl text-base  bg-card-bg flex items-center justify-between gap-20 mb-4 px-10 font-th text-ms-gray hover:cursor-pointer ">
+                            <h1 className="w-1/5"> <span className="font-medium text-ms-green"> {result?.hn} </span>  </h1>
                             <h1 className="w-full ">คุณ: <span className="font-medium text-ms-green"> {result?.firstName} {result?.lastName}</span> </h1>
-                            <h1 className="w-2/4">เพศ: <span className="font-medium text-ms-green"> {result?.gender}</span> </h1>
+                            <h1 className="w-3/5">เพศ: <span className="font-medium text-ms-green"> {result?.gender}</span> </h1>
                             <h1 className="w-full">เบอร์โทร: <span className="font-medium text-ms-green"> {result?.phone}</span> </h1>
                             <h1 className="w-2/4">อายุ: <span className="font-medium text-ms-green"> {result.birthDate ? (new Date().getUTCFullYear())  - result?.birthDate.split('-')[0] : '' } </span> ปี</h1>
                             
@@ -122,7 +122,7 @@ function AdminSearchHn( {handleSelectedHn, onClose} ) {
                     ))}
                 </div>
             ) : (
-               <div className="w-full h-full grid place-content-center opacity-10">
+               <div className="w-full mt-20 grid place-content-center opacity-10">
                   <img className="w-full h-full" src={logo2} alt="logo MediSync" />
                   </div>
             ) }
