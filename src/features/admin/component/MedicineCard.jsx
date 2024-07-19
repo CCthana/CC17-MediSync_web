@@ -68,23 +68,23 @@ function MedicineCard({id, name, price, stock, fetchMedicineData}) {
                <div className="flex justify-between items-center">
                   <div>
                      <h1>Name</h1>
-                     <input onChange={handleChangeInput} value={input.name} name="name"  className="h-10 rounded-2xl px-4 text-center border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
+                     <input onChange={handleChangeInput} value={input.name} name="name"  className="h-10 rounded-full px-4 text-center bg-[#f3f5f2] border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
                   </div>
 
                   <div>
                      <h1>Price</h1>
-                     <input onChange={handleChangeInput} value={input.price} name="price"  className="h-10 rounded-2xl px-4 text-center border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
+                     <input onChange={handleChangeInput} value={input.price} name="price"  className="h-10 rounded-full px-4 text-center bg-[#f3f5f2] border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
                   </div>
 
                   <div>
                      <h1>Stock</h1>
-                     <input onChange={handleChangeInput} value={input.stock} name="stock" className="h-10 rounded-2xl px-4 text-center border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
+                     <input onChange={handleChangeInput} value={input.stock} name="stock" className="h-10 rounded-full px-4 text-center bg-[#f3f5f2] border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
                   </div>
                </div>   
 
-               <div className="flex items-center justify-end  gap-4 pt-4">
-                  <button onClick={handleSubmitForm} className="font-th w-[150px] h-[40px] bg-ms-green rounded-full text-white text-xl hover:bg-[#257956]"> ยืนยัน </button>
-                  <button onClick={handleClickOpen} className="font-th w-[150px] h-[40px] rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white "> ยกเลิก </button>
+               <div className="flex items-center justify-center gap-4 pt-8">
+                  <button onClick={handleSubmitForm} className="font-th w-[180px] h-[40px] bg-ms-green rounded-full text-[#f3f5f2] hover:bg-[#257956]"> ยืนยัน </button>
+                  <button onClick={handleClickOpen} className="font-th w-[180px] h-[40px] rounded-full text-ms-gray border-[1.5px] border-ms-gold bg-[#f3f5f2] hover:bg-[#89713e] hover:text-white "> ยกเลิก </button>
                </div>
 
             </div> 

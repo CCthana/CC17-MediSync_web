@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import adminApi from "../../../apis/admin";
+import Input from "../../../components/Input";
+import ButtonAdmin from "../../../components/ButtonAdmin";
+import validateMedicine from "../validate/validate-medicine";
 
 
 function AdminAddMedicine({fetchMedicineData, onClose, setOpen}) {
@@ -11,17 +14,28 @@ function AdminAddMedicine({fetchMedicineData, onClose, setOpen}) {
       stock: ''
    }
 
+   const initialErrorInput = {
+      name:'',
+      price: '',
+      stock: ''
+    };
 
    const [input, setInput] = useState(initialInput)
+   const [inputError, setInputError] = useState(initialErrorInput);
 
    const handleChangeInput = e => {
       setInput({...input, [e.target.name]: e.target.value});
-      
+      setInputError({...inputError, [e.target.name]: ""});
    }
-
 
    const handleSubmitForm = async () => {
       try {
+
+         const errors = validateMedicine(input)
+
+         if (errors) {
+            return setInputError(errors)
+         }
 
          await adminApi.createMedicine(input);
          toast.success('Medicine updated');
@@ -33,34 +47,32 @@ function AdminAddMedicine({fetchMedicineData, onClose, setOpen}) {
       } 
    };
 
-
-
   return (
    <>
-    <div className="flex justify-between px-10 mb-8">
+    <div className="flex flex-col py-12 px-20 gap-8">
        <div>
-         <h1>ชื่อยา</h1>
-         <input onChange={handleChangeInput} value={input.name} name="name"  className="h-10 rounded-2xl px-4 text-center border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
+         <h1 className="relative w-fit">ชื่อยา <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-1 -right-2"></i></h1>
+         <Input error={inputError.name} onChange={handleChangeInput} value={input.name} name="name" />
       </div>
 
       <div>
-         <h1>ราคา</h1>
-         <input type="number" min="1" onChange={handleChangeInput} value={input.price} name="price"  className="h-10 rounded-2xl px-4 text-center border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
+         <h1 className="relative w-fit">ราคา <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-1 -right-2"></i></h1>
+         <Input error={inputError.price} typeInput="number" placeholder="" onChange={handleChangeInput} value={input.price} name="price" />
       </div>
 
       <div>
-         <h1>จำนวน</h1>
-         <input type="number" min="1" onChange={handleChangeInput} value={input.stock} name="stock" className="h-10 rounded-2xl px-4 text-center border-[1px] border-ms-gold text-ms-green font-semibold focus:outline-ms-green " />
+         <h1 className="relative w-fit">จำนวน <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-1 -right-2"></i></h1>
+         <Input error={inputError.stock} typeInput="number" onChange={handleChangeInput} value={input.stock} name="stock" />
       </div>
 
-    
+      <div className="flex items-center mx-auto gap-4 w-2/3">
+         <ButtonAdmin btn="active" onClick={handleSubmitForm}> ยืนยัน </ButtonAdmin>
+         <ButtonAdmin btn="success" onClick={onClose}> ยกเลิก </ButtonAdmin>
+      </div>
 
     </div>
 
-      <div className="flex items-center justify-end  gap-4 pt-4  px-10 mb-4">
-         <button onClick={handleSubmitForm} className="font-th w-[150px] h-[40px] bg-ms-green rounded-full text-white text-xl hover:bg-[#257956]"> ยืนยัน </button>
-         <button onClick={onClose} className="font-th w-[150px] h-[40px] rounded-full text-ms-gray text-xl border-[1.5px] border-ms-gold bg-white hover:bg-[#89713e] hover:text-white "> ยกเลิก </button>
-      </div>
+      
 
  </>
   )

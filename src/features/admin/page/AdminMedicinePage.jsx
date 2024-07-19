@@ -41,8 +41,7 @@ function AdminMedicinePage() {
       <div className="flex items-center justify-center  text-center px-8 text-ms-gray ">
          <HeaderTextAdmin>ข้อมูลทะเบียนยา</HeaderTextAdmin>
       </div>
-         <button onClick={() => setOpen(true)} className="bg-ms-green w-1/5 text-white px-4 py-2 text-lg font-light my-4 rounded-full mx-14 hover:bg-[#257956] mb-6 "> ลงทะเบียนข้อมูลยา </button> 
-     
+         <button onClick={() => setOpen(true)} className="bg-ms-green w-1/6 text-white px-4 py-2 text-lg font-light my-4 rounded-full mx-14 hover:bg-[#257956] mb-6 "> ลงทะเบียนข้อมูลยา </button>
       
       <div className="space-y-4">
       {allMedicine?.map((item) => <MedicineCard 
@@ -54,10 +53,9 @@ function AdminMedicinePage() {
          fetchMedicineData={fetchMedicineData}
       />) }
       </div>
-
    </div> 
 
-   <Modal title={'ลงทะเบียนข้อมูลยา'} width={70} open={open} onClose={() => setOpen(false)} >
+   <Modal title={'ลงทะเบียนข้อมูลยา'} width={50} open={open} onClose={() => setOpen(false)} >
       <AdminAddMedicine fetchMedicineData={fetchMedicineData} onClose={() => setOpen(false)} setOpen={setOpen} />
    </Modal>
 

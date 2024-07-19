@@ -103,6 +103,7 @@ export default function AddDoctor({
               src={file ? URL.createObjectURL(file) : imgPlus}
               alt="image doctor"
             />
+
             <input
               type="file"
               ref={fileElCover}
@@ -114,6 +115,7 @@ export default function AddDoctor({
                 }
               }}
             />
+            
           </div>
           <div>
             <button

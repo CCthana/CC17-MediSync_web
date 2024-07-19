@@ -131,24 +131,7 @@ function AdminSideMenu() {
             </>
           ) : null}
 
-          {/* MEDICINE */}
-          {authAdmin?.role == "ADMIN" ? (
-            <>
-              <div>
-                <Link to="/admin/medicine">
-                  <button
-                    className={` font-th ${
-                      pathname == "/admin/medicine"
-                        ? "text-ms-green font-medium hover:no-underline hover:cursor-default "
-                        : "hover:underline text-ms-gray"
-                    }`}
-                  >
-                    จัดการยา
-                  </button>
-                </Link>
-              </div>
-            </>
-          ) : null}
+          
 
           {authAdmin?.role == "ADMIN" ? (
             <>
@@ -222,6 +205,25 @@ function AdminSideMenu() {
                     }`}
                   >
                     รับสมัครงาน
+                  </button>
+                </Link>
+              </div>
+            </>
+          ) : null}
+
+          {/* MEDICINE */}
+          {authAdmin?.role == "ADMIN" ? (
+            <>
+              <div>
+                <Link to="/admin/medicine">
+                  <button
+                    className={` font-th ${
+                      pathname == "/admin/medicine"
+                        ? "text-ms-green font-medium hover:no-underline hover:cursor-default "
+                        : "hover:underline text-ms-gray"
+                    }`}
+                  >
+                    จัดการยา
                   </button>
                 </Link>
               </div>
