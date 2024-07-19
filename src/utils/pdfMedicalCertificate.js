@@ -30,11 +30,11 @@ const getDocumentDefinition = (data, imageBase64) => {
       { text: `ใบวินิจฉัยโรค`, style: "header", margin: [0, 20, 0, 50] },
       { text: `เลขที่ ${data?.id}-${data?.vn}`, alignment: "right" },
       {
-        text: `ชื่อ ${data?.doctor.firstName} ${data?.doctor.lastName}`,
+        text: `ชื่อ ${data?.doctor?.firstName} ${data?.doctor?.lastName}`,
         style: "subheader",
       },
       {
-        text: `ได้ทำการตรวจ คุณ${data?.user.firstName} ${data?.user.lastName} เลขที่ HN: ${data?.hn}`,
+        text: `ได้ทำการตรวจ คุณ${data?.user?.firstName} ${data?.user?.lastName} เลขที่ HN: ${data?.hn}`,
         margin: [0, 0, 0, 0],
       },
       {

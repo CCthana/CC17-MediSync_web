@@ -34,7 +34,7 @@ const getDocumentDefinition = (data, imageBase64) => {
   const totalCost = calculateTotalCost(newData);
   const formattedTotalCost = formatCurrency(totalCost);
 
-  const tableBody = newdata?.map((row, index) => [
+  const tableBody = newData?.map((row, index) => [
     {
       text: (index + 1).toString(),
       margin: [5, 0, 5, 0],

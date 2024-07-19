@@ -74,7 +74,7 @@ console.log('input', input)
   console.log('inputError', inputError)
 
   return (
-    <div className="flex flex-col bg-[#e8eae6] rounded-3xl shadow-md ">
+    <div className="flex flex-col bg-[#e8eae6] rounded-3xl shadow-md mb-4 ">
       <div className="w-full font-th font-normal text-ms-gray h-16 flex items-center justify-between px-6 rounded-3xl border-[1px] ">
         <h1 className="w-2/4">
           no. <span className=" text-ms-green"> {id} </span>
