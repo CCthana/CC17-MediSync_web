@@ -30,7 +30,7 @@ function AdminSideMenu() {
         </div>
 
           {/* RECEPTION */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "RECEPTION" ? (
             <>
               <div>
                 <Link to="/admin/appointment">
@@ -75,7 +75,7 @@ function AdminSideMenu() {
           ) : null}
 
           {/* NURSE */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "NURSE" ? (
             <>
               <div>
                 <Link to="/admin/nurse">
@@ -94,7 +94,7 @@ function AdminSideMenu() {
           ) : null}
 
           {/* DOCTOR */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "DOCTOR" ? (
             <>
               <div>
                 <Link to="/admin/doctor">
@@ -113,7 +113,7 @@ function AdminSideMenu() {
           ) : null}
 
           {/* ACCOUNT */}
-          {authAdmin?.role == "ADMIN" ? (
+          {authAdmin?.role == "ACCOUNT" ? (
             <>
               <div>
                 <Link to="/admin/account">
@@ -131,24 +131,7 @@ function AdminSideMenu() {
             </>
           ) : null}
 
-          {/* MEDICINE */}
-          {authAdmin?.role == "ADMIN" ? (
-            <>
-              <div>
-                <Link to="/admin/medicine">
-                  <button
-                    className={` font-th ${
-                      pathname == "/admin/medicine"
-                        ? "text-ms-green font-medium hover:no-underline hover:cursor-default "
-                        : "hover:underline text-ms-gray"
-                    }`}
-                  >
-                    จัดการยา
-                  </button>
-                </Link>
-              </div>
-            </>
-          ) : null}
+          
 
           {authAdmin?.role == "ADMIN" ? (
             <>
@@ -222,6 +205,25 @@ function AdminSideMenu() {
                     }`}
                   >
                     รับสมัครงาน
+                  </button>
+                </Link>
+              </div>
+            </>
+          ) : null}
+
+          {/* MEDICINE */}
+          {authAdmin?.role == "ADMIN" ? (
+            <>
+              <div>
+                <Link to="/admin/medicine">
+                  <button
+                    className={` font-th ${
+                      pathname == "/admin/medicine"
+                        ? "text-ms-green font-medium hover:no-underline hover:cursor-default "
+                        : "hover:underline text-ms-gray"
+                    }`}
+                  >
+                    จัดการยา
                   </button>
                 </Link>
               </div>

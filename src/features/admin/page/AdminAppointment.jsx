@@ -166,7 +166,7 @@ function AdminAppointment() {
           {searchAppoint?.map((result) => (
             <div
               key={result?.hn}
-              className="w-full hover:shadow-[2px_2px_8px_rgba(0,0,0,0.2)] px-8 py-4 rounded-3xl text-xl bg-card-bg flex items-center justify-between gap-10 font-th text-ms-gray hover:cursor-pointer "
+              className="w-full hover:shadow-[2px_2px_8px_rgba(0,0,0,0.2)] px-8 py-4 rounded-3xl text-lg bg-card-bg flex items-center justify-between gap-10 font-th text-ms-gray hover:cursor-pointer "
             >
               <h1 className="w-1/4">
                 <span className=" font-normal text-ms-green">{result?.hn}</span>
@@ -185,13 +185,13 @@ function AdminAppointment() {
                 วันที่นัด: &#32;
                 <span className=" text-md text-ms-green">
                   {(result?.appointmentTime &&
-                    result?.appointmentTime.split("T")[0]) ||
+                    new Date(result?.appointmentTime).toLocaleDateString("en-GB")) ||
                     ""}
                 </span>
               </h1>
               <button
                 onClick={() => handleClickConfirm(result?.id, result?.hn)}
-                className="text-base w-2/5 font-th hover:underline bg-ms-green rounded-full text-white py-3 hover:bg-[#257956]"
+                className="text-base w-3/5 font-th hover:underline bg-ms-green rounded-full text-white py-3 hover:bg-[#257956]"
               >
                 ออกใบ VN
               </button>

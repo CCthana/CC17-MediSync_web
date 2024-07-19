@@ -215,6 +215,7 @@ export default function CareerPage() {
                   <i className="fa-solid fa-asterisk text-red-400 text-[8px] absolute top-0 -right-2"></i>
                 </label>
                 <div className="relative">
+                  
                 <select
                   onChange={handleChangeInput}
                   value={applyData?.position}
