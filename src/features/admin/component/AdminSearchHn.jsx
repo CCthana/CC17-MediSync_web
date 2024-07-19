@@ -122,7 +122,7 @@ function AdminSearchHn( {handleSelectedHn, onClose} ) {
                     ))}
                 </div>
             ) : (
-               <div className="w-full h-full grid place-content-center opacity-10">
+               <div className="w-full mt-20 grid place-content-center opacity-10">
                   <img className="w-full h-full" src={logo2} alt="logo MediSync" />
                   </div>
             ) }

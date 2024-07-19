@@ -33,6 +33,7 @@ import MainContainerAdmin from "../features/admin/MainContainerAdmin";
 import VnContextProvider from "../contexts/VnContext";
 import AdminMedicinePage from "../features/admin/page/AdminMedicinePage";
 import Register from "../pages/home-page/component/Register";
+import Payment from "../features/payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
       { path: "/doctor", element: <DoctorPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <Register /> },
+      { path: "/payment", element: <Payment /> },
     ],
   },
   {

@@ -51,7 +51,7 @@ export default function PackageForm({ packages, search }) {
 
           <div className="flax gap-4 p-4">
               <p className="indent-6 mb-4">{packages?.detail}</p>
-              <p className=" mb-4">{`ราคา paclage ${packages?.price.toLocaleString()} บาท`}</p>
+              <p className=" mb-4 text-ms-green">{`ราคา package ${packages?.price.toLocaleString()} บาท`}</p>
               <span className="font-th font-light">{`สามารถใช้ได้ถึง ${new Date(packages?.expireDate).toLocaleDateString("en-GB")}`}</span>
           </div>
         </div>

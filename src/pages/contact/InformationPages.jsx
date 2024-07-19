@@ -12,32 +12,7 @@ export default function InformationPage() {
             ศูนย์รวมความเชี่ยวชาญด้านหลากหลาย
           </h2>
           <p className="text-ms-gray indent-10 leading-7">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut
-            doloribus iusto dolore incidunt deleniti inventore veritatis
-            quibusdam illo fugit aliquam dicta molestiae cumque nostrum, numquam
-            repudiandae fuga animi. Sed, nisi commodi recusandae asperiores
-            tempore aliquid possimus! Animi sapiente dolore tenetur hic
-            exercitationem! Eveniet, illo atque. Distinctio iure fugit tenetur
-            error consequatur, aperiam adipisci cum laudantium magni perferendis
-            eaque assumenda accusantium at, molestias nulla laborum dicta
-            quibusdam harum. Earum minus voluptatibus aspernatur nostrum? Et
-            iure temporibus, cumque dignissimos exercitationem id numquam
-            dolorum aliquid. Rerum tenetur voluptas laudantium itaque quaerat,
-            reiciendis officiis ex odio fugit libero alias voluptatem eveniet
-            sit dolores pariatur, ea inventore accusamus. Eveniet quas molestias
-            recusandae excepturi. Quae reprehenderit inventore ratione earum
-            animi provident. Illum ut recusandae, dolorum culpa soluta sed
-            voluptate eligendi maxime nobis iure minima enim, quasi ratione aut
-            dolor nesciunt. Accusantium maxime quidem vero culpa perspiciatis
-            repellat fugit, dolore cum dolorem non. Ut qui consectetur iure
-            itaque in cumque consequuntur inventore minima exercitationem
-            laboriosam vel sapiente unde eos suscipit adipisci accusamus
-            obcaecati, incidunt blanditiis culpa eum quos doloremque aliquid!
-            Fuga voluptates at nobis necessitatibus porro sit, veritatis sint!
-            Maiores, quos! Corrupti quia ipsam repellendus architecto molestias
-            nulla pariatur magnam. Iusto nihil animi doloribus accusantium in
-            nisi quam, enim corporis odio eos quis omnis, totam numquam?
-            Repellat perferendis qui optio minus vel fuga enim suscipit tempora.
+          เราเป็นโรงพยาบาลที่บุกเบิกการให้บริการดูแลสุขภาพที่ได้มาตรฐานระดับโลกและให้บริการดูแลสุขภาพแก่ชาวต่างชาติมาเป็นเวลานานเกือบสี่ทศวรรษ ตั้งอยู่ในย่านใจกลางเมืองของกรุงเทพมหานคร ซึ่งเป็นมหานครขนาดใหญ่ที่มีความเป็นสากลซึ่งมีสมัญญาว่า “กรุงเทพ” (The City of Angels) ซึ่งมีชื่อเสียงในเรื่องวัฒนธรรมในการดูแลต้อนรับอันยอดเยี่ยมและอาหารรสเลิศ  เป็นโรงพยาบาลแห่งแรกที่ได้รับการรับรองมาตรฐานระดับสากล โดยมีแพทย์เฉพาะทางหลากหลายสาขา และได้เข้าจดทะเบียนในตลาดหลักทรัพย์แห่งประเทศไทยตั้งแต่ปี พ.ศ. 2532 เราเป็นโรงพยาบาลเอกชนที่มีขนาดใหญ่ที่สุดแห่งหนึ่งในภาคพื้นเอเชียตะวันออกเฉียงใต้ ที่ให้บริการดูแลรักษาผู้ป่วยกว่า 1.1 ล้านคนต่อปีที่มาจากประเทศต่างๆ กว่า 190 ประเทศ
           </p>
         </div>
 
@@ -74,24 +49,19 @@ export default function InformationPage() {
           </h2>
           <ul className="text-[#767676] leading-7">
             <li className="indent-10">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-              expedita consequatur tempore alias aspernatur vel animi,
-              voluptatibus explicabo inventore quo ipsum. Consequatur dolores
-              facere voluptatum nobis quisquam ea quibusdam quae!
+            เราเป็นโรงพยาบาลแห่งแรกในเอเชียที่ได้รับการรับรองคุณภาพมาตรฐานโรงพยาบาลระดับสากลจาก Joint Commission International (JCI) ของสหรัฐอเมริกา และโรงพยาบาลฯ ยังผ่านรับการรับรองต่อเนื่องอีก 5 ครั้ง นอกจากนี้ ในปี พ.ศ. 2560  ได้กลายเป็นโรงพยาบาลแห่งแรกในเอเชียที่ได้รับการรับรองมาตรฐานคุณภาพ DNV GL MIR Certified สำหรับความเสี่ยงต่อการติดเชื้อ และกลายเป็นโรงพยาบาลแห่งแรกที่อยู่นอกสหรัฐอเมริกาที่ได้รับการรับรอง Global Healthcare Accreditation ในระดับความเป็นเลิศจาก GHA ซึ่งบ่งชี้ถึงมาตรฐานด้านคุณภาพและความปลอดภัยขั้นสูงสุดในระดับสากลสำหรับผู้ป่วยชาวต่างชาติที่เดินทางมารับการดูแลรักษาที่เราการได้รับการรับรองมาตรฐานทางคลินิกและมาตรฐานระดับสากลจากหลายองค์กรอย่างต่อเนื่องเป็นสิ่งที่แสดงให้เห็นว่า มีอัตราความสำเร็จในการรักษาสูงสุดและมีอัตราการติดเชื้อที่ต่ำสุดในภูมิภาคและในโลก
             </li>
             <br />
             <li>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-              expedita consequatur tempore alias aspernatur vel animi,
-              voluptatibus explicabo inventore quo ipsum. Consequatur dolores
-              facere voluptatum nobis quisquam ea quibusdam quae!
+            เราได้จัดตั้งทีมสหวิชาชีพที่ประกอบด้วยผู้เชี่ยวชาญหลากหลายสาขาไม่ว่าจะเป็น แพทย์ พยาบาล เภสัชกร นักกายภาพบำบัด นักโภชนาการ นักเทคนิคการแพทย์ และบุคลากรวิชาชีพอื่นๆ เพื่อการรักษาแบบบูรณาการที่มีคุณภาพ ทำให้โรงพยาบาลกลายเป็นจุดหมายปลายทางในการดูแลรักษาสุขภาพแบบครบวงจรสำหรับผู้ป่วยทุกประเภทและผู้ที่ต้องการการดูแลรักษาที่ซับซ้อน เรามีแพทย์ผู้เชี่ยวชาญกว่า 1,300 คน และบุคลากรด้านอื่นๆ อีกกว่า 4,800 คน แพทย์ส่วนใหญ่ได้รับวุฒิบัตรในระดับสากลจากสหรัฐอเมริกา สหราชอาณาจักร ออสเตรเลีย ญี่ปุ่น และประเทศอื่นๆ ที่มีเศรษฐกิจที่พัฒนาแล้วซึ่งมีชื่อเสียงในด้านมาตรฐานทางการแพทย์และคุณภาพระดับสูง การประสานงานที่ราบรื่นระหว่างทีมแพทย์ผู้เชี่ยวชาญเฉพาะทาง (subspecialties) กว่า 70 สาขาช่วยเพิ่มประสิทธิภาพในการรักษาและทำให้ได้ผลการรักษาที่ดียิ่งขึ้นสำหรับผู้ป่วยที่เข้ารับการรักษา
             </li>
             <br />
             <li>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-              expedita consequatur tempore alias aspernatur vel animi,
-              voluptatibus explicabo inventore quo ipsum. Consequatur dolores
-              facere voluptatum nobis quisquam ea quibusdam quae!
+            เราเป็นผู้นำในด้านเทคโนโลยีทางการแพทย์และการดูแลรักษาผู้ป่วยด้วยนวัตกรรมที่ทันสมัย
+
+ท่ามกลางวิทยาการความก้าวหน้าในดูแลรักษาล่าสุด  ได้เปิดแผนกการแพทย์แม่นยำ (Precision Medicine) ซึ่งให้บริการรักษามะเร็งแบบเฉพาะบุคคลด้วยวิธีการรักษาที่ทันสมัยที่สุด ซึ่งโดยส่วนใหญ่มาจากสหรัฐอเมริกาและยุโรป
+
+เทคโนโลยีที่ล้ำสมัยที่สุดอีกอย่างหนึ่งที่เราใช้ก็คือ CardioInsight ซึ่งเป็นเทคโนโลยีการตรวจวินิจฉัยแบบไม่รุกล้ำสำหรับวินิจฉัยภาวะหัวใจเต้นผิดจังหวะ และเป็นโรงพยาบาลเพียงแห่งเดียวในภาคพื้นเอเชียแปซิฟิกที่ใช้เทคโนโลยีนี้
             </li>
             <br />
           </ul>

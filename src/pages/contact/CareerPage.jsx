@@ -92,6 +92,7 @@ export default function CareerPage() {
       await careerApi.sendEmailHr(formData);
     } catch (err) {
       console.log("err contact", err);
+      setIsLoading(false);
     }
   };
 

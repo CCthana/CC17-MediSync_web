@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 
 export default function ContactPage() {
@@ -41,11 +42,14 @@ export default function ContactPage() {
               <p className="text-ms-gray">info@medisync.com</p>
             </div>
           </div>
-          <div className="">
+          <Link
+            to="https://access.line.me/oauth2/v2.1/login?returnUri=%2Foauth2%2Fv2.1%2Fauthorize%2Fconsent%3Fscope%3Dopenid%2Bprofile%2Bfriends%2Bgroups%2Btimeline.post%2Bmessage.write%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsocial-plugins.line.me%252Fwidget%252FloginCallback%253FreturnUrl%253Dhttps%25253A%25252F%25252Fsocial-plugins.line.me%25252Fwidget%25252Fclose%26state%3D9fec98665820574ebc349f47d089a6%26client_id%3D1446101138&loginChannelId=1446101138#/"
+            target="_blank"
+          >
             <Button btn="success" width="w-[11rem]">
               line: โรงพยาบาล
             </Button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

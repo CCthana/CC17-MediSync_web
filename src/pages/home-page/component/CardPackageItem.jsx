@@ -91,8 +91,9 @@ export default function CardPackageItem({ data, index }) {
           </div>
 
           <div className="flax gap-4 p-4">
-            <p className="indent-6 mb-4">{data?.detail}</p>
-            <span className="font-th font-light">ใช้ได้ถึง 30/12/2567</span>
+              <p className="indent-6 mb-4">{data?.detail}</p>
+              <p className=" mb-4 text-ms-green">{`ราคา package ${data?.price.toLocaleString()} บาท`}</p>
+              <span className="font-th font-light">{`สามารถใช้ได้ถึง ${new Date(data?.expireDate).toLocaleDateString("en-GB")}`}</span>
           </div>
         </div>
       </Modal>
