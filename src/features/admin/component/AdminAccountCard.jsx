@@ -87,26 +87,32 @@ function AdminAccountCard({
   return (
     <div className="flex flex-col bg-card-bg rounded-3xl shadow-md ">
       <div className="w-full font-th text-ms-gray h-16 flex items-center justify-between px-6 rounded-3xl border-[1px] text-lg">
-        <h1>
+
+        <h1 className="w-2/4">
           no. <span className="text-ms-green font-semibold"> {id} </span>
         </h1>
-        <h1>
+
+        <h1 className="w-2/4">
           <span className="text-ms-green font-semibold"> {hn} </span>
         </h1>
-        <h1>
+
+        <h1 className="w-2/4">
           <span className="text-ms-green font-semibold"> {vn} </span>
         </h1>
-        <h1>
+
+        <h1 className="w-full">
           คุณ:
           <span className="text-ms-green font-semibold">
             {user?.firstName} {user?.lastName}
           </span>
         </h1>
-        <h1>
+
+        <h1 className="w-2/4">
           เพศ:
           <span className="text-ms-green font-semibold"> {user?.gender} </span>
         </h1>
-        <h1>
+
+        <h1 className="w-2/4">
           อายุ:
           <span className="text-ms-green m-2 font-semibold">
             {new Date().getUTCFullYear() - user?.birthDate?.split("-")[0] ||
