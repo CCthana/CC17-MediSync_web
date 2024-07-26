@@ -2,7 +2,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "../pdffont/vfs_fonts";
 import { convertImageToBase64 } from "./convertImageToBase64";
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts;
 
 pdfMake.fonts = {
   THSarabunNew: {
